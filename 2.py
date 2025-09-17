@@ -89,7 +89,7 @@ m1 = random.sample(range(1, 76), 25)
 # random.shuffle(m)
 # m = m[:26]
 print(m1)
-s12 = [m1[_:_+5] for _ in range(5)]
+s12 = [m1[_*5:_*5+4] for _ in range(5)]
 # s[2][2] = 0
 print('-', s12)
 
