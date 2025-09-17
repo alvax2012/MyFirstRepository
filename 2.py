@@ -60,3 +60,44 @@ s = 'липа'
 s = random.sample(s, len(s))
 # random.shuffle(s)
 print(''.join(s))
+
+
+for _ in range(5):
+    s = random.sample(range(1, 76), 5)
+    if _ == 2:
+        s[2] = 0
+    s = [str(_).ljust(2) for _ in s]
+    # print(*s)
+
+
+# m = set()
+# while len(m) < 5:
+#     m.add(random.randrange(1, 50))
+#     print(m)
+
+
+n = [*range(1, 76)]
+# print(s)
+
+s = [[str(n.pop()).ljust(3) for _ in range(5)] for _ in range(5)]
+s[2][2] = '0'.ljust(3)
+[print(*row) for row in s]
+
+m1 = random.sample(range(1, 76), 25)
+# print(len(m) == len(set(m)))
+# m = [*range(1, 76)]
+# random.shuffle(m)
+# m = m[:26]
+print(m1)
+s12 = [m1[_:_+5] for _ in range(5)]
+# s[2][2] = 0
+print('-', s12)
+
+s12 = [['0'.ljust(2) if row == 2 and col == 2 else str(s12[row][col]).ljust(1)
+        for row in range(5)] for col in range(5)]
+print('--', s12)
+[print(*row, sep=' ') for row in s12]
+# print(s)
+
+# t = [[i for i in range(j)] for j in range(3)]
+# print(t)
