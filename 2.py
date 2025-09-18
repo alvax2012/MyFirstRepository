@@ -101,3 +101,63 @@ print('--', s12)
 
 # t = [[i for i in range(j)] for j in range(3)]
 # print(t)
+
+# s = [_ for _ in range(int(input()))]
+# print(s)
+s = ['Владимир Смолов',
+     'Тагир Хан',
+     'Давид Лавров',
+     'Арина Приходько',
+     'Глеб Анисимов'][::-1]
+# val = key.copy()
+# val = random.sample(val, 5)
+# random.shuffle(val)
+# print(key, val, sep='\n')
+# n = 5
+
+# m = dict(zip(key, val))
+# print(m)
+# [print(' - '.join(_)) for _ in m.items()]
+
+print(s)
+sd = []
+td = []
+l = dict()
+# for i in range(len(s)):
+#     for j in range(len(s)):
+#         if s[i] not in sd:
+#             key = s[i]
+#             sd.append(key)
+#             val = s[j]
+#             if val not in td:
+#                 td.append(val)
+#                 l.setdefault(key, val)
+
+# print('---', l)
+print()
+i = 1
+d = s.copy()
+d1 = []
+sd = dict.fromkeys(d)
+print('sd', d, sd)
+
+for k in sd.keys():
+    for j in d:
+        if (k != j) and (j not in d1):
+            sd[k] = j
+    d1.append(j)
+    print('k', k, 'j', j, 'sd[k]', sd[k], 'd1', d1)
+print()
+print(sd, d1)
+
+# for _ in s:
+#     key = sd.pop()
+#     l.setdefault(key)
+#     for val in s:
+#         val =
+#         if val not in sd and val != key:
+
+#     # sd.append(key)
+
+#     print(i, _, s, sd, l, sep='\n')
+#     i += 1
