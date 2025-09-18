@@ -14,3 +14,65 @@ s12 = [m1[_*5:_*5+5] for _ in range(5)]
 #        for row in range(5)] for col in range(5)]
 print('--', s12)
 [print(*row, sep=' ') for row in s12]
+
+
+s = ['Владимир Смолов',
+     'Тагир Хан',
+     'Давид Лавров',
+     'Арина Приходько',
+     'Глеб Анисимов']
+# val = key.copy()
+# val = random.sample(val, 5)
+# random.shuffle(val)
+# print(key, val, sep='\n')
+# n = 5
+
+# m = dict(zip(key, val))
+# print(m)
+# [print(' - '.join(_)) for _ in m.items()]
+
+print(s)
+sd = []
+td = []
+l = dict()
+# for i in range(len(s)):
+#     for j in range(len(s)):
+#         if s[i] not in sd:
+#             key = s[i]
+#             sd.append(key)
+#             val = s[j]
+#             if val not in td:
+#                 td.append(val)
+#                 l.setdefault(key, val)
+
+# print('---', l)
+print()
+i = 1
+d = s.copy()
+d1 = []
+sd = dict.fromkeys(d)
+print('sd', d, sd)
+
+for k in sd.keys():
+    tt = ''
+    for j in d:
+        if (k != j) and (j not in sd.values()):
+            sd[k] = j
+            tt = j
+            break
+    # d1.append(tt)
+    print('k', k, 'j', j, 'sd[k]', sd[k], 'd1', d1, sd.values())
+print()
+print(sd, d1)
+
+# for _ in s:
+#     key = sd.pop()
+#     l.setdefault(key)
+#     for val in s:
+#         val =
+#         if val not in sd and val != key:
+
+#     # sd.append(key)
+
+#     print(i, _, s, sd, l, sep='\n')
+#     i += 1
