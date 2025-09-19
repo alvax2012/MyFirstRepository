@@ -76,3 +76,34 @@ print(sd, d1)
 
 #     print(i, _, s, sd, l, sep='\n')
 #     i += 1
+
+
+def shs(s, h):
+    t = len(s)
+    s1 = []
+    for i in range(t):
+        s1.append(s[(i+h) % t])
+        # print(i, h, t, (i+h) % t)
+    # print(s1)
+    return s1
+
+
+s1 = [1, 2, 3, 4, 5]
+print()
+print('-', s1)
+print('--', s1, shs(s1, 1), shs(s1, 2), sep='\n')
+
+
+print()
+
+
+def aa(a):
+    a[1] = 777
+    a = [22, 44]
+    a[0] = 33
+    a1 = a.copy()
+    return a1
+
+
+a = [2, 1]
+print(aa(a), a)
