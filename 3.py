@@ -132,3 +132,14 @@ print(m1)
 s1 = {1, 2, 3, 4}
 s1.add(99)
 print(s1)
+
+[print(random.randrange(10), end=' ') for _ in range(10)]
+print()
+[print(random.randrange(10), end=' ') for _ in range(10)]
+print()
+print('-'*10)
+random.seed(1)
+[print(random.randrange(10), end=' ') for _ in range(10)]
+print()
+random.seed(2)
+[print(random.randrange(10), end=' ') for _ in range(10)]
