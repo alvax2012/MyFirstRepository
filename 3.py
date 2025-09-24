@@ -78,7 +78,7 @@ print(sd, d1)
 #     i += 1
 
 
-def shs(s, h):
+def shs(s: list, h):
     t = len(s)
     s1 = []
     for i in range(t):
