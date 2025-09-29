@@ -24,3 +24,15 @@ def generate_passwords(count, length):
 
 n, m = 9, 7
 generate_passwords(n, m)
+
+
+n = 10**6       # количество испытаний
+k = 0
+s0 = 4
+for _ in range(n):
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+    if x**2 + y**2 == 1:
+        k += 1
+
+print('pi', (k/n)*s0)
