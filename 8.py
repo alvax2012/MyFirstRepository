@@ -66,3 +66,4 @@ turtle.left(45)
 turtle.forward(30)
 
 turtle.done()
+print('1')
