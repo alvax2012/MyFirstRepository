@@ -62,4 +62,4 @@ def sr(num):
 
 
 # print(sr(numbers[0]))
-print(min(numbers, key=sr), max(numbers, key=sr), sep='\n')
+print('-', min(numbers, key=sr), max(numbers, key=sr), sep='\n')
