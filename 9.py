@@ -63,3 +63,40 @@ def sr(num):
 
 # print(sr(numbers[0]))
 print('-', min(numbers, key=sr), max(numbers, key=sr), sep='\n')
+
+# cnt = 1
+# cnt1 = 3
+# # cnt2 = 0
+# # cnt3 = 6
+# for i in range(3, 7):
+#     # cnt1 += 1
+#     cnt2 = 0
+#     for j in range(5):
+#         # cnt2 += 1
+#         # print('cnt1', cnt1, 'cnt2', cnt2)
+#         cnt3 = 7
+#         for k in range(7, 10):
+#             print('cnt1', cnt1, i, 'cnt2', cnt2, j, 'cnt3', cnt3, k, cnt)
+#             cnt3 += 1
+#             cnt += 1
+#             # print('cnt1', cnt1, 'cnt2', cnt2, 'cnt3', cnt3)
+#         cnt2 += 1
+#     cnt1 += 1
+# print('cnt=', cnt, cnt1, cnt2, cnt3)
+
+numbers = [(10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3), (12, 45, 67), (-2, -4, 100),
+           (1, 2, 99), (89, 90, 34), (10, 20, 30), (50, 40, 50), (34, 78, 65), (-5, 90, -1)]
+
+
+def mm(num: tuple):
+    return min(num) + max(num)
+
+
+numbers.sort(key=mm)
+
+
+print(numbers)
+
+
+l = 'a'
+print(l[::-1])
