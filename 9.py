@@ -102,6 +102,10 @@ l = 'a'
 print(l[::-1])
 
 
+def rnd():
+    return round(x, 2)
+
+
 def map(function, items):
     result = []
     for item in items:
