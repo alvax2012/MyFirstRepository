@@ -102,8 +102,18 @@ l = 'a'
 print(l[::-1])
 
 
-def rnd():
-    return round(x, 2)
+def generator_square_polynom(a, b, c):
+    def square_polynom(x):
+        return a * x**2 + b * x + c
+
+    return square_polynom
+
+
+def rnd(x):
+    def round1():
+        return 1
+    # y = round()
+    return round
 
 
 def map(function, items):
@@ -116,5 +126,5 @@ def map(function, items):
 numbers = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.12013,
            23.22222, 90.09873, 45.45, 314.1528, 2.71828, 1.41546]
 
-
-print()
+f = rnd
+print(map(f, numbers))
