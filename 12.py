@@ -5,13 +5,14 @@ def aa(i):
     x = i
 
     def aa1(x):
+        print('+++', x)
         return x
-    print(i)
+
     return aa1
 
 
 p = aa(7)
-print(p(a))
+print('====', p(a))
 
 print(int('-3'))
 

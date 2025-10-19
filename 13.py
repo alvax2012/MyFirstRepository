@@ -27,3 +27,11 @@ letters = ['a', 'b', 'd', 'e', 'i', 'j', 'o']
 filtered_vowels = filter(filter_vowels, letters)
 
 print(*filtered_vowels)
+
+
+# функция возвращает значение True если число больше 10 и False в противном случае
+def is_greater10(num):
+    return num % 2
+
+
+print(is_greater10(4))
