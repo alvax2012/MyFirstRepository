@@ -27,3 +27,17 @@ letters = ['a', 'b', 'd', 'e', 'i', 'j', 'o']
 filtered_vowels = filter(filter_vowels, letters)
 
 print(*filtered_vowels)
+
+
+def is_non_negative_num(x): return bool(x.count('.')-1)
+
+
+print()
+print(is_non_negative_num('10.34ab'))
+print(is_non_negative_num('10.45'))
+print(is_non_negative_num('-18'))
+print(is_non_negative_num('-34.67'))
+print(is_non_negative_num('987'))
+print(is_non_negative_num('abcd'))
+print(is_non_negative_num('123.122.12'))
+print(is_non_negative_num('123.122'))
