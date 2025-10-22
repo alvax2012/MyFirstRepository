@@ -26,5 +26,7 @@ print(f(x))
 
 func = (lambda x: x % 19 == 0 or x % 13 == 0)(38)
 
+s = 'aA'
+func1 = (lambda x: x[0] in s or x[-1] in s)('aaaaf')
 
-print(func)
+print(func1)
