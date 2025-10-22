@@ -22,3 +22,9 @@ def rnd(a):
 f = rnd(a=i)
 
 print(f(x))
+
+
+func = (lambda x: x % 19 == 0 or x % 13 == 0)(38)
+
+
+print(func)

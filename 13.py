@@ -41,3 +41,11 @@ print(is_non_negative_num('987'))
 print(is_non_negative_num('abcd'))
 print(is_non_negative_num('123.122.12'))
 print(is_non_negative_num('123.122'))
+# функция возвращает значение True если число больше 10 и False в противном случае
+
+
+def is_greater10(num):
+    return num % 2
+
+
+print(is_greater10(4))
