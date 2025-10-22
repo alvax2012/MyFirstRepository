@@ -46,8 +46,15 @@ l = list(sorted(map(lambda x: x[0], filter(
 
 print(reduce(lambda x, y: f'{x} {y},', l, 'Cities:')[:-1])
 
+print('---')
 
-def is_non_negative_num(x): return [_ for _ in x if _ in '.']
+
+is_non_negative_num1 = (lambda x:  ''.join(
+    [_ for _ in x if _ in '.' or 48 <= ord(_) <= 57]).replace('.', '', 1))('123')
+print('+++', is_non_negative_num1)
+
+
+def is_non_negative_num(x): return x.replace('.', '', 1).isdigit()
 
 
 print(is_non_negative_num('10.34ab'))
@@ -58,3 +65,17 @@ print(is_non_negative_num('987'))
 print(is_non_negative_num('abcd'))
 print(is_non_negative_num('123.122.12'))
 print(is_non_negative_num('123.122'))
+
+
+words = ['beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse', 'abuse', 'bid', 'wednesday', 'able', 'betray', 'accident', 'abduct', 'bigot', 'bet', 'abandon', 'besides', 'access', 'friday', 'bestow', 'abound', 'absent', 'beware',
+         'abundant', 'abnormal', 'aboard', 'about', 'accelerate', 'abort', 'thursday', 'tuesday', 'sunday', 'berth', 'beyond', 'benevolent', 'abate', 'abide', 'bicycle', 'beside', 'accept', 'berry', 'bewilder', 'abrupt', 'saturday', 'accessory', 'absorb']
+
+print(*sorted(filter(lambda x: len(x) == 6, words), key=lambda x: x))
+
+
+numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34, 100, 36, 81, 33, 81, 66, 83, 41, 80, 80, 93, 40, 34, 32, 16, 5, 16, 40, 93, 36, 65, 8, 19, 8, 75, 66, 21, 72, 32, 41, 59, 35,
+           64, 49, 78, 83, 27, 57, 53, 43, 35, 48, 17, 19, 40, 90, 57, 77, 56, 80, 95, 90, 27, 26, 6, 4, 23, 52, 39, 63, 74, 15, 66, 29, 88, 94, 37, 44, 2, 38, 36, 32, 49, 5, 33, 60, 94, 89, 8, 36, 94, 46, 33]
+
+print(*map(lambda x: x // 2 if not x % 2 else x, filter(lambda x: not x %
+      2 or x <= 47, numbers)))
+# print(*filter(lambda x: not x % 2, numbers))
