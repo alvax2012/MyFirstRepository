@@ -79,3 +79,75 @@ numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34, 100
 print(*map(lambda x: x // 2 if not x % 2 else x, filter(lambda x: not x %
       2 or x <= 47, numbers)))
 # print(*filter(lambda x: not x % 2, numbers))
+
+
+data = [(19542209, 'New York'), (4887871, 'Alabama'), (1420491, 'Hawaii'), (626299, 'Vermont'), (1805832, 'West Virginia'), (39865590, 'California'), (11799448, 'Ohio'),
+        (10711908, 'Georgia'), (10077331, 'Michigan'), (10439388, 'Virginia'), (7705281, 'Washington'), (7151502, 'Arizona'), (7029917, 'Massachusetts'), (6910840, 'Tennessee')]
+
+
+def fs(x): return x[1][-1]
+
+
+print(fs, id(fs), type(fs), sep='\n')
+
+# print(*map(lambda x: f'{x[1]}: {x[0]}',
+#      sorted(data, reverse=True, key=lambda x: x[1][-1])), sep='\n')
+
+data = ['год', 'человек', 'время', 'дело', 'жизнь', 'день', 'рука', 'раз', 'работа', 'слово', 'место', 'лицо', 'друг', 'глаз', 'вопрос', 'дом',
+        'сторона', 'страна', 'мир', 'случай', 'голова', 'ребенок', 'сила', 'конец', 'вид', 'система', 'часть', 'город', 'отношение', 'женщина', 'деньги']
+
+print(sorted(sorted(data), key=lambda x: len(x)))
+
+
+mixed_list = ['tuesday', 'abroad', 'abuse', 'beside', 'monday', 'abate', 'accessory', 'absorb', 1384878, 'sunday', 'about', 454805, 'saturday', 'abort', 2121919, 2552839, 977970, 1772933, 1564063, 'abduct', 901271, 2680434, 'bicycle', 'accelerate', 1109147, 942908, 'berry', 433507, 'bias', 'bestow', 1875665, 'besides', 'bewilder', 1586517, 375290, 1503450, 2713047, 'abnormal', 2286106, 242192, 701049, 2866491, 'benevolent', 'bigot', 'abuse', 'abrupt', 343772,
+              'able', 2135748, 690280, 686008, 'beyond', 2415643, 'aboard', 'bet', 859105, 'accident', 2223166, 894187, 146564, 1251748, 2851543, 1619426, 2263113, 1618068, 'berth', 'abolish', 'beware', 2618492, 1555062, 'access', 'absent', 'abundant', 2950603, 'betray', 'beverage', 'abide', 'abandon', 2284251, 'wednesday', 2709698, 'thursday', 810387, 'friday', 2576799, 2213552, 1599022, 'accept', 'abuse', 'abound', 1352953, 'bid', 1805326, 1499197, 2241159, 605320, 2347441]
+
+print(max(mixed_list,  key=lambda x: x if isinstance(x, (int, float)) else 0))
+print(*sorted(filter(lambda x: isinstance(x, int), mixed_list)))
+print(max(mixed_list, key=lambda x: (isinstance(x, int), x)))
+
+
+mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides', 'berry', 15, 65, 'abate', 'thursday', 76, 70, 94, 35, 36, 'berth', 41, 'abnormal', 'bicycle', 'bid', 'sunday', 'saturday', 87, 'bigot', 41, 'abort', 13, 60, 'friday', 26, 13, 'accident', 'access', 40, 26, 20, 75, 13, 40, 67, 12, 'abuse',
+              78, 10, 80, 'accessory', 20, 'bewilder', 'benevolent', 'bet', 64, 38, 65, 51, 95, 'abduct', 37, 98, 99, 14, 'abandon', 'accept', 46, 'abide', 'beyond', 19, 'about', 76, 26, 'abound', 12, 95, 'wednesday', 'abundant', 'abrupt', 'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray', 47, 'able', 11]
+
+print(sorted(mixed_list, key=lambda x: (type(x) == str, x)))
+
+print(sorted(mixed_list, key=lambda x: (True, x) if type(x) is str else (False, x)))
+
+print()
+s = '244 11 120'
+# s = (int(_) for _ in s.split())
+# s = map(int, s)
+print(s)
+m = 255
+print(*map(lambda x: m-x, map(int, s.split())))
+
+s = '2 4 3'
+l = list(map(int, s.split()))
+x = 10
+l1 = list(map(int, s.split()))[::-1]
+d = tuple(zip(range(len(l)), l1))
+
+
+def mn(l):
+    # mmn1 = map((lambda y: y*x), l)
+    # mmn = mmn1(x)
+    def mmn(x):
+        return map(lambda y: x*y, l)
+    return mmn
+
+
+# f = mn(l)
+# print(*f(x))
+
+print(l)
+# print(*d)
+
+
+def evaluate(x, d):
+    return reduce(lambda x, y: x + y, map(lambda y: y[1]*pow(x, y[0]), d), 0)
+    # return map(lambda y: y*pow(y, x), l)
+
+
+print('--+', evaluate(x, d),  l)
+print(d)
