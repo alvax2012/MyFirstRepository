@@ -94,4 +94,4 @@ print(*filter(lambda x: not '0' in str(x) and f1(x), range(a, b+1)))
 # print([list(map(lambda x: [x[1] % _ for _ in x[0]], i))for i in zip(map(lambda x: x, l), range(a, b+1))])
 
 
-print(f1(14))
+print('111', f1(14))
