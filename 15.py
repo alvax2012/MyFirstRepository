@@ -277,3 +277,23 @@ print('123aaaaaa8\nbb')
 f = open('c:/1/nums.txt', encoding='utf-8')
 print(sum(map(lambda x: int(x.strip()), list(f))))
 f.close()
+print('111', f1(14))
+
+s1 = '5 -2 0 0 7 8 -1'
+
+
+def process(input_string: str) -> str:
+    # print(*map(int, input_string.split()))
+    # len(list(filter(lambda x: int(x) == 0, input_string.split())))
+    v1 = reduce(lambda x, y: x + int(y > 0), map(int, input_string.split()), 0)
+    v2 = reduce(lambda x, y: x + int(y < 0), map(int, input_string.split()), 0)
+    v3 = reduce(lambda x, y: x + int(y == 0),
+                map(int, input_string.split()), 0)
+    return f'выше нуля: {v1}, ниже нуля: {v2}, равна нулю: {v3}'
+
+
+input_string = s1
+output_string = process(input_string)
+print('out', output_string)
+
+print((1, 2) + (1, 2))
