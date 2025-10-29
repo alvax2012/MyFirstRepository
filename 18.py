@@ -32,5 +32,5 @@ print(sum(map(lambda x: int(x[1])*int(x[2]), (l.split() for l in f))))
 f.close()
 
 f = open('c:/1/prices.txt', encoding='utf-8')
-print(reduce(lambda x, y: x + int(y[1])*int(y[2]), (l.split() for l in f), 0))
+print(reduce(lambda x, y: x + int(y[1])*int(y[2]), map(str.split, f), 0))
 f.close()
