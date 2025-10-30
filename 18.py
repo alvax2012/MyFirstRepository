@@ -73,3 +73,15 @@ file = open(p1 + 'lines.txt', encoding='utf-8')
 t = file.readline()
 print('-', file.tell(), t)
 file.close()
+
+
+with open(p1 + '1.txt', encoding='utf-8') as file:
+    print('Repeat after me:', file.readline().strip())
+    for line in file:
+        print(line.strip() + '!')
+
+print('-')
+
+with open(p1 + 'text.txt', encoding='utf-8') as f:
+    print(*(line[::-1] for line in f))
+print('-')
