@@ -137,7 +137,8 @@ print(set({'a': 1, 'b': 2}))
 
 t2 = [(1, 2), (2, 3)]
 t2 = reduce(lambda x, y: (x[0] + y[0], x[1] + y[1]), t2)
-print('t2=', t2)
+
+print('t2=', dict([t2]), dict([(2, 3)]))
 
 
 print(set({}) | set({'стол222'}))
