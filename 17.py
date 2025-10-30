@@ -1,3 +1,7 @@
+from functools import reduce
+from operator import *
+
+
 class Person:
 
     def __init__(self, dt1, name1, cnt1):
@@ -31,7 +35,10 @@ def report1(s):
         p = Person(i[0], i[1], i[2])
         m.append(
             f'Q: {p.qar()}\n Наименование: {p.name} \n Количество: {p.cnt}')
-        d[p.qar()][p.name] = d.setdefault(
+       # d[p.qar()][p.name] = d.setdefault(
+        #    p.qar(), {}).setdefault(p.name, 0) + p.cnt
+
+        d[p.qar()][p.name] = d.get(
             p.qar(), {}).setdefault(p.name, 0) + p.cnt
     # print('d', l, m, d, sep='\n')
     return d
@@ -74,6 +81,7 @@ def merge(l):
     for d in l:
         for k, v in d.items():
 
+            # res.setdefault(k, set()).add(v)
             res.setdefault(k, set()).add(v)
             # print(type(res.setdefault(k, set())))
     return res
@@ -92,3 +100,9 @@ dict2 = {'яблоки': 300, 'груши': 200, 'бананы': 400,
 merged_dict = {key: dict1.get(key, 0) + dict2.get(key, 0)
                for key in set(dict1) | set(dict2)}
 # print("Объединенный словарь:", merged_dict)
+
+binary1 = '11'  # Двоичное представление 13
+binary2 = '11'  # Двоичное представление 11
+# Сложить и преобразовать обратно в двоичное
+sum_binary = bin(int(binary1, 2) + int(binary2, 2))[2:]
+print(sum_binary)
