@@ -1,9 +1,6 @@
+import random
 from functools import reduce
 from operator import *
-<<<<<<< HEAD
-=======
-import random
->>>>>>> 9666f98ca4e85824ca2d55558f3b280c0501b4a6
 
 
 class Person:
@@ -40,24 +37,22 @@ def report1(s):
         p = Person(i[0], i[1], i[2])
         m.append(
             f'Q: {p.qar()}\n Наименование: {p.name} \n Количество: {p.cnt}')
-<<<<<<< HEAD
-       # d[p.qar()][p.name] = d.setdefault(
-        #    p.qar(), {}).setdefault(p.name, 0) + p.cnt
 
-        d[p.qar()][p.name] = d.get(
-            p.qar(), {}).setdefault(p.name, 0) + p.cnt
-=======
-        # d[p.qar()][p.name] = d.setdefault(
-        #     p.qar(), {}).setdefault(p.name, 0) + p.cnt
 
-        d[p.qar()] = d.get(
-            p.qar(), ())
-        # d[p.qar()][p.name] = d[p.qar()].get(p.name, 0) + p.cnt
+# d[p.qar()][p.name] = d.setdefault(
+#    p.qar(), {}).setdefault(p.name, 0) + p.cnt
+    d[p.qar()][p.name] = d.get(
+        p.qar(), {}).setdefault(p.name, 0) + p.cnt
 
-        d[p.qar()] += ({p.name: p.cnt},)
+# d[p.qar()][p.name] = d.setdefault(
+#     p.qar(), {}).setdefault(p.name, 0) + p.cnt
 
->>>>>>> 9666f98ca4e85824ca2d55558f3b280c0501b4a6
-    # print('d', l, m, d, sep='\n')
+    d[p.qar()] = d.get(
+        p.qar(), ())
+# d[p.qar()][p.name] = d[p.qar()].get(p.name, 0) + p.cnt
+
+    d[p.qar()] += ({p.name: p.cnt},)
+# print('d', l, m, d, sep='\n')
     return d
 
 
@@ -134,13 +129,13 @@ merged_dict = {key: dict1.get(key, 0) + dict2.get(key, 0)
                for key in set(dict1) | set(dict2)}
 # print("Объединенный словарь:", merged_dict)
 
-<<<<<<< HEAD
+
 binary1 = '11'  # Двоичное представление 13
 binary2 = '11'  # Двоичное представление 11
 # Сложить и преобразовать обратно в двоичное
 sum_binary = bin(int(binary1, 2) + int(binary2, 2))[2:]
 print(sum_binary)
-=======
+
 
 dict1 = {'яблоки': 100, 'бананы': 333, 'груши': 200,
          'апельсины': 300, 'ананасы': 45, 'лимоны': 98,
@@ -161,4 +156,3 @@ print('t2=', dict([t2]), dict([(2, 3)]))
 
 
 print(set({}) | set({'стол222'}))
->>>>>>> 9666f98ca4e85824ca2d55558f3b280c0501b4a6

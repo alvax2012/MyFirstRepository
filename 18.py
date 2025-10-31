@@ -80,8 +80,23 @@ with open(p1 + '1.txt', encoding='utf-8') as file:
     for line in file:
         print(line.strip() + '!')
 
-print('-')
+print('--')
 
 with open(p1 + 'text.txt', encoding='utf-8') as f:
-    print(*(line[::-1] for line in f))
+    print(*[list(map(lambda x: x[::-1], l.split()))[::-1]
+          for l in f], sep='\n')
+    # [print(' '.join(l.split()[::-1])) for l in f]
 print('-')
+
+with open(p1 + 'text.txt') as f:
+    print(f.read()[::-1])
+
+with open(p1+'text.txt') as file:
+    print(*[i[::-1] for i in file.readline().split()[::-1]])
+
+
+with open(p1+'data.txt') as f:
+    print(*f.readlines()[::-1], sep='')
+
+with open(p1 + 'lines.txt', encoding='utf-8') as f:
+    print([l for l in filter(lambda x: x, f)])
