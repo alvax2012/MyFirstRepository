@@ -41,6 +41,7 @@ def report1(s):
 
 # d[p.qar()][p.name] = d.setdefault(
 #    p.qar(), {}).setdefault(p.name, 0) + p.cnt
+<<<<<<< HEAD
 
 d[p.qar()][p.name] = d.get(
     p.qar(), {}).setdefault(p.name, 0) + p.cnt
@@ -55,6 +56,21 @@ d[p.qar()] += ({p.name: p.cnt},)
 
 # print('d', l, m, d, sep='\n')
 return d
+=======
+    d[p.qar()][p.name] = d.get(
+        p.qar(), {}).setdefault(p.name, 0) + p.cnt
+
+# d[p.qar()][p.name] = d.setdefault(
+#     p.qar(), {}).setdefault(p.name, 0) + p.cnt
+
+    d[p.qar()] = d.get(
+        p.qar(), ())
+# d[p.qar()][p.name] = d[p.qar()].get(p.name, 0) + p.cnt
+
+    d[p.qar()] += ({p.name: p.cnt},)
+# print('d', l, m, d, sep='\n')
+    return d
+>>>>>>> fcbae3ce6555ab7f25994d115716113bbbfff074
 
 
 s = '2025-06-08:ручка:1;2025-06-01:ручка:3;2025-06-01:стол:3;2025-03-11:ручка:4;2025-03-01:ручка:7;2025-03-02:стол:5;2025-01-01:ручка:7;2025-02-02:ручка:6;2025-02-22:стол:5'
@@ -130,11 +146,19 @@ merged_dict = {key: dict1.get(key, 0) + dict2.get(key, 0)
                for key in set(dict1) | set(dict2)}
 # print("Объединенный словарь:", merged_dict)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fcbae3ce6555ab7f25994d115716113bbbfff074
 binary1 = '11'  # Двоичное представление 13
 binary2 = '11'  # Двоичное представление 11
 # Сложить и преобразовать обратно в двоичное
 sum_binary = bin(int(binary1, 2) + int(binary2, 2))[2:]
 print(sum_binary)
+<<<<<<< HEAD
+=======
+
+>>>>>>> fcbae3ce6555ab7f25994d115716113bbbfff074
 
 dict1 = {'яблоки': 100, 'бананы': 333, 'груши': 200,
          'апельсины': 300, 'ананасы': 45, 'лимоны': 98,
