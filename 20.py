@@ -107,6 +107,18 @@ with open(p1 + 'input.txt') as f_in, open(p1 + 'output.txt', 'w') as f_out:
     print(*[f'{_[0]}) {_[1]}' for _ in enumerate(fl, 1)], file=f_out, sep='')
 
 
-with open(p1 + 'class_scores.txt', encoding='utf-8') as f_in, open(p1 + 'new_scores.txt', 'w', encoding='utf-8') as f_out:
-    print(*[f'{reduce(lambda x, y: x + " " + str(int(y)+5) if int(y) <= 95 else x + ' 100', i.strip().split())}' for i in f_in],
-          file=f_out, sep='\n')
+# with open(p1 + 'class_scores.txt', encoding='utf-8') as f_in, open(p1 + 'new_scores.txt', 'w', encoding='utf-8') as f_out:
+#     print(*[f'{reduce(lambda x, y: x + " " + str(int(y)+5) if int(y) <= 95 else x + ' 100', i.strip().split())}' for i in f_in],
+#           file=f_out, sep='\n')
+
+
+with open(p1 + 'goats.txt') as f_in, open(p1 + 'answer.txt', 'w') as f_out:
+    l1, l2 = f_in.read().split('GOATS')
+    l1, l2 = l1.strip().split('\n')[1:], l2.strip().split('\n')
+    n = len(l2)
+    d = {}
+    for i in l2:  # d.keys():
+        d[i] = d.get(i, 0) + 1
+    print('d=', d)
+    [print(f'{i[0]}')
+     for i in sorted(filter(lambda i: i[1] / n > 0.07, d.items()))]
