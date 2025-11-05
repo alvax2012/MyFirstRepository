@@ -36,8 +36,8 @@ with open(p1 + 'nums.txt', encoding='utf-8') as f:
 print()
 print()
 with open(p1 + 'nums.txt', encoding='utf-8') as f:
-    print((reduce(lambda x, y: x + y if y.isdigit() else x + '_', i, ''))
-          for i in f.readlines())
+    print(reduce(lambda x, y: x + y if y.isdigit()
+          else x + '_', f.read(), ''))
 
 
 l = ' 12  45 456   3 \n'
