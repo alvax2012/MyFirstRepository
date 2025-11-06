@@ -1,6 +1,7 @@
 from operator import mul
 from functools import reduce
 import random
+import operator
 p1 = 'c:/1/'
 
 with open(p1 + 'nums.txt', encoding='utf-8') as f:
@@ -122,3 +123,42 @@ with open(p1 + 'goats.txt') as f_in, open(p1 + 'answer.txt', 'w') as f_out:
     print('d=', d)
     [print(f'{i[0]}')
      for i in sorted(filter(lambda i: i[1] / n > 0.07, d.items()))]
+
+
+print()
+l_in = ['f1.txt', 'f2.txt']
+l_out = []
+with open('output.txt', 'w') as f_out:
+    for _ in l_in:
+        with open(_) as f_in:
+            s = f_in.read()
+            l_out.append(s)
+    f_out.writelines(l_out)
+
+print(l_out)
+
+print('--')
+with open(p1 + 'logfile.txt', encoding='utf-8') as f_in, open(p1 + 'output11.txt', 'r', encoding='utf-8') as f_out, open(p1 + 'output22.txt', 'w', encoding='utf-8') as f_out1:
+    # fl1 = [i.strip().split(',') for i in f_in.readlines()]
+    # l_out = map(lambda x: x[0].strip() + '\n', filter(lambda x: ((int(x[2].strip()[:2])*60 + int(x[2].strip()[-2:]))) - (
+    #     int(x[1].strip()[:2])*60 + int(x[1].strip()[-2:])) >= 60, fl1))
+
+    # f_in.seek(0)
+    # f_out.seek(0)
+
+    # print(reduce(operator.add, [int(_.strip().split()[1])
+    #       for _ in f_out.readlines()[:-1]]))
+
+    # print(*map(lambda x: int(x.strip().split()
+    #       [1]) > 3, f_out.readlines()[:-1]))
+
+    # print(max(f_out.readlines(), key=lambda x: len(x.strip())))
+    # print(max(map(lambda x: len(x.strip()), f_out.readlines())))
+
+    # print(*map(lambda x: '*'*len(x) if x.strip()
+    #       in ('214') else x, f_out.readlines()))
+
+    d1 = {'ф': 'f', 'л': 'l', 'р': 'r', 'у': 'u'}
+
+    print(reduce(lambda x, y: x + y,
+          list(map(lambda x: d1.get(x, '0') if x not in ('\n') else x, f_out.read()))), file=f_out1, sep='--')

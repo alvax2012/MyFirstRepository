@@ -130,8 +130,6 @@ d = tuple(zip(range(len(l)), l1))
 
 
 def mn(l):
-    # mmn1 = map((lambda y: y*x), l)
-    # mmn = mmn1(x)
     def mmn(x):
         return map(lambda y: x*y, l)
     return mmn
