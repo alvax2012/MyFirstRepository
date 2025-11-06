@@ -138,27 +138,70 @@ with open('output.txt', 'w') as f_out:
 print(l_out)
 
 print('--')
-with open(p1 + 'logfile.txt', encoding='utf-8') as f_in, open(p1 + 'output11.txt', 'r', encoding='utf-8') as f_out, open(p1 + 'output22.txt', 'w', encoding='utf-8') as f_out1:
-    # fl1 = [i.strip().split(',') for i in f_in.readlines()]
-    # l_out = map(lambda x: x[0].strip() + '\n', filter(lambda x: ((int(x[2].strip()[:2])*60 + int(x[2].strip()[-2:]))) - (
-    #     int(x[1].strip()[:2])*60 + int(x[1].strip()[-2:])) >= 60, fl1))
+# with open(p1 + 'logfile.txt', encoding='utf-8') as f_in, open(p1 + 'output11.txt', 'r', encoding='utf-8') as f_out, open(p1 + 'output22.txt', 'w', encoding='utf-8') as f_out1:
+# fl1 = [i.strip().split(',') for i in f_in.readlines()]
+# l_out = map(lambda x: x[0].strip() + '\n', filter(lambda x: ((int(x[2].strip()[:2])*60 + int(x[2].strip()[-2:]))) - (
+#     int(x[1].strip()[:2])*60 + int(x[1].strip()[-2:])) >= 60, fl1))
 
-    # f_in.seek(0)
-    # f_out.seek(0)
+# f_in.seek(0)
+# f_out.seek(0)
 
-    # print(reduce(operator.add, [int(_.strip().split()[1])
-    #       for _ in f_out.readlines()[:-1]]))
+# print(reduce(operator.add, [int(_.strip().split()[1])
+#       for _ in f_out.readlines()[:-1]]))
 
-    # print(*map(lambda x: int(x.strip().split()
-    #       [1]) > 3, f_out.readlines()[:-1]))
+# print(*map(lambda x: int(x.strip().split()
+#       [1]) > 3, f_out.readlines()[:-1]))
 
-    # print(max(f_out.readlines(), key=lambda x: len(x.strip())))
-    # print(max(map(lambda x: len(x.strip()), f_out.readlines())))
+# print(max(f_out.readlines(), key=lambda x: len(x.strip())))
+# print(max(map(lambda x: len(x.strip()), f_out.readlines())))
 
-    # print(*map(lambda x: '*'*len(x) if x.strip()
-    #       in ('214') else x, f_out.readlines()))
+# print(*map(lambda x: '*'*len(x) if x.strip()
+#       in ('214') else x, f_out.readlines()))
 
-    d1 = {'ф': 'f', 'л': 'l', 'р': 'r', 'у': 'u'}
+# d1 = {'ф': 'f', 'л': 'l', 'р': 'r', 'у': 'u'}
 
-    print(reduce(lambda x, y: x + y,
-          list(map(lambda x: d1.get(x, '0') if x not in ('\n') else x, f_out.read()))), file=f_out1, sep='--')
+# print(reduce(lambda x, y: x + y,
+#       list(map(lambda x: d1.get(x, '0') if x not in ('\n') else x, f_out.read()))), file=f_out1, sep='--')
+
+with open('ledger.txt', encoding='utf-8') as f_in:
+    print(
+        f'${reduce(lambda x, y: x + int(y.strip()), f_in.read().split('$')[1:], 0)}')
+
+with open('grades.txt', encoding='utf-8') as f_in:
+    # print(*filter(lambda x: x.split(): x, mf_in.readlines()))
+    print(len(list(filter(lambda x: int(x[1]) >= 65 and int(x[2]) >= 65 and int(
+        x[3]) >= 65, map(lambda x: x.split(), f_in.readlines())))))
+
+with open('words.txt', encoding='utf-8') as f_in:
+    d = {i: len(i) for i in f_in.read().split()}
+    m = max(d.values())
+    # print()
+    [print(k) for k, v in d.items() if v == m]
+
+    # print({i: len(i) for i in f_in.read().split()})
+
+s = 'words1.txt'
+with open('forbidden_words.txt', encoding='utf-8') as f_in, open(s, encoding='utf-8') as f_out:
+    l_for = f_in.read().split()
+    l = f_out.read().split(' ')
+    l_low = list(map(str.lower, l))
+    print(l)
+    print(l_low)
+    # l = map(lambda x:  x  if x.replace(.lower(), '*'*len(w)), l_out)
+    # l = [i if i not in l_out else i for i in l_out]\
+
+    def cmp(s, sf):
+        l = list(sf)
+        ls = list(s)
+        for i in range(len(l)):
+            if l[i] != '*':
+                l[i] = ls[i]
+        return ''.join(l)
+
+    for i in range(len(l_low)):
+        i1 = l_low[i]
+        for j in l_for:
+            if j in i1:
+                l_low[i] = cmp(l[i], i1.replace(j.lower(), '*'*len(j)))
+
+    print(*l_low)
