@@ -1,0 +1,4 @@
+powers
+matrix
+mean
+greet

@@ -205,3 +205,62 @@ with open('forbidden_words.txt', encoding='utf-8') as f_in, open(s, encoding='ut
                 l_low[i] = cmp(l[i], i1.replace(j.lower(), '*'*len(j)))
 
     print(*l_low)
+
+
+d = {
+    'а': 'a', 'к': 'k', 'х': 'h', 'б': 'b', 'л': 'l', 'ц': 'c', 'в': 'v', 'м': 'm', 'ч': 'ch',
+    'г': 'g', 'н': 'n', 'ш': 'sh', 'д': 'd', 'о': 'o', 'щ': 'shh', 'е': 'e', 'п': 'p', 'ъ': '*',
+    'ё': 'jo', 'р': 'r', 'ы': 'y', 'ж': 'zh', 'с': 's', 'ь': "'", 'з': 'z', 'т': 't', 'э': 'je',
+    'и': 'i', 'у': 'u', 'ю': 'ju', 'й': 'j', 'ф': 'f', 'я': 'ya'
+}
+
+
+def isup(d: dict):
+    def upx(s: str):
+        t = ''
+        if s.isupper():
+            t = d.get(s.lower(), s)
+            t = t[0].upper() + t[1:]
+        else:
+            t = d.get(s, s)
+        return t
+    return upx
+
+
+f1 = isup(d)
+with open('cyrillic.txt', encoding='utf-8') as f_in, open('transliteration.txt', 'w', encoding='utf-8') as f_out:
+    l_in = list(f_in.read())
+    l_out = map(f1, l_in)
+# print(*l_out, sep='')
+print('++', f1('л'))
+
+
+s = 'in1.txt'
+ls = []
+with open(s, encoding='utf-8') as f_in:
+    # l1 = [i for i in f_in.read().replace('def ', 'def_').replace(
+    #     ' ', '').split('\n\n') if '#' not in i]
+    # l = list(map(lambda x: x.split('\n')[0].split('(')[0][4:]+'\n', l1))
+    l = [i for i in f_in.readlines()[::-1]]
+    n = range(len(l))
+    print(len(l), 'n=', max(n), *n)
+    for i in n:
+        print('i=', i, l[i])
+        if i != max(n):
+            if ('def ' in l[i]) and ('#' not in l[i+1]):
+                print('i===', i, l[i])
+                print('i+1=', i+1, l[i+1])
+                ls.append(l[i][4:l[i].find('(')]+'\n')
+        else:
+            if 'def ' in l[i]:
+                print('i=', i, l[i])
+                ls.append(l[i][4:l[i].find('(')]+'\n')
+
+with open('o1.txt', 'w', encoding='utf-8') as f_o:
+    print(*ls[::-1], sep='',
+          end='') if len(ls) > 0 else print('Best Programming Team')
+
+    # print(*ls[::-1], sep='', end='', file=f_o)
+
+    [print(_, end='', file=f_o)
+     for _ in ls[::-1]] if len(ls) > 0 else print('Best Programming Team')
