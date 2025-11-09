@@ -7,8 +7,8 @@ with open('forbidden_words.txt', encoding='utf-8') as f_in, open(s, encoding='ut
     l_for = f_in.read().split()
     l = f_out.read().split(' ')
     l_low = list(map(str.lower, l))
-    print(l)
-    print(l_low)
+    # print(l)
+    # print(l_low)
     # l = map(lambda x:  x  if x.replace(.lower(), '*'*len(w)), l_out)
     # l = [i if i not in l_out else i for i in l_out]\
 
