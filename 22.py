@@ -13,12 +13,13 @@ with open('forbidden_words.txt', encoding='utf-8') as f_in, open(s, encoding='ut
         sl = s.lower()
         for i in l_for:
             f0 = sl.find(i)
+
             while f0 != -1:
-                print(i, p0, '-', sl)
+                print(i, p0, f0, '-', sl)
                 # s = s[:f] + r*len(i) + s[f+len(i):]
                 p0 = f0 + len(i)  # s_l[f+len(i):].find(i)
                 if p0 > len(sl):
-                    print(i, p0, '---', sl)
+                    print(i, p0, f0, '---', sl)
                     break
                 sl = sl[p0:]
                 # print(i, p0, '--', sl)
