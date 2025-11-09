@@ -13,7 +13,7 @@ with open('forbidden_words.txt', encoding='utf-8') as f_in, open(s, encoding='ut
         sl = s.lower()
         for i in l_for:
             f0 = sl.find(i)
-
+            p0 = f0
             while f0 != -1:
                 print(i, p0, f0, '-', sl)
                 # s = s[:f] + r*len(i) + s[f+len(i):]
