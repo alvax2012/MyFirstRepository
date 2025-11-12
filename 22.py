@@ -45,6 +45,7 @@ def all_words(word):
     print(l)
     for char in word[1:]:
         l1, l2 = [chars + char for chars in l], [chars + char.swapcase()
+
                                                  for chars in l]
         print('cr=', char)
         l = l1 + l2
