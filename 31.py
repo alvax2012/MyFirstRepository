@@ -72,8 +72,8 @@ for k, v in tt.items():
 print('d1=', d1)
 
 
-print()
-for k, v in d1.items():
-    print(f'Q: {k}')
-    [print(f'Наименование: {k} \nКолич. {v}') for k, v in v.items()]
-    # print(f'Наименование: {v} \n')  # Количество: {v.values()}')
+# print()
+# for k, v in d1.items():
+#     print(f'Q: {k}')
+#     [print(f'Наименование: {k} \nКолич. {v}') for k, v in v.items()]
+#     # print(f'Наименование: {v} \n')  # Количество: {v.values()}')
