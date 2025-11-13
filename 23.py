@@ -2,6 +2,7 @@ import random
 from functools import reduce
 from operator import *
 
+<<<<<<< Updated upstream
 
 class Person:
 
@@ -77,3 +78,17 @@ for k, v in d1.items():
     print(f'Q: {k}')
     [print(f'Наименование: {k} \nКолич. {v}') for k, v in v.items()]
     # print(f'Наименование: {v} \n')  # Количество: {v.values()}')
+=======
+[print(_, end='')
+ for _ in ls[::-1]] if len(ls) > 0 else print('Best Programming Team')
+
+
+buf, pos = [None] * 10, 0
+with open(s) as f:
+    while True:
+        s = f.readline().strip()
+        if s == '':
+            break
+        buf[pos], pos = s, (pos + 1) % 10
+[print(text) for text in buf[pos:] + buf[:pos] if not text is None]
+>>>>>>> Stashed changes
