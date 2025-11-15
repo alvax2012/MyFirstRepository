@@ -33,3 +33,18 @@ def is_valid(s: str):
 
 
 print(is_valid(''))
+
+t = 9
+
+
+def dd(l):
+    global t
+    l2 = l + [12]
+    l += [0, 8]
+    t = 1
+    return l2
+
+
+l = [1, 2]
+print(dd(l))
+print(l, t)
