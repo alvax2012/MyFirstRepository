@@ -54,7 +54,7 @@ def filter_anagrams(word: str, words: list):
     d = {}
     # s = map(lambda x: set(x), words)
     for i in words:
-        d[frozenset(i)] = d.get(frozenset(i), '') + i
+        d[frozenset(i)] = d.setdefault(frozenset(i), []).append(i)
     return d
 
 
