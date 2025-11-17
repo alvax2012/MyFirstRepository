@@ -65,3 +65,24 @@ print(l)
 
 l = ((i, x) for i in [5, 7] for x in [1, 3] if x > 2)
 print(*l)
+
+
+emails = {'mgu.edu': ['andrei_serov', 'alexander_pushkin', 'elena_belova', 'kirill_stepanov'],
+          'gmail.com': ['alena.semyonova', 'ivan.polekhin', 'marina_abrabova'],
+          'msu.edu': ['sergei.zharkov', 'julia_lyubimova', 'vitaliy.smirnoff'],
+          'yandex.ru': ['ekaterina_ivanova', 'glebova_nastya'],
+          'harvard.edu': ['john.doe', 'mark.zuckerberg', 'helen_hunt'],
+          'mail.ru': ['roman.kolosov', 'ilya_gromov', 'masha.yashkina']}
+
+d11 = sorted(f'{i}@{k}' for k, v in emails.items() for i in v)
+
+print(*d11)
+l11 = []
+dd22 = map(
+    lambda x: [f'{i}@{x[0]}' for i in x[1]], emails.items())
+# dd33 = sorted(reduce(lambda x, y: x+y, dd22))
+dd33 = [l11.extend(i) for i in dd22]
+print(sorted(l11))
+
+# [l11.append(i) for i in [1, 2, 7]]
+# print(l11)
