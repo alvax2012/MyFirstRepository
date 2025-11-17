@@ -48,3 +48,17 @@ def dd(l):
 l = [1, 2]
 print(dd(l))
 print(l, t)
+
+
+def filter_anagrams(word: str, words: list):
+    d = {}
+    # s = map(lambda x: set(x), words)
+    for i in words:
+        d[frozenset(i)] = d.setdefault(frozenset(i), []).append(i)
+    return d
+
+
+word = 'abba'
+anagrams = ['aabb', 'abcd', 'bbaa', 'dada']
+
+print(filter_anagrams(word, anagrams))

@@ -98,3 +98,22 @@ things = {'зажигалка': 20, 'компас': 100}
 sorted_things = dict(sorted(things.items(), key=lambda x: x[1], reverse=True))
 
 print(sorted_things)
+emails = {'mgu.edu': ['andrei_serov', 'alexander_pushkin', 'elena_belova', 'kirill_stepanov'],
+          'gmail.com': ['alena.semyonova', 'ivan.polekhin', 'marina_abrabova'],
+          'msu.edu': ['sergei.zharkov', 'julia_lyubimova', 'vitaliy.smirnoff'],
+          'yandex.ru': ['ekaterina_ivanova', 'glebova_nastya'],
+          'harvard.edu': ['john.doe', 'mark.zuckerberg', 'helen_hunt'],
+          'mail.ru': ['roman.kolosov', 'ilya_gromov', 'masha.yashkina']}
+
+d11 = sorted(f'{i}@{k}' for k, v in emails.items() for i in v)
+
+print(*d11)
+l11 = []
+dd22 = map(
+    lambda x: [f'{i}@{x[0]}' for i in x[1]], emails.items())
+# dd33 = sorted(reduce(lambda x, y: x+y, dd22))
+dd33 = [l11.extend(i) for i in dd22]
+print(sorted(l11))
+
+# [l11.append(i) for i in [1, 2, 7]]
+# print(l11)
