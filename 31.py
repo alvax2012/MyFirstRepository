@@ -65,3 +65,36 @@ print(l)
 
 l = ((i, x) for i in [5, 7] for x in [1, 3] if x > 2)
 print(*l)
+
+
+def foo(*args, **kwar):
+    return args[0]+args[1]
+
+
+print(foo(1, 2))
+
+print('---')
+
+
+def print_given(*args, **kwargs):
+    [print(i, type(i)) for i in args]
+    [print(i[0], i[1], type(i[1])) for i in sorted(kwargs.items())]
+
+
+print_given(1, [1, 2, 3], 'three', two=2)
+
+
+def convert(s: str):
+    l = list(filter(str.isalpha, list(s)))
+    l_l = len(list(filter(str.islower, l)))
+    l_u = len(list(filter(str.isupper, l)))
+    return s.upper() if l_u > l_l else s.lower()
+
+
+print(convert.__defaults__)
+
+
+things = {'зажигалка': 20, 'компас': 100}
+sorted_things = dict(sorted(things.items(), key=lambda x: x[1], reverse=True))
+
+print(sorted_things)
