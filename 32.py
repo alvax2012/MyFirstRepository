@@ -56,10 +56,10 @@ def filter_anagrams(word: str, words: list):
     l = []
     for i in words:
         w = frozenset(i)
-        d[w] = d.setdefault(w, []) .append(i)
+        d[w] = d.get(w, []) + [i]
     # w = set(word)
     # d = filter(lambda x: set(x) == w, words)
-    return d  # d[frozenset(word)]
+    return d.get(frozenset(word), '---')
 
 
 word = 'abba'
@@ -84,19 +84,24 @@ def likes(names: list):
     def sp(s):
         return f'оценил{s} данную запись'
 
+    x, y, z, t = '', '', '', ''
+
     n = 0
     l = len(names)
     i = l
+
     if l == 1:
         x, *ls = names
     elif l == 2:
         x, y, *ls = names
-    elif l == 3:
+    elif l >= 3:
         x, y, z, *ls = names
         n = len(ls)
+        i = 3
+        t = z if l == 3 else str(n+1) + ' других'
 
-    d = {0: 'Никто не ' + sp(''), 1: f'{x} ' + sp('(а)'), 2: f'{x} и {y} ' + sp(
-        'и'), 3: f'{x}, {y} и {z} ' + sp('и'), 4: f'{x}, {y} и {n} ' + sp('и')}
+    d = {0: 'Никто не ' + sp(''), 1: f'{x} ' + sp('(а)'),
+         2: f'{x} и {y} ' + sp('и'), 3: f'{x}, {y} и {t} ' + sp('и')}
 
     return d.get(i,  '---')
 
