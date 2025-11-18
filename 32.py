@@ -53,21 +53,13 @@ print(l, t)
 def filter_anagrams(word: str, words: list):
     d = {}
     s = map(lambda x: set(x), words)
-    # l = []
-    res = words
-    # if words != []:
+    l = []
     for i in words:
         w = frozenset(i)
-        # print(word, i, [(word.count(_), i.count(_))
-        #       for _ in w], all(word.count(_) == i.count(_) for _ in w))
-        if all(word.count(_) == i.count(_) for _ in w):
-            d[w] = d.get(w, []) + [i]
-    res = d.get(frozenset(word), [])
-
-    # d[w].append(i)
+        d[w] = d.setdefault(w, []) .append(i)
     # w = set(word)
     # d = filter(lambda x: set(x) == w, words)
-    return res
+    return d  # d[frozenset(word)]
 
 
 word = 'abba'
