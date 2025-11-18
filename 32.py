@@ -53,13 +53,21 @@ print(l, t)
 def filter_anagrams(word: str, words: list):
     d = {}
     s = map(lambda x: set(x), words)
-    l = []
+    # l = []
+    res = words
+    # if words != []:
     for i in words:
         w = frozenset(i)
-        d[w] = d.setdefault(w, []).append(i)
+        # print(word, i, [(word.count(_), i.count(_))
+        #       for _ in w], all(word.count(_) == i.count(_) for _ in w))
+        if all(word.count(_) == i.count(_) for _ in w):
+            d[w] = d.get(w, []) + [i]
+    res = d.get(frozenset(word), [])
+
+    # d[w].append(i)
     # w = set(word)
     # d = filter(lambda x: set(x) == w, words)
-    return d  # d[frozenset(word)]
+    return res
 
 
 word = 'abba'
@@ -71,5 +79,34 @@ print(filter_anagrams('отсечка', ['сеточка', 'стоечка', 'т
 print(filter_anagrams('tommarvoloriddle', [
       'iamlordvoldemort', 'iamdevolremort', 'mortmortmortmort', 'remortvolremort']))
 
+print(filter_anagrams('стекло', []))
+print(filter_anagrams('abba', ['aaab', 'dbcd', 'bdaa', 'badb']))
+
 s = [{k: {v[0]: v[1]}} for k, *v in ['Руслан  Пирог 1123'.split()]]
 print(s)
+
+
+def likes(names: list):
+    ls = []
+
+    def sp(s):
+        return f'оценил{s} данную запись'
+
+    n = 0
+    l = len(names)
+    i = l
+    if l == 1:
+        x, *ls = names
+    elif l == 2:
+        x, y, *ls = names
+    elif l == 3:
+        x, y, z, *ls = names
+        n = len(ls)
+
+    d = {0: 'Никто не ' + sp(''), 1: f'{x} ' + sp('(а)'), 2: f'{x} и {y} ' + sp(
+        'и'), 3: f'{x}, {y} и {z} ' + sp('и'), 4: f'{x}, {y} и {n} ' + sp('и')}
+
+    return d.get(i,  '---')
+
+
+print(likes(['Тимур', 'Артур', 'Руслан', 'Анри', 'Дима', 'Рома', 'Гвидо', 'Марк']))
