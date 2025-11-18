@@ -113,7 +113,7 @@ dd22 = map(
     lambda x: [f'{i}@{x[0]}' for i in x[1]], emails.items())
 # dd33 = sorted(reduce(lambda x, y: x+y, dd22))
 dd33 = [l11.extend(i) for i in dd22]
-print(sorted(l11))
+print('-', dd33, l11)
 
 # [l11.append(i) for i in [1, 2, 7]]
 # print(l11)

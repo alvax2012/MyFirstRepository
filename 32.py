@@ -52,13 +52,24 @@ print(l, t)
 
 def filter_anagrams(word: str, words: list):
     d = {}
-    # s = map(lambda x: set(x), words)
+    s = map(lambda x: set(x), words)
+    l = []
     for i in words:
-        d[frozenset(i)] = d.setdefault(frozenset(i), []).append(i)
-    return d
+        w = frozenset(i)
+        d[w] = d.setdefault(w, []).append(i)
+    # w = set(word)
+    # d = filter(lambda x: set(x) == w, words)
+    return d  # d[frozenset(word)]
 
 
 word = 'abba'
 anagrams = ['aabb', 'abcd', 'bbaa', 'dada']
 
 print(filter_anagrams(word, anagrams))
+
+print(filter_anagrams('отсечка', ['сеточка', 'стоечка', 'тесачок', 'чесотка']))
+print(filter_anagrams('tommarvoloriddle', [
+      'iamlordvoldemort', 'iamdevolremort', 'mortmortmortmort', 'remortvolremort']))
+
+s = [{k: {v[0]: v[1]}} for k, *v in ['Руслан  Пирог 1123'.split()]]
+print(s)
