@@ -21,8 +21,8 @@ print(index_of_nearest([7, 5, 4, 4, 3], 4))
 
 pr = {'write': 'W', 'read': 'R', 'execute': 'X'}
 
-fl = {k for i in ['python.exe X', 'book.txt R W',
-                  'notebook.exe R W X'] for k, v in i.split()}
+fl = {x: y for x, *y in [i.split() for i in ['python.exe X', 'book.txt R W',
+                                             'notebook.exe R W X']]}
 print(fl)
 
 fq = ['read python.exe', 'read book.txt', 'write notebook.exe',
@@ -30,4 +30,4 @@ fq = ['read python.exe', 'read book.txt', 'write notebook.exe',
 
 for i in fq:
     o, f = i.split()
-    print(o, f)
+    print(o, f, 'OK' if pr[o] in fl[f] else 'Access denied')
