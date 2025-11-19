@@ -17,3 +17,16 @@ print(index_of_nearest([7, 13, 3, 5, 18], 0))
 print(index_of_nearest([], 17))
 print(index_of_nearest([9, 5, 3, 2, 11], 4))
 print(index_of_nearest([7, 5, 4, 4, 3], 4))
+
+
+pr = {'write': 'W', 'read': 'R', 'execute': 'X'}
+
+fl = {for i in ['python.exe X', 'book.txt R W', 'notebook.exe R W X'] for k, v in i.split()}
+print(fl)
+
+fq = ['read python.exe', 'read book.txt', 'write notebook.exe',
+      'execute notebook.exe', 'write book.txt']
+
+for i in fq:
+    o, f = i.split()
+    print(o, f)

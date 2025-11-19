@@ -107,3 +107,20 @@ def likes(names: list):
 
 
 print(likes(['Тимур', 'Артур', 'Руслан', 'Анри', 'Дима', 'Рома', 'Гвидо', 'Марк']))
+
+
+def spell(*args):
+    d = {}
+    for i in args:
+        m = i[0].lower()
+        if d.get(m, 0) < len(i):
+            d[m] = len(i)
+    # [d.update({i[0].lower(): len(i)}) for i in args if d.get(i[0].lower(), 0) < len(i)]
+    return d
+
+
+words = ['Россия', 'Австрия', 'Австралия',
+         'РумыниЯ', 'Украина', 'КИТай', 'УЗБЕКИСТАН']
+# words = []
+
+print(spell(*words))
