@@ -68,7 +68,9 @@ for i in cats:
 
 
 def choose_plural(amount: int, declensions: tuple):
-    i = 0
+
+    if amount == 0 or :
+
     return declensions[i]
 
 
