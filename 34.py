@@ -78,3 +78,14 @@ def choose_plural(amount: int, declensions: tuple):
 
 
 print(choose_plural(21, ('пример', 'примера', 'примеров')))
+
+num = int(input())
+d4 = num % 10
+d3 = (num // 10) % 10
+d2 = (num // 100) % 10
+d1 = num // 1000
+
+print('Цифра в позиции тысяч равна', d1)
+print('Цифра в позиции сотен равна', d2)
+print('Цифра в позиции десятков равна', d3)
+print('Цифра в позиции единиц равна', d4)
