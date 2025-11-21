@@ -17,17 +17,6 @@ print('====', p(a))
 print(int('-3'))
 
 
-def process(input_string: str) -> str:
-    l = list(map(int, input_string.split()))
-    print(l)
-    return f'выше нуля: {len(list(filter(lambda x: x > 0, l)))}, ниже нуля: {len(list(filter(lambda x: x < 0, l)))}, равна нулю: {len(list(filter(lambda x: x == 0, l)))}'
-
-
-input_string = '5 -2 0 0 7 8 -1'
-output_string = process(input_string)
-print(output_string)
-
-
 def map(function, items):
     result = []
     for item in items:
