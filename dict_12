@@ -129,3 +129,36 @@ for i in cats:
 
 
 # ---- # 8
+print()
+
+s = 'дом, милый дом, милый. дом2'
+d = {}
+# l = map(lambda x: x.strip('.,!?:;- ').lower(), s.split())
+
+for i in s.split():
+    i = i.strip('.,!?:;- ').lower()
+    d[i] = d.get(i, 0) + 1
+
+print(min(d.items(), key=lambda x: (x[1], x[0]))[0])
+
+
+# ---- # 9
+print()
+
+s = 'a a a b c a a d c d d'
+# l = list(filter(lambda x: x != ' ', list(s)))
+l = s.split()
+d = {}
+st = ''
+
+l1 = []
+for i in range(len(l)):
+    k = 0
+    for j in range(i+1, len(l)):
+        if l[i] == l[j]:
+            k += 1
+    l1.append(l[i] + '_' + str(k))
+    print(i, l[i], k, l[j])
+
+
+print(l1)
