@@ -209,3 +209,48 @@ print(s1)
 
 # ---- # 11
 print()
+
+s = '?*!*!*'
+l = ['b: 1', 'a: 3', 'n: 2']
+n = len(l)
+
+d, w = {}, {}
+for i in l:
+    k, v = i.split(':')
+    d.update({int(v): k})
+
+s1 = (d[s.count(i)] for i in s)
+
+print(*s1, sep='')
+
+for i in s:
+    w[i] = w.get(i, 0) + 1
+print(w)
+
+d = {int(v): k for k, v in [i.split(':') for i in l]}
+print(d)
+[print(d[w[i]], end='') for i in s]
+
+
+# ---- # 12
+print('++')
+
+l = [7, 2, 3]
+
+
+def query(course='python1', lesson=2, challenge=17):
+    return course
+
+
+def query(**kwargs):
+    # return '&'.join(map(lambda i: f'{i[0]}={i[1]}', sorted(kwargs.items(), key=lambda i: (i[0], i[1]))))
+    print(*(f'{k}={v}' for k, v in kwargs.items()))
+    return '&'.join(sorted(f'{k}={v}' for k, v in kwargs.items()))
+
+
+d = {'course': 'python6', 'lesson': 2, 'challenge': 17}
+
+
+print(query(**d))
+
+# print(**{'course': 'python6', 'lesson': 2, 'challenge': 17})
