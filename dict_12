@@ -1,5 +1,5 @@
 
-
+from functools import reduce
 # ---- # 1
 d = {
     ('А', 'В', 'Е', 'И', 'Н', 'О', 'Р', 'С', 'Т'): 1,
@@ -148,17 +148,64 @@ print()
 s = 'a a a b c a a d c d d'
 # l = list(filter(lambda x: x != ' ', list(s)))
 l = s.split()
-d = {}
-st = ''
-
 l1 = []
+t = ''
 for i in range(len(l)):
     k = 0
-    for j in range(i+1, len(l)):
+    for j in range(i + 1):
         if l[i] == l[j]:
             k += 1
-    l1.append(l[i] + '_' + str(k))
-    print(i, l[i], k, l[j])
-
+    l1.append(l[i] if k == 1 else l[i] + '_' + str(k-1))
 
 print(l1)
+
+d = {i: f'{l[i]}_{(l[:i].count(l[i]))}' if l[:i].count(l[i])
+     != 0 else l[i] for i in range(len(l))}
+print(*d.values())
+
+result = {}
+for i in l:
+    # if i in result:
+    if result.get(i):
+        print(f'{i}_{result[i]}', end=' ')
+    else:
+        print(i, end=' ')
+    result[i] = result.get(i, 0) + 1
+
+print()
+d1 = {}
+ld = [(f'{d1.update(dict(((i, d1.get(i, 0) + 1), )))}', f'{i}_{d1.get(i)-1}' if d1.get(i) > 1 else i)
+      for i in l]
+
+print('123')
+print(reduce(lambda x, y: f'{x} {y[1]}', ld, '').lstrip())
+
+
+# ---- # 10
+print()
+
+s1 = 'Цари, вино и сало.'
+s2 = 'Лисица и ворона.'
+
+l1 = ''.join([i.strip('.,!?:;- ').lower() for i in s1.split()])
+l2 = ''.join([i.strip('.,!?:;- ').lower() for i in s2.split()])
+
+l11 = {i: l1.count(i) for i in map(str.lower, filter(str.isalpha, s1))}
+l22 = {i: l2.count(i) for i in map(str.lower, filter(str.isalpha, s2))}
+print(l11 == l22)
+
+d1 = {i: l1.count(i) for i in l1}
+d2 = {i: l2.count(i) for i in l2}
+
+print(d1)
+print(d2)
+print(d1 == d2)
+
+s1 = 'Цари, вино и сало.'
+for i in '.,!?:;- ':
+    s1 = s1.replace(i, '').lower()
+print(s1)
+
+
+# ---- # 11
+print()
