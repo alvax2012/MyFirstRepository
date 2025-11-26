@@ -244,7 +244,8 @@ def query(course='python1', lesson=2, challenge=17):
 
 def query(**kwargs):
     # return '&'.join(map(lambda i: f'{i[0]}={i[1]}', sorted(kwargs.items(), key=lambda i: (i[0], i[1]))))
-    print(*(f'{k}={v}' for k, v in kwargs.items()))
+    print(reduce(lambda x, y: f'{x}&{y}',
+          sorted(f'{k}={v}' for k, v in kwargs.items())))
     return '&'.join(sorted(f'{k}={v}' for k, v in kwargs.items()))
 
 
