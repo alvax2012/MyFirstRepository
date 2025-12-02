@@ -74,3 +74,63 @@ def sm(n):
 
 
 print('sm=',  sm(1274))
+
+
+n = 6
+
+
+l = ['испанский, португальский, эсперанто, французский',
+     'французский, испанский, эсперанто',
+     'португальский, эсперанто, французский, испанский',
+     'французский, английский, болгарский, испанский, эсперанто',
+     'эсперанто, английский, русский, испанский, французский',
+     'python, испанский, эсперанто, латышский, польский, французский']
+
+m = set(l[0].split(', '))
+# m &= set(l[1].split(', '))
+
+for _ in l[1:]:
+    m &= set(_.split(', '))
+
+if m:
+    print(*sorted(m), sep=', ')
+else:
+    print('Фильм снять не удастся')
+print(m)
+
+
+def max_rn(l: list):
+    res = 0
+    if l[0] != 0:
+        return 0
+    for i in range(1, len(l)):
+        res = l[i]
+        if abs(res-l[i-1]) > 1:
+            res = l[i-1]
+            # print(res, l[i-1])
+            break
+
+    return res+1
+    # print(i-1, i, l[i-1], l[i])
+
+
+l = [2, 5, 6, 7, 8]
+
+print(max_rn(l))
+
+l = [1, 2]
+
+
+def tt(l: list):
+    l = l + [9]
+    # l[0] = 8
+
+
+t = 'qwe123'
+t1 = ''.join(i for i in t if i.isalpha())
+print(l, tt(l), t1)
+
+d = {1: 2, 2: 3}
+if d.setdefault(2):
+    print('+', d)
+print(d)
