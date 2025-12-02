@@ -1,4 +1,11 @@
 
+from datetime import date
+
+my_date = date(2020, 6, 17)
+my_date = my_date.replace(month=9, day=29)
+
+print(my_date)
+
 d = {}
 k = 22
 i = 8
