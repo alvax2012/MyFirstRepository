@@ -60,4 +60,12 @@ def saturdays_between_two_dates(start, end):
     return delta//7 + (start.weekday() % 6+delta % 7 >= 5)
 
 
-print(saturdays_between_two_dates(date1, date2))
+d1 = date(1992, 8, 24)
+print(d1.strftime('%j'))
+
+
+andrew = date(1992, 8, 24)
+
+print(andrew.strftime('%Y-%m'))   # выводим дату в формате YYYY-MM
+print(andrew.strftime('%B (%Y)'))   # выводим дату в формате month_name (YYYY)
+print(andrew.strftime('%Y-%d-%j'))   # выводим дату в формате YYYY-day_number
