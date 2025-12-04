@@ -67,5 +67,17 @@ print(d1.strftime('%j'))
 andrew = date(1992, 8, 24)
 
 print(andrew.strftime('%Y-%m'))   # выводим дату в формате YYYY-MM
-print(andrew.strftime('%B (%Y)'))   # выводим дату в формате month_name (YYYY)
-print(andrew.strftime('%Y-%d-%j'))   # выводим дату в формате YYYY-day_number
+print(type(andrew))   # выводим дату в формате month_name (YYYY)
+# выводим дату в формате YYYY-day_number
+print(type(andrew.year))
+
+
+def print_good_dates(d: date):
+    d1 = sorted(d)
+    for i in d:
+        if i.year == 1992:
+            print(i.strftime('%B %d, %Y'))
+
+
+dates = [date(1992, 10, 19), date(1991, 12, 6), date(1992, 9, 20)]
+print_good_dates(dates)
