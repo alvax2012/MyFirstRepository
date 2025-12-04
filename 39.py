@@ -69,7 +69,7 @@ andrew = date(1992, 8, 24)
 print(andrew.strftime('%Y-%m'))   # выводим дату в формате YYYY-MM
 print(type(andrew))   # выводим дату в формате month_name (YYYY)
 # выводим дату в формате YYYY-day_number
-print(type(andrew.year))
+print(type(andrew.day))
 
 
 def print_good_dates(d: date):
@@ -79,5 +79,5 @@ def print_good_dates(d: date):
             print(i.strftime('%B %d, %Y'))
 
 
-dates = [date(1992, 10, 19), date(1991, 12, 6), date(1992, 9, 20)]
+dates = [date(1992, 1, 19), date(1991, 12, 6), date(1992, 9, 20)]
 print_good_dates(dates)
