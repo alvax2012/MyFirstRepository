@@ -81,3 +81,26 @@ def print_good_dates(d: date):
 
 dates = [date(1992, 1, 19), date(1991, 12, 6), date(1992, 9, 20)]
 print_good_dates(dates)
+
+
+s = 'end'
+while True:
+    if s == 'end':
+        print('117')
+        break
+    print('11')
+
+
+while True:
+    s = input().strip()
+    if s == 'end':
+        print('117')
+        break
+    print('--', s)
+    d, m, y = [int(i) for i in input().split('.')]
+    # if is_correct(d, m, y):
+    #    print('Корректная')
+    #    k += 1
+    # else:
+    #    print('Некорректная')
+print(k)
