@@ -90,17 +90,36 @@ while True:
         break
     print('11')
 
+print('-'*50)
 
-while True:
-    s = input().strip()
-    if s == 'end':
-        print('117')
-        break
-    print('--', s)
-    d, m, y = [int(i) for i in input().split('.')]
-    # if is_correct(d, m, y):
-    #    print('Корректная')
-    #    k += 1
-    # else:
-    #    print('Некорректная')
+
+def is_correct(d, m, y):
+    try:
+        date(y, m, d)
+        return True
+    except ValueError:
+        return False
+
+
+l = [
+    '29.02.2016',
+    'end']
+i = 0
+k = 0
+s1 = l[i]
+while s1 != 'end':
+    print('--', s1)
+    i += 1
+    s1 = l[i]
+
 print(k)
+
+
+def ff1(x):
+    print(x)
+    return x*x
+
+
+t = ff1(2)
+
+print(ff1(2))
