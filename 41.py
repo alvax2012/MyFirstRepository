@@ -81,3 +81,12 @@ d1 = datetime.strptime('09:00:00', ts)
 n = 90  # int(input())
 
 print(datetime.strftime(d1 + timedelta(seconds=n), ts))
+
+
+def num_of_sundays(y):
+    d1 = datetime(year=y, month=12, day=31)
+    d0 = datetime(year=y, month=1, day=1)
+    return datetime.strftime(d0, '%j'), d0.weekday(), datetime.strftime(d0, '%U'), datetime.strftime(d1, '%j'), d1.weekday(), datetime.strftime(d1, '%U')
+
+
+print(num_of_sundays(2000))
