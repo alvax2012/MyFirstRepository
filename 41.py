@@ -103,4 +103,45 @@ print(datetime.strftime(d1, t1))
 for i in range(2, 11):
     d1 += timedelta(days=i)
     # print(datetime.strftime(d1, t1))
-    print(d1.strftime(t1))
+    print(d1.strftime(t1), datetime(2021, 12, 20 + i).strftime(t1))
+
+
+t1 = '%d.%m.%Y'
+s = '05.10.2021 06.10.2021 07.10.2021 08.10.2021 09.10.2021'
+l = s.split()
+l_out = []
+# print(l)
+for i in range(1, len(l)):
+    l_out.append(abs(datetime.strptime(
+        l[i-1], t1)-datetime.strptime(l[i], t1)).days)
+print(l_out)
+
+
+def fill_up_missing_dates(dates):
+    t1 = '%d.%m.%Y'
+    l_out = []
+    l = sorted(map(lambda d: datetime.strptime(d, t1), dates))
+    print(l)
+    # l_out.append(l[0])
+    for i in range(1, len(l)):
+        l_out.append(l[i-1].strftime(t1))
+        print((l[i], l[i-1]))
+        for j in range((l[i]-l[i-1]).days - 1):
+            l_out.append((l[i-1] + timedelta(days=j+1)).strftime(t1))
+    l_out.append(l[i].strftime(t1))
+    return l_out
+
+
+dates = ['01.11.2021', '07.11.2021', '04.11.2021', '03.11.2021']
+
+print(fill_up_missing_dates(dates))
+print(dates)
+
+t1 = '%H:%M'
+d0, d1 = datetime.strptime('09:00', t1), datetime.strptime('11:00', t1)
+d = d0 - timedelta(minutes=10)
+while d < d1 - timedelta(minutes=45):
+    d += timedelta(minutes=10)
+    print(d.strftime(t1), end=' - ')
+    d += timedelta(minutes=45)
+    print(d.strftime(t1))
