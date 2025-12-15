@@ -90,3 +90,17 @@ def num_of_sundays(y):
 
 
 print(num_of_sundays(2000))
+
+
+dt = datetime(2021, 11, 4) + timedelta(days=3)
+
+print(dt)
+
+print('---')
+t1 = '%d.%m.%Y'
+d1 = datetime.strptime('20.12.2021', t1)
+print(datetime.strftime(d1, t1))
+for i in range(2, 11):
+    d1 += timedelta(days=i)
+    # print(datetime.strftime(d1, t1))
+    print(d1.strftime(t1))
