@@ -163,3 +163,20 @@ print(*((datetime.strptime(
     t[1], '%H:%M') - datetime.strptime(t[0], '%H:%M')).seconds for t in data))
 
 print(l)
+
+t0 = '%d.%m.%Y'
+d0 = datetime.strptime('01.01.0001', t0)
+d1 = datetime.strptime('31.12.9999', t0)
+dn = {}
+# for _ in range(7):
+#     d0 += timedelta(days=1)
+#     print(d0.strftime('%w'), d0.weekday(), d0.strftime("%A"), d0)
+
+d = d0
+j = 0
+while d < d1:
+    d += timedelta(days=1)
+    if d.day == 13:
+        dn[d.weekday()] = dn.get(d.weekday(), 0) + 1
+        # print(j, 'd=', d.day, d.weekday(), d.strftime("%A"))
+[print(i[1]) for i in sorted(dn.items())]
