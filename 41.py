@@ -145,3 +145,21 @@ while d < d1 - timedelta(minutes=45):
     print(d.strftime(t1), end=' - ')
     d += timedelta(minutes=45)
     print(d.strftime(t1))
+
+t1 = '%H:%M'
+data = [('07:14', '08:46'),
+        ('09:01', '09:37'),
+        ('10:00', '11:43'),
+        ('12:13', '13:49'),
+        ('15:00', '15:19'),
+        ('15:58', '17:24'),
+        ('17:57', '19:21'),
+        ('19:30', '19:59')]
+
+l = sum(map(lambda d: (datetime.strptime(
+    d[1], t1)-datetime.strptime(d[0], '%H:%M')).total_seconds() // 60, data))
+
+print(*((datetime.strptime(
+    t[1], '%H:%M') - datetime.strptime(t[0], '%H:%M')).seconds for t in data))
+
+print(l)
