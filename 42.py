@@ -13,13 +13,23 @@ for i in range(7):
     d1 = date(2025, 12, i+8)
     print(d1.weekday(), d1.strftime("%A"))
 
-d0 = datetime.strptime('01.11.2021 20:45', '%d.%m.%Y %H:%M')
+d0 = datetime.strptime('01.11.2021 17:35', '%d.%m.%Y %H:%M')
 
-t1 = timedelta(hours=9)
-t2 = timedelta(hours=21)
+t1 = 9
+t2 = 21
 if d0.weekday() == 5 or 6:
-    t1 = timedelta(hours=10)
-    t2 = timedelta(hours=18)
+    t1 = 10
+    t2 = 18
 
 # if t1 <= d0 <= t2:
-print(d0-timedelta(hours=21))
+
+if d0.time() > time(hour=t2) or d0.time() < time(hour=t1):
+    print('Магазин не работает')
+else:
+    print(d0.time() - time(hour=t1))
+
+
+# print((d0-timedelta(hours=21)).minute, '----',
+    # type(d0.time().hour), '--', d0.time().minute)
+
+print(d0.time() > time(hour=21))
