@@ -179,4 +179,6 @@ while d < d1:
     if d.day == 13:
         dn[d.weekday()] = dn.get(d.weekday(), 0) + 1
         # print(j, 'd=', d.day, d.weekday(), d.strftime("%A"))
-[print(i[1]) for i in sorted(dn.items())]
+# [print(i[1]) for i in sorted(dn.items())]
+
+print(*dn, sep='\n')
