@@ -49,3 +49,18 @@ elif d0.weekday() > 4 and timedelta(hours=10) <= td < timedelta(hours=18):
     print(int((timedelta(hours=18) - td).total_seconds() // 60))
 else:
     print('Магазин не работает')
+
+t0 = '%d.%m.%Y'
+d0, d1 = datetime.strptime(
+    '01.11.2021', t0), datetime.strptime('10.11.2021', t0)
+
+while (d0.month + d0.day) % 2 == 0:
+    d0 += timedelta(days=1)
+print(d0.strftime(t0))
+
+for i in range(0, (d1-d0).days+1, 3):
+    d0 += timedelta(days=3)
+    if d0.weekday() not in (0, 3):
+        print(d0.strftime(t0))
+
+print(d0, d1)
