@@ -51,16 +51,23 @@ else:
     print('Магазин не работает')
 
 t0 = '%d.%m.%Y'
+# d0, d1 = datetime.strptime('07.03.2021', t0), datetime.strptime('13.03.2021', t0)
 d0, d1 = datetime.strptime(
     '01.11.2021', t0), datetime.strptime('10.11.2021', t0)
-
-while (d0.month + d0.day) % 2 == 0:
+if (d0.month + d0.day) % 2 == 0:
     d0 += timedelta(days=1)
-print(d0.strftime(t0))
 
-for i in range(0, (d1-d0).days+1, 3):
-    d0 += timedelta(days=3)
+while d0 < d1:
     if d0.weekday() not in (0, 3):
         print(d0.strftime(t0))
+    d0 += timedelta(days=3)
 
-print(d0, d1)
+
+# print(d0.strftime(t0))
+
+# for i in range(0, (d1-d0).days+1, 3):
+#     d0 += timedelta(days=3)
+#     if d0.weekday() not in (0, 3):
+#         print(d0.strftime(t0))
+
+# print(d0, d1)
