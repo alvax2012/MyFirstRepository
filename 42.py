@@ -54,9 +54,11 @@ t0 = '%d.%m.%Y'
 # d0, d1 = datetime.strptime('07.03.2021', t0), datetime.strptime('13.03.2021', t0)
 d0, d1 = datetime.strptime(
     '30.04.2021', t0), datetime.strptime('10.05.2021', t0)
-if (d0.month + d0.day) % 2 == 0:
+while not (d0.month + d0.day) % 2:
     d0 += timedelta(days=1)
 
+print('d0=', d0.strftime(t0), d0.weekday(),
+      d0.month, d0.day, d0.month + d0.day)
 while d0 < d1:
     if d0.weekday() not in (0, 3):
         print(d0.strftime(t0), d0.weekday())
@@ -73,3 +75,24 @@ while d0 < d1:
 # print(d0, d1)
 
 print(timedelta(hours=1, minutes=65).seconds)
+
+
+def dateD(t: int):
+    if t < 10:
+        return "0" + str(t)
+    else:
+        return str(t)
+
+
+print(str(datetime.now())[11:19])
+print(datetime.now().strftime('%H:%M:%S'))
+
+now22 = datetime.now()
+now33 = datetime.now().strftime('%H:%M:%S')
+now44 = datetime.now().strftime('%d.%m.%Y--%H:%M:%S')
+# now11=unit1.dateD(now22.day)+"."+unit1.dateD(now22.month)+"."+unit1.dateD(now22.year)
+now11 = f"{dateD(now22.day)}.{dateD(now22.month)}.{dateD(now22.year)}"
+
+
+print(now11+"--"+now33)
+print(now44)
