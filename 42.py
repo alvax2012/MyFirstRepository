@@ -74,6 +74,11 @@ while d0 < d1:
 
 # print(d0, d1)
 
+
+print('minut=', (timedelta(hours=1, minutes=65).total_seconds() // 60) % 60)
+print('minut=', type(timedelta(hours=1, minutes=65).total_seconds()))
+print('minut=', timedelta(hours=0, minutes=65).seconds // 3600,
+      (timedelta(hours=0, minutes=65).seconds // 60) % 60)
 print(timedelta(hours=1, minutes=65).seconds)
 
 
@@ -108,3 +113,15 @@ for i in l:
 dm = min(dl)
 print(f'{dm.strftime(t0)} {dl[dm]}' if len(dl[dm]) ==
       1 else f'{dm.strftime(t0)} {len(dl[dm])}')
+tt = '20251222'
+print(datetime.strptime(tt, '%Y%m%d').strftime('%d.%m.%Y'))
+
+
+for i in range(1, 4):
+    print(i)
+    try:
+        continue
+        print('++', i)
+    except Exception as e:
+        print('e1=', e)
+    print('=', i)
