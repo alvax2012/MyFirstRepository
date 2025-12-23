@@ -96,3 +96,15 @@ now11 = f"{dateD(now22.day)}.{dateD(now22.month)}.{dateD(now22.year)}"
 
 print(now11+"--"+now33)
 print(now44)
+
+
+l = [['Иван', 'Петров', '01.05.1995'], ['Петр', 'Сергеев',
+                                        '29.05.1995'], ['Сергей', 'Иванов', '01.05.1995']]
+dl = {}
+t0 = '%d.%m.%Y'
+for i in l:
+    dt = datetime.strptime(i[2], t0)
+    dl[dt] = dl.get(dt, []) + [' '.join(i[:2])]
+dm = min(dl)
+print(f'{dm.strftime(t0)} {dl[dm]}' if len(dl[dm]) ==
+      1 else f'{dm.strftime(t0)} {len(dl[dm])}')
