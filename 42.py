@@ -125,3 +125,11 @@ for i in range(1, 4):
     except Exception as e:
         print('e1=', e)
     print('=', i)
+
+
+d1 = {datetime(1995, 5, 1, 0, 0): 2, datetime(
+    1995, 4, 29, 0, 0): 1, datetime(1996, 1, 1, 0, 0): 2}
+print(max(d1.items(), key=lambda x: x[0])[0].strftime(t0))
+print()
+print(*sorted((k.strftime(t0)
+      for k, v in d1.items() if v == 2), reverse=True), sep='\n')
