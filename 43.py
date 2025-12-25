@@ -47,8 +47,8 @@ t0 = '%d.%m.%Y %H:%M'
 # d0 = datetime.strptime('16.11.2021 06:30', t0)
 # d1 = datetime.strptime('08.11.2022 12:00', t0)
 
-d0 = datetime.strptime('16.11.2021 12:30', t0)
-d1 = datetime.strptime('17.11.2021 14:10', t0)
+d0 = datetime.strptime('17.11.2021 14:00', t0)
+d1 = datetime.strptime('17.11.2021 14:01', t0)
 
 d_cnt = (d1 - d0).days
 
@@ -60,16 +60,29 @@ s_cnt = s_all % 60
 
 if d_cnt < 0:
     print(f'Курс уже вышел!')
-if d_cnt != 0 and h_cnt != 0 and m_cnt != 0:
-    print(f'До выхода курса осталось: {d_cnt} дней и {h_cnt} часов')
+elif d_cnt and h_cnt and m_cnt:
+    print(
+        f'До выхода курса осталось: {choose_plural(d_cnt, ('дней', 'день'))} и {choose_plural(h_cnt, ('часов', 'час'))}')
+elif d_cnt and h_cnt == 0:
+    print(
+        f'До выхода курса осталось: {choose_plural(d_cnt, ('дней', 'день'))}')
+
+elif d_cnt == 0 and h_cnt and m_cnt:
+    print(
+        f'До выхода курса осталось: {choose_plural(h_cnt, ('часов', 'час'))} и {choose_plural(m_cnt, ('минут', 'минута'))}')
+elif d_cnt == 0 and h_cnt and m_cnt == 0:
+    print(
+        f'До выхода курса осталось: {choose_plural(d_cnt, ('часов', 'час'))}')
 elif h_cnt == 0:
-    print(f'До выхода курса осталось: {d_cnt} дней')
-elif d_cnt == 0:
-    print(f'До выхода курса осталось: {h_cnt} часов и {m_cnt} минут')
-elif m_cnt == 0:
-    print(f'До выхода курса осталось: {h_cnt} час')
-elif h_cnt == 0:
-    print(f'До выхода курса осталось: {m_cnt} мин')
+    print(
+        f'До выхода курса осталось: {choose_plural(m_cnt, ('минут', 'минута'))}')
+
+# elif d_cnt == 0 and h_cnt != 0 and m_cnt != 0:
+#     print(f'До выхода курса осталось: {h_cnt} часов и {m_cnt} минут')
+# elif d_cnt == 0 and h_cnt != 0 and m_cnt == 0:
+#     print(f'До выхода курса осталось: {h_cnt} час')
+# elif h_cnt == 0:
+#     print(f'До выхода курса осталось: {m_cnt} мин')
 
 
 print('d_cnt=', d_cnt, 'h_cnt=', h_cnt, 'm_cnt=',

@@ -133,16 +133,3 @@ print(max(d1.items(), key=lambda x: x[0])[0].strftime(t0))
 print()
 print(*sorted((k.strftime(t0)
       for k, v in d1.items() if v == 2), reverse=True), sep='\n')
-
-
-t0 = '%d.%m.%Y'
-t1 = '%d.%m'
-d0 = '14.11.2021'
-# d0 = datetime.strptime(d0, t0)
-l = [['Иван Петров', '16.11.1995'], ['Петр Сергеев',
-                                     '14.11.1997'], ['Сергей Романов', '17.11.1994']]
-
-dl = {datetime.strptime(k, t0): v for v, k in l if
-      datetime.strptime(k, t1) > datetime.strptime(d0, t0)}
-
-print(dl)
