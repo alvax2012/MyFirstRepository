@@ -26,3 +26,39 @@ def get_days_in_month(y, m):
 
 
 print(get_days_in_month(2021, 'December'))
+
+
+def get_all_mondays(y):
+    l = []
+    for i in list(calendar.month_name)[1:]:
+        l.extend(filter(lambda d: calendar.weekday(
+            d.year, d.month, d.day) == 0, get_days_in_month(y, i)))
+    return l
+
+
+print()
+# print(get_all_mondays(2021))
+
+# for week in calendar.monthcalendar(2021, 9):
+#     monday = week[0]
+#     print(week)
+#     if monday:
+#         print(monday)
+
+print('-'*30)
+
+
+def get_tcm(y):
+    l = []
+    for i in range(1, 13):
+        d = calendar.monthrange(y, i)[0]
+        if 3-d > 0:
+            d1 = 12 + (7 - (d+1))
+        else:
+            d1 = (12) + (7-d)
+        # l.extend(calendar.monthcalendar(y, i))
+        print(d, d1, calendar.monthcalendar(y, i))
+    # return l
+
+
+print(get_tcm(2021))
