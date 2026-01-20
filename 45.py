@@ -52,13 +52,14 @@ def get_tcm(y):
     l = []
     for i in range(1, 13):
         d = calendar.monthrange(y, i)[0]
-        if 3-d > 0:
-            d1 = 12 + (7 - (d+1))
-        else:
-            d1 = (12) + (7-d)
-        # l.extend(calendar.monthcalendar(y, i))
-        print(d, d1, calendar.monthcalendar(y, i))
-    # return l
+        cnt = 7
+        wd = 4
+        if 3-d < 0:
+            n = 2
+        elif 3-d >= 0:
+            n = 1
+        d_out = (n*cnt + wd) + (cnt - d)
+        print(date(day=d_out, year=y, month=i).strftime('%d.%m.%Y'))
 
 
-print(get_tcm(2021))
+get_tcm(2021)
