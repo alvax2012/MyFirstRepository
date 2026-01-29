@@ -26,5 +26,6 @@ import csv
 
 d = {}
 with open('deniro.csv', encoding='utf-8') as file:
-    rows = csv.DictReader(file, delimiter=',')
+    rows = csv.DictReader(
+        file, fieldnames=['col1', 'col2', 'col3'], delimiter=',')
     print(*rows)
