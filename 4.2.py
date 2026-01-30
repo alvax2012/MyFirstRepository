@@ -87,8 +87,8 @@ with open('wifi.csv', encoding='utf-8') as in_file:
     rows = csv.DictReader(in_file)
     columns = rows.fieldnames[0].split(';')
     print(columns[1])
-    for row in rows:
-        ml = row[columns[1]]
-        res[ml] = res.get(ml, 0) + 1
+    # for row in rows:
+    #     ml = row[columns[1]]
+    #     res[ml] = res.get(ml, 0) + 1
 
-    print(res)
+    print(list(rows))
