@@ -1,5 +1,5 @@
 import csv
-
+from datetime import datetime
 
 # with open('sales.csv', encoding='utf-8') as fl:
 #     rows = csv.reader(fl, delimiter=';')
@@ -34,61 +34,127 @@ import csv
 
 #     [print(*i, sep=', ') for i in sorted(res, key=lambda i: i[n-1])]
 
-text = '''name,grade
-Timur,5
-Arthur,4
-Anri,5'''
+# text = '''name,grade
+# Timur,5
+# Arthur,4
+# Anri,5'''
 
-with open('grades.csv', 'w') as file:
-    file.write(text)
-
-
-def csv_columns(filename):
-    res = {}
-    with open(filename, encoding='utf-8') as file:
-        rows = csv.DictReader(file)
-        for row in rows:
-            for k, v in row.items():
-                # res[k] = res.get(k, []) + [v]
-
-                res.setdefault(k, []).append(v)
-
-                # res.setdefault(k, [])
-                # res[k].append(v)
-
-    return res
+# with open('grades.csv', 'w') as file:
+#     file.write(text)
 
 
-print(csv_columns('grades.csv'))
+# def csv_columns(filename):
+#     res = {}
+#     with open(filename, encoding='utf-8') as file:
+#         rows = csv.DictReader(file, delimiter=';')
+#         for row in rows:
+#             for k, v in row.items():
+#                 # res[k] = res.get(k, []) + [v]
 
-res = {}
-with open('data.csv', encoding='utf-8') as in_file, open('domain_usage.csv', 'w', encoding='utf-8', newline='') as out_file:
-    rows = csv.DictReader(in_file)
-    columns = rows.fieldnames
-    print(columns)
-    for row in rows:
-        ml = row[columns[2]].split('@')[1]
-        res[ml] = res.get(ml, 0) + 1
+#                 res.setdefault(k, []).append(v)
 
-    columns_out = ['domain', 'count']
-    res_out = [{columns_out[0]: k, columns_out[1]
-        : int(v)} for k, v in res.items()]
-    writer = csv.DictWriter(out_file, fieldnames=columns_out)
-    writer.writeheader()                 # запись заголовков
-    writer.writerows(sorted(res_out, key=lambda i: (
-        i[columns_out[1]], i[columns_out[0]])))
+#                 # res.setdefault(k, [])
+#                 # res[k].append(v)
 
-    # out_file.write('1\n')
+#     return res
+
+
+# print(csv_columns('grades.csv'))
+
+# res = {}
+# with open('data.csv', encoding='utf-8') as in_file, open('domain_usage.csv', 'w', encoding='utf-8', newline='') as out_file:
+#     rows = csv.DictReader(in_file)
+#     columns = rows.fieldnames
+#     print(columns)
+#     for row in rows:
+#         ml = row[columns[2]].split('@')[1]
+#         res[ml] = res.get(ml, 0) + 1
+
+#     columns_out = ['domain', 'count']
+#     res_out = [{columns_out[0]: k, columns_out[1]                : int(v)} for k, v in res.items()]
+#     writer = csv.DictWriter(out_file, fieldnames=columns_out)
+#     writer.writeheader()                 # запись заголовков
+#     writer.writerows(sorted(res_out, key=lambda i: (
+#         i[columns_out[1]], i[columns_out[0]])))
+
+# out_file.write('1\n')
 
 # print(sorted(res_out, key=lambda i: (i[columns_out[1]], i[columns_out[0]])))
 # print(res_out)
-res = {}
-with open('wifi.csv', encoding='utf-8') as in_file:
-    rows = csv.DictReader(in_file)
-    columns = rows.fieldnames[0].split(';')
-    print(columns[1])
-    # for row in rows:
-    #     ml = row[columns[1]]
-    #     res[ml] = res.get(ml, 0) + 1
+print('-'*50)
+# res = {}
+# with open('wifi.csv', encoding='utf-8') as in_file:
+#     rows = csv.DictReader(in_file, delimiter=';')
+#     columns = rows.fieldnames
+#     ml = columns[1]
+#     for row in rows:
+#         res[row[ml]] = res.get(row[ml], 0) + int(row[columns[-1]])
 
-    print(list(rows))
+# for i in sorted(res.items(), key=lambda x: (-x[1], x[0])):
+#     print(f'{i[0]}: {i[1]}')
+
+# res = {}
+# with open('titanic.csv', encoding='utf-8') as in_file:
+#     rows = csv.DictReader(in_file, delimiter=';', quoting=csv.QUOTE_NONNUMERIC)
+#     columns = rows.fieldnames
+#     res = list(filter(lambda i: i[columns[0]], rows))
+# res.sort(key=lambda x: x[columns[2]], reverse=True)
+# for i in res:
+#     print(i[columns[1]])
+
+# res_out = {}
+# ds = '%d/%m/%Y %H:%M'
+# with open('name_log.csv', encoding='utf-8') as in_file:
+#     rows = csv.DictReader(in_file)
+#     columns = rows.fieldnames
+#     for row in rows:
+#         res_out.setdefault(row[columns[1]], []).append(
+#             (datetime.strptime(row[columns[2]], ds), row[columns[0]]))
+
+
+# res = []
+# for i in sorted(res_out.items(), key=lambda x: x[0]):
+#     dm = max(i[1], key=lambda x: x[0])
+#     # print(dm[0])
+#     res.append({columns[0]: dm[1],  columns[1]: i[0],
+#                columns[2]: dm[0].strftime(ds)})
+#     # res.append((dm[1], i[0], dm[0].strftime(ds)))
+
+# print(res)
+
+
+# with open('new_name_log.csv', 'w', encoding='utf-8', newline='') as out_file:
+#     writer = csv.DictWriter(
+#         out_file, fieldnames=columns)
+#     writer.writeheader()                 # запись заголовков  , quoting=csv.QUOTE_NONE
+#     writer.writerows(res)
+
+# TEST_4:
+# text = '''ball,color,purple
+# ball,size,4
+# ball,notes,it's round
+# cup,color,blue
+# cup,size,1
+# cup,notes,none'''
+
+# with open('data.csv', 'w', encoding='utf-8') as file:
+#     file.write(text)
+
+
+def condense_csv(filename, id_name):
+    d = []
+    columns = []
+    with open('data.csv', encoding='utf-8') as in_file:
+        rows = csv.reader(in_file)
+
+        columns.append(id_name)
+
+        # print(*rows)
+        for row in rows:
+            if row[1] not in columns:
+                columns.append(row[1])
+            d.append({columns[0]: row[0], columns[1]: row[2]})
+        print(columns, d)
+
+
+condense_csv('data.csv', id_name='ID')
