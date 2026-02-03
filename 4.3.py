@@ -28,3 +28,32 @@ for _ in l:
         name, {}).setdefault(item, 0) + int(count)
 
 print(sales)
+
+
+a = [1, 2]
+b = [7]*3
+
+l = [a, a, b, b]
+b = 7
+for i in l:
+    print(id(i))
+l1 = [2, 3]
+print('--', id(l1))
+# l1[0] = 7
+l1.append(22)
+print('--', id([1]*2), id([1]*2))
+m = 7
+l3 = []
+print(l3)
+
+
+l3 = [1]*2
+l3[0] = [1]
+l3[1] = [1]
+print(',', l3)
+for i in l3:
+    print(id(i))
+
+l111 = [1, 2]
+l222 = [1, 2]
+print('--', id(l111), id(l222))

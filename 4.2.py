@@ -129,16 +129,12 @@ print('-'*50)
 #     writer.writeheader()                 # запись заголовков  , quoting=csv.QUOTE_NONE
 #     writer.writerows(res)
 
-# TEST_4:
-# text = '''ball,color,purple
-# ball,size,4
-# ball,notes,it's round
-# cup,color,blue
-# cup,size,1
-# cup,notes,none'''
+text = '''01,Title,Ran So Hard the Sun Went Down
+02,Title,Honky Tonk Heroes (Like Me)'''
 
-# with open('data.csv', 'w', encoding='utf-8') as file:
-#     file.write(text)
+
+with open('data.csv', 'w', encoding='utf-8') as file:
+    file.write(text)
 
 
 def condense_csv(filename, id_name):
@@ -175,4 +171,13 @@ def condense_csv(filename, id_name):
             writer.writerows(res)
 
 
-condense_csv('data.csv', id_name='ID')
+# condense_csv('data.csv', id_name='ID')
+
+res = {}
+with open('student_counts.csv', encoding='utf-8') as in_file:
+    rows = csv.DictReader(in_file)
+    col = rows.fieldnames
+    for row in rows:
+        d = {col[0]: row[col[0]]}
+
+        print(d)
