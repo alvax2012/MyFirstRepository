@@ -142,19 +142,37 @@ print('-'*50)
 
 
 def condense_csv(filename, id_name):
-    d = []
+    res = []
     columns = []
-    with open('data.csv', encoding='utf-8') as in_file:
+    with open(filename, encoding='utf-8') as in_file:
         rows = csv.reader(in_file)
 
         columns.append(id_name)
-
+        d = {}
         # print(*rows)
-        for row in rows:
-            if row[1] not in columns:
-                columns.append(row[1])
-            d.append({columns[0]: row[0], columns[1]: row[2]})
+        for i, k, v in rows:
+            # d = {}
+            if k not in columns:
+                columns.append(k)
+
+            d[i][k] = d.setdefault(i, {}).setdefault(k, v)
+            # d.append({id_name: i, k: v})
+
         print(columns, d)
+        for i in d:
+            d1 = {id_name: i}
+            for k, v in d[i].items():
+                d1[k] = v
+            res.append(d1)
+        # res = [{id_name: k}.setdefault(i[0], i[1])
+        #        for k, v in d.items() for i in v.items()]
+
+        print(res)
+
+        with open('condensed.csv', 'w', encoding='utf-8', newline='') as out_file:
+            writer = csv.DictWriter(out_file, fieldnames=columns)
+            writer.writeheader()                 # запись заголовков  , quoting=csv.QUOTE_NONE
+            writer.writerows(res)
 
 
 condense_csv('data.csv', id_name='ID')
