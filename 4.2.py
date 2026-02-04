@@ -200,5 +200,5 @@ with open('prices.csv', encoding='utf-8') as in_file:
         # print(m, mx)
 
 res = sorted(d.items(), key=lambda i: (i[1][1], i[1][0], i[0]))[0]
-print(res)
+# print(res)
 print(f'{res[1][0]}: {res[0]}')
