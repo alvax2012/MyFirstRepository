@@ -129,55 +129,72 @@ print('-'*50)
 #     writer.writeheader()                 # запись заголовков  , quoting=csv.QUOTE_NONE
 #     writer.writerows(res)
 
-text = '''01,Title,Ran So Hard the Sun Went Down
-02,Title,Honky Tonk Heroes (Like Me)'''
+# text = '''01,Title,Ran So Hard the Sun Went Down
+# 02,Title,Honky Tonk Heroes (Like Me)'''
 
 
-with open('data.csv', 'w', encoding='utf-8') as file:
-    file.write(text)
+# with open('data.csv', 'w', encoding='utf-8') as file:
+#     file.write(text)
 
 
-def condense_csv(filename, id_name):
-    res = []
-    columns = []
-    with open(filename, encoding='utf-8') as in_file:
-        rows = csv.reader(in_file)
+# def condense_csv(filename, id_name):
+#     res = []
+#     columns = []
+#     with open(filename, encoding='utf-8') as in_file:
+#         rows = csv.reader(in_file)
 
-        columns.append(id_name)
-        d = {}
-        # print(*rows)
-        for i, k, v in rows:
-            # d = {}
-            if k not in columns:
-                columns.append(k)
+#         columns.append(id_name)
+#         d = {}
+#         # print(*rows)
+#         for i, k, v in rows:
+#             # d = {}
+#             if k not in columns:
+#                 columns.append(k)
 
-            d[i][k] = d.setdefault(i, {}).setdefault(k, v)
-            # d.append({id_name: i, k: v})
+#             d[i][k] = d.setdefault(i, {}).setdefault(k, v)
+#             # d.append({id_name: i, k: v})
 
-        print(columns, d)
-        for i in d:
-            d1 = {id_name: i}
-            for k, v in d[i].items():
-                d1[k] = v
-            res.append(d1)
-        # res = [{id_name: k}.setdefault(i[0], i[1])
-        #        for k, v in d.items() for i in v.items()]
+#         print(columns, d)
+#         for i in d:
+#             d1 = {id_name: i}
+#             for k, v in d[i].items():
+#                 d1[k] = v
+#             res.append(d1)
+#         # res = [{id_name: k}.setdefault(i[0], i[1])
+#         #        for k, v in d.items() for i in v.items()]
 
-        print(res)
+#         print(res)
 
-        with open('condensed.csv', 'w', encoding='utf-8', newline='') as out_file:
-            writer = csv.DictWriter(out_file, fieldnames=columns)
-            writer.writeheader()                 # запись заголовков  , quoting=csv.QUOTE_NONE
-            writer.writerows(res)
+#         with open('condensed.csv', 'w', encoding='utf-8', newline='') as out_file:
+#             writer = csv.DictWriter(out_file, fieldnames=columns)
+#             writer.writeheader()                 # запись заголовков  , quoting=csv.QUOTE_NONE
+#             writer.writerows(res)
 
 
 # condense_csv('data.csv', id_name='ID')
 
-res = {}
-with open('student_counts.csv', encoding='utf-8') as in_file:
-    rows = csv.DictReader(in_file)
-    col = rows.fieldnames
-    for row in rows:
-        d = {col[0]: row[col[0]]}
+# res = []
+# with open('student_counts.csv', encoding='utf-8') as in_file:
+#     rows = csv.DictReader(in_file)
+#     col = rows.fieldnames[:1] + sorted(rows.fieldnames[1:],
+#                                        key=lambda x: (int(x.split('-')[0]), x.split('-')[1]))
 
-        print(d)
+#     rows = list(rows)
+# print(col)
+
+# with open('sorted_student_counts.csv', 'w', encoding='utf-8', newline='') as out_file:
+#     writer = csv.DictWriter(out_file, fieldnames=col)
+#     writer.writeheader()
+#     writer.writerows(rows)
+
+d = {}
+with open('prices.csv', encoding='utf-8') as in_file:
+    rows = csv.DictReader(in_file, delimiter=';')
+    col = rows.fieldnames
+
+    for row in rows:
+        for k, v in row.items():
+            # del row[col[0]]
+            d[row[col[0]]][k] = d.setdefault(row[col[0]], {}).setdefault(k, v)
+
+print(d)
