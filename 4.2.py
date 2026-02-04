@@ -191,10 +191,14 @@ d = {}
 with open('prices.csv', encoding='utf-8') as in_file:
     rows = csv.DictReader(in_file, delimiter=';')
     col = rows.fieldnames
-
     for row in rows:
-        for k, v in row.items():
-            # del row[col[0]]
-            d[row[col[0]]][k] = d.setdefault(row[col[0]], {}).setdefault(k, v)
+        m = row[col[0]]
 
-print(d)
+        del row[col[0]]
+        mx = sorted(row.items(), key=lambda i: (int(i[1]), i[0]))[0]
+        d[m] = mx
+        # print(m, mx)
+
+res = sorted(d.items(), key=lambda i: (i[1][1], i[1][0], i[0]))[0]
+print(res)
+print(f'{res[1][0]}: {res[0]}')
