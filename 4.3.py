@@ -80,4 +80,5 @@ with open('data.json') as file:
 
 print(data)
 with open('updated_data.json', 'w') as file:
-    json.dump(list(map(istype, data)), file, indent=3)
+    json.dump([1, 'ee'], file)
+    # json.dump(list(map(istype, data)), file, indent=3)
