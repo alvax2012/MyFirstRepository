@@ -1,59 +1,83 @@
-l = [1, 2, 3]
 
-print(l)
-
-d = 17
-print(d)
+import json
+from pprint import pprint
 
 
-def aa():
-    # global l
-    l = []
-    l.append(4)
-    l[0] = 99
-    d = 9
-    print('=', l, d)
-    # d = 18
+countries = {'Monaco': 'Monaco', 'Iceland': 'Reykjavik', 'Kenya': 'Nairobi', 'Kazakhstan': 'Nur-Sultan',
+             'Mali': 'Bamako', 'Colombia': 'Bogota', 'Finland': 'Helsinki', 'Costa Rica': 'San Jose',
+             'Cuba': 'Havana', 'France': 'Paris', 'Gabon': 'Libreville', 'Liberia': 'Monrovia',
+             'Angola': 'Luanda', 'India': 'New Delhi', 'Canada': 'Ottawa', 'Australia': 'Canberra'}
+
+json_data = json.dumps(countries, indent=3, separators=(',', ' - '))
 
 
-aa()
+club1 = {"name": "FC Byern Munchen", "country": "Germany", "founded": 1900,
+         "trainer": "Julian Nagelsmann", "goalkeeper": "M. Neuer", "league_position": 1}
 
-print(l, d)
+club2 = {"name": "FC Barcelona", "country": "Spain", "founded": 1899,
+         "trainer": "Xavier Creus", "goalkeeper": "M. Ter Stegen", "league_position": 7}
 
-l = [['Сергей', 'Карандаш', 3], ['Андрей', 'Тетрадь', 5], ['Сергей', 'Тетрадь', 5]]
-sales = {}
-for _ in l:
-    name, item, count = _
-    sales[name][item] = sales.setdefault(
-        name, {}).setdefault(item, 0) + int(count)
+club3 = {"name": "FC Manchester United", "country": "England", "founded": 1878,
+         "trainer": "Michael Carrick", "goalkeeper": "D. De Gea", "league_position": 8}
 
-print(sales)
+data = [club1, club2, club3]
 
-
-a = [1, 2]
-b = [7]*3
-
-l = [a, a, b, b]
-b = 7
-for i in l:
-    print(id(i))
-l1 = [2, 3]
-print('--', id(l1))
-# l1[0] = 7
-l1.append(22)
-print('--', id([1]*2), id([1]*2))
-m = 7
-l3 = []
-print(l3)
+# with open('data.json', 'w') as file:
+#     json.dump(data, file, indent=3)
 
 
-l3 = [1]*2
-l3[0] = [1]
-l3[1] = [1]
-print(',', l3)
-for i in l3:
-    print(id(i))
+# specs = {
+#     'Модель': 'AMD Ryzen 5 5600G',
+#     'Год релиза': 2021,
+#     'Сокет': 'AM4',
+#     'Техпроцесс': '7 нм',
+#     'Ядро': 'Cezanne',
+#     'Объем кэша L2': '3 МБ',
+#     'Объем кэша L3': '16 МБ',
+#     'Базовая частота': '3900 МГц'
+# }
 
-l111 = [1, 2]
-l222 = [1, 2]
-print('--', id(l111), id(l222))
+# specs_json = json.dumps(specs, ensure_ascii=0, indent=3)
+
+
+# def is_correct_json(data):
+#     try:
+#         json.loads(data)
+#         return True
+#     except ValueError:
+#         return False
+
+
+# data = '{"name": "Barsik", "age": 7, "meal": "Wiskas"}'
+
+# print(is_correct_json(data))
+# print(is_correct_json('number = 17'))
+
+
+def istype(i):
+    if isinstance(i, str):
+        return i+'!'
+    elif isinstance(i, int):
+        return i+1
+    elif isinstance(i, bool):
+        return not i
+    elif isinstance(i, list):
+        return not i*2
+    elif isinstance(i, dict):
+        i.update({'newkey': None})
+        return i
+    elif i == 'null':
+        return None
+    else:
+        return i
+
+
+with open('data.json') as file:
+    data = json.load(file)
+
+# for i in data:
+#     print(i)
+
+print(data)
+with open('updated_data.json', 'w') as file:
+    json.dump(list(map(istype, data)), file, indent=3)
