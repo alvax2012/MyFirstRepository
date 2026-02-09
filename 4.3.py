@@ -153,21 +153,101 @@ print(l)
 #     writer.writerows(res)
 
 
+# l = []
+# with open('pools.json', encoding='utf-8') as file:
+#     data = json.load(file)
+
+# for i in data:
+#     adr = i['Address']
+#     work = i['WorkingHoursSummer']['Понедельник'].split('-')
+#     # datetime.strptime(work[0], '%H:%M')
+#     d1 = time(hour=int(work[0].split(':')[0]))
+#     d2 = time(hour=int(work[1].split(':')[0]))
+#     dim = i['DimensionsSummer']
+#     if d1.hour <= 10 and d2.hour >= 12:
+#         l.append((adr,   dim['Length'], dim['Width']))
+
+# l.sort(key=lambda x: (-x[1], -x[2]))
+# res = l[0]
+# print(f'{res[1]}x{res[2]}', res[0], sep='\n')
+
+# a = 1
+# b = 1
+# print(id(a), id(b), id(1))
+# print(id(2))
+# a = 2
+# print(id(a), id(b), id(2))
+# print()
+# l = []
+# print(id(l))
+# l.append(1)
+# print(id(l))
+# l[0] = 7
+# print(id(l), l)
+
 # d = {}
-l = []
-with open('pools.json', encoding='utf-8') as file:
-    data = json.load(file)
+# d[1] = d.setdefault(1, {}).setdefault(4, [])+[8]
+# print(d)
+
+
+# d = {}
+# res = []
+# with open('exam_results.csv', encoding='utf-8') as in_file:
+#     reader = csv.DictReader(in_file)
+#     col = reader.fieldnames
+#     rows = list(reader)
+
+# print(col)
+# # print(rows)
+
+
+# for i in rows:
+#     d.setdefault(i[col[-1]], []).append((datetime.fromisoformat(i[col[3]]),
+#                                          int(i[col[2]]), i[col[0]], i[col[1]]))
+# for k, v in d.items():
+#     # sorted(v, key=lambda x: (x[1], x[0]), reverse=True)[0]
+#     vl = max(v, key=lambda x: (x[1], x[0]))
+#     res.append({'name': vl[2], 'surname': vl[3],
+#                'best_score': vl[1], 'date_and_time': datetime.strftime(vl[0], '%Y-%m-%d %H:%M:%S'), 'email': k})
+#     res.sort(key=lambda x: x['email'])
+# print(res)
+# with open('best_scores.json', 'w', encoding='utf-8') as file:
+#     json.dump(res, file, indent=3)
+
+
+# d1 = {}
+# d2 = {}
+# with open('food_services.json', encoding='utf-8') as in_file:
+#     data = json.load(in_file)
+
+
+# for i in data:
+#     d1.setdefault(i['District'], 0)
+#     d1[i['District']] += 1
+
+#     if i['OperatingCompany']:
+#         d2.setdefault(i['OperatingCompany'], 0)
+#         d2[i['OperatingCompany']] += 1
+
+# m1 = max(d1, key=lambda x: d1[x])
+# m2 = max(d2, key=lambda x: d2[x])
+# print(f'{m1}: {d1[m1]}')
+# print(f'{m2}: {d2[m2]}')
+
+res = {}
+d2 = {}
+with open('food_services.json', encoding='utf-8') as in_file:
+    data = json.load(in_file)
+
 
 for i in data:
-    adr = i['Address']
-    work = i['WorkingHoursSummer']['Понедельник'].split('-')
-    # datetime.strptime(work[0], '%H:%M')
-    d1 = time(hour=int(work[0].split(':')[0]))
-    d2 = time(hour=int(work[1].split(':')[0]))
-    dim = i['DimensionsSummer']
-    if d1.hour <= 10 and d2.hour >= 12:
-        l.append((adr,   dim['Length'], dim['Width']))
+    # res[i['TypeObject']][i['Name']]=
+    res.setdefault(i['TypeObject'], {}).setdefault(
+        i['Name'], []).append(i['SeatsCount'])
 
-l.sort(key=lambda x: (-x[1], -x[2]))
-res = l[0]
-print(f'{res[1]}x{res[2]}', res[0], sep='\n')
+res
+# print(res)
+for k, v in sorted(res.items(), key=lambda x: x[0]):
+    name, cnt = max(
+        map(lambda x: (x[0], max(x[1])), v.items()), key=lambda x: x[1])
+    print(f'{k}: {name}, {cnt}')
