@@ -25,4 +25,4 @@ with ZipFile('workbook.zip') as zip_file:
 res = max(info, key=lambda x: x.compress_size /
           x.file_size if not x.is_dir else 0)
 
-print((res.filename).split('/'))
+print((res.filename).split('/')[-1])
