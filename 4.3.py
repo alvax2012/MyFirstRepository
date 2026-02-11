@@ -27,20 +27,19 @@ from datetime import datetime, time
 #     json.dump(data, file, indent=3)
 
 
-specs = {
-    'Модель': 'AMD Ryzen 5 5600G',
-    'Год релиза': 2021,
-    'Сокет': 'AM4',
-    'Техпроцесс': '7 нм',
-    'Ядро': 'Cezanne',
-    'Объем кэша L2': '3 МБ',
-    'Объем кэша L3': '16 МБ',
-    'Базовая частота': '3900 МГц'
-}
+# specs = {
+#     'Модель': 'AMD Ryzen 5 5600G',
+#     'Год релиза': 2021,
+#     'Сокет': 'AM4',
+#     'Техпроцесс': '7 нм',
+#     'Ядро': 'Cezanne',
+#     'Объем кэша L2': '3 МБ',
+#     'Объем кэша L3': '16 МБ',
+#     'Базовая частота': '3900 МГц'
+# }
 
-specs_json = json.dumps(specs, ensure_ascii=0, indent=3)
+# specs_json = json.dumps(specs, ensure_ascii=0, indent=3)
 
-print(specs_json)
 
 # def is_correct_json(data):
 #     try:
@@ -235,20 +234,19 @@ print(l)
 # print(f'{m1}: {d1[m1]}')
 # print(f'{m2}: {d2[m2]}')
 
-# res = {}
-# d2 = {}
-# with open('food_services.json', encoding='utf-8') as in_file:
-#     data = json.load(in_file)
+res = {}
+with open('food_services.json', encoding='utf-8') as in_file:
+    data = json.load(in_file)
 
 
-# for i in data:
-#     # res[i['TypeObject']][i['Name']]=
-#     res.setdefault(i['TypeObject'], {}).setdefault(
-#         i['Name'], []).append(i['SeatsCount'])
+for i in data:
+    # res[i['TypeObject']][i['Name']]=
+    res.setdefault(i['TypeObject'], {}).setdefault(
+        i['Name'], []).append(i['SeatsCount'])
 
-# res
-# # print(res)
-# for k, v in sorted(res.items(), key=lambda x: x[0]):
-#     name, cnt = max(
-#         map(lambda x: (x[0], max(x[1])), v.items()), key=lambda x: x[1])
-#     print(f'{k}: {name}, {cnt}')
+res
+# print(res)
+for k, v in sorted(res.items(), key=lambda x: x[0]):
+    name, cnt = max(
+        map(lambda x: (x[0], max(x[1])), v.items()), key=lambda x: x[1])
+    print(f'{k}: {name}, {cnt}')

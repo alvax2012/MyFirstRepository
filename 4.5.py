@@ -115,13 +115,13 @@ for i in info:
 print(d)
 
 
-def path_rec(i, di):
-    res = '/'
-    if di:
-        res += f'{di}/{i}'
-    else:
-        res += f'{i}'
-    return res
+# def path_rec(i, di):
+#     res = '/'
+#     if di:
+#         res += f'{di}/{i}'
+#     else:
+#         res += f'{i}'
+#     return res
 
 
 print()
@@ -144,16 +144,19 @@ for i in d:
 print()
 for i in l:
     k, v = list(i.items())[0]
+    b = d1.get(k, '')
     if v:
         # print(f'/{'/'.join(v[::-1])}/{k}')
-        print(f'{'  '*len(v)}{k}', d1[k])
+
+        print(f'{'  '*len(v)}{k}', b)
     else:
         # print(f'/{k}')
-        print(f'{k}')
+        print(f'{k}', b)
 
 
 print('-'*30)
-print(d1)
+# print(d1)
+
 
 # d1 = [
 #     {'fun': [{'movies': None}, {
