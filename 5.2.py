@@ -26,3 +26,31 @@ data[0] = 'B'
 print(id(data))
 
 print(data)
+
+
+def change_list():
+    global nums
+    nums = [10]
+    return data
+
+
+nums = [1, 2, 3]
+change_list()
+
+print(nums)
+
+
+data = (1, [10, 20], 'beegeek')
+
+data[1][0] = 40
+
+data[1][1] = 50
+
+
+print(data)
+
+
+data = (1, [10, 20], 'beegeek')
+data[1].append([40, 50])
+
+print(data)
