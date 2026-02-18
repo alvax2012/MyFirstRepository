@@ -54,3 +54,40 @@ data = (1, [10, 20], 'beegeek')
 data[1].append([40, 50])
 
 print(data)
+
+s = '1'
+for i in range(2):
+    s += '3'
+
+
+s = '-31x+52=+67-28x'
+r = ''
+l = []
+
+res = []
+res_p = []
+
+l = s.split('=')
+for i in l[0]:
+    if not i.isdigit() and i not in ['+', '-']:
+        p = i
+        break
+s1 = l[0][0]
+for i in l[0][1:]:
+    # s1 = l[0][0]
+    # res.append(s1)
+    if i.isdigit():  # i not in ['+', '-', '='] and
+        s1 += i
+        # res.append(s1)
+    else:
+        if i.isalpha():
+            res.append(int(s1))
+            # continue
+        elif i in ['+']:
+            s1 = 0
+            res.append(s1)
+        elif i in ['-']:
+            s1 = i
+            res.append(s1)
+
+print(res)
