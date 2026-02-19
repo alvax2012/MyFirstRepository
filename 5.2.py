@@ -61,34 +61,31 @@ for i in range(2):
 
 
 s = '-31x+52=+67-28x'
-r = ''
 l = []
 
 res = []
-res_p = []
-
+d = {}
 l = s.split('=')
-for i in l[0]:
-    if not i.isdigit() and i not in ['+', '-']:
-        p = i
-        break
 
-flg = False
-s1 = l[0][0]
-for i in l[0][1:]:
-    # s1 = l[0][0]
-    # res.append(s1)
-    if i.isdigit() and flg:  # i not in ['+', '-', '='] and
-        s1 += i
-        # res.append(s1)
-    else:
-        if i.isalpha():
-            res.append(s1)
-            not flg
-            # continue
+
+def equ_l(l, flg=False):
+    s = l[0]
+    k = -1 if flg else 1
+    for i in l[1:]:
+        if i.isdigit() or i in ['+', '-']:
+            s += i
         elif i in ['+', '-']:
-            s1 = 0
-            not flg
-            # res.append(s1)
+            s = i
+        elif i.isalpha():
+            d[i] = d.get(i, 0) + int(s)*k
+            s = ''
+    d[None] = d.get(None, 0) + int(s)*k
+    return d
 
-print(res)
+
+# print(equ_l(l[0]))
+# print(equ_l(l[1]))
+
+
+l = [i for i in range(2)]
+print(l)
