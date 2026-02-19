@@ -72,22 +72,23 @@ for i in l[0]:
     if not i.isdigit() and i not in ['+', '-']:
         p = i
         break
+
+flg = False
 s1 = l[0][0]
 for i in l[0][1:]:
     # s1 = l[0][0]
     # res.append(s1)
-    if i.isdigit():  # i not in ['+', '-', '='] and
+    if i.isdigit() and flg:  # i not in ['+', '-', '='] and
         s1 += i
         # res.append(s1)
     else:
         if i.isalpha():
-            res.append(int(s1))
+            res.append(s1)
+            not flg
             # continue
-        elif i in ['+']:
+        elif i in ['+', '-']:
             s1 = 0
-            res.append(s1)
-        elif i in ['-']:
-            s1 = i
-            res.append(s1)
+            not flg
+            # res.append(s1)
 
 print(res)
