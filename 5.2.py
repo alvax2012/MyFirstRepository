@@ -89,3 +89,29 @@ def equ_l(l, flg=False):
 
 l = [i for i in range(2)]
 print(l)
+
+
+def f1():
+    print(7)
+
+
+def f1(x):
+    return 3
+
+
+print(f1(2))
+
+for i in range(7):
+    if i == 3:
+        continue
+        print(3)
+    print(i)
+
+
+class C:
+    def ff():
+        print(99)
+
+
+# c1 = C()
+C.ff()
