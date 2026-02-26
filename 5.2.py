@@ -1,4 +1,4 @@
-
+import sys
 
 num2 = [102, 1]
 print(id(num2))
@@ -115,3 +115,75 @@ class C:
 
 # c1 = C()
 C.ff()
+
+l = []
+b = l
+print('-', sys.getrefcount([]))
+
+t = 22
+print(f'{t}', end='%')
+
+n = True and False + 1
+print(n, type(n))
+
+t1 = [1, 2]
+t = [1, 2]
+l = t*1
+print('l=', l)
+
+
+my_list = [[0] * 3 for _ in range(4)]
+my_list[0][0] = 17
+print(my_list)
+
+
+numbers = []
+numbers[100:] = (1, 2, 3)
+print(numbers[0], numbers[1], numbers[2])  # 1 2 3
+
+
+numbers = [1, 2, 3, 4]
+
+# numbers.extend([])
+numbers.append([])
+
+print(len(numbers), numbers)
+
+numbers = (1.2,)
+
+print(numbers * 2)
+
+numbers = 99, 10
+
+print(numbers)
+
+numbers = tuple([1, 2, 3, 4])
+
+numbers = (100,) + numbers[1:]
+
+print(numbers)      # (100, 2, 3, 4)
+
+
+my_set = set()
+
+for i in range(3):
+    my_set.add(i + 1)
+    my_set.discard(i - 1)
+    print(i, i + 1, i - 1, my_set)
+
+print(len(my_set))
+
+d = {}
+sh = '🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩'
+s = 'I love Python =)'
+
+for i in range(65, 91):
+    d[i] = sh[i-65]
+
+print(d)
+out = ''
+for i in s:
+    if i.isalpha():
+        i = d[ord(i.upper())]
+    out += i
+print(out)
