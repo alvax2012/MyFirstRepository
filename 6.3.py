@@ -8,3 +8,9 @@ print(sveta)
 
 sveta.children.append('Soslan')
 print(sveta)
+
+
+p = namedtuple('Person', {'name': 1, 'male': 2, 'age': 3}, defaults=[None]*2)
+
+ss = p(11)
+print(ss.name)
