@@ -7,3 +7,13 @@ td = time(minute=mx)
 print(d, td, sep='\n')
 
 # print(datetime.strptime(tt, '%Y%m%d'))  # .strftime('%d.%m.%Y'))
+
+
+While mx:
+    n = int(input())
+    if n < 10:
+        continue
+    elif n > 100:
+        break
+    else:
+        print(n)
