@@ -180,7 +180,6 @@ s = 'I love Python =)'
 for i in range(65, 91):
     d[i] = sh[i-65]
 
-print(d)
 out = ''
 for i in s:
     if i.isalpha():
