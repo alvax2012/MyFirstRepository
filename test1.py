@@ -139,3 +139,46 @@ for k, v in d.items():
     print(f'{k}:{len(v)} {p3} {p1} {p0} {sum(v)}', v)
 
 print(d)
+
+
+print(pow(2.0, 3.0))
+
+
+l = []
+l_out = []
+l = [[9, 5, 3], [0, 7, -1], [-5, 2, 9]]
+
+n = len(l)
+m = len(l[0])
+
+for i in range(n):
+    l_out.append([])
+
+    for j in range(m):
+        m0 = j - 1
+        m1 = j + 1
+        n0 = i - 1
+        n1 = i + 1
+        if i == 0 and 0 < j < n:
+            n0 = 1
+            n1 = n - 1
+        elif j == 0 and 0 < i < m:
+            m0 = 1
+            m1 = m - 1
+        elif i == n - 1 and 0 < j < m:
+            n0 = n - 2
+            n1 = 0
+        elif j == m - 1 and 0 < i < n:
+            m0 = m - 2
+            m1 = 0
+        elif i == 0 and j == 0:
+            n0 = n - 1
+            m0 = m - 1
+        elif i == n-1 and j == m-1:
+            n1 = 0
+            m1 = 0
+        print(i, j, n0, n1, m0, m1)
+        # l_out[-1].append(l[n0][j] + l[n1][j] + l[i][m0] + l[i][m1])
+
+
+print(l_out, l)
