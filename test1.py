@@ -184,4 +184,4 @@ for i in range(n):
 
 print(l_out, l)
 
-# sys.getsize()
+sys.getsizeof(1)
