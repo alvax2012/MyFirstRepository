@@ -1,3 +1,4 @@
+import sys
 from datetime import datetime, date, time, timedelta
 # mx = 475
 # h1 = 1
@@ -182,3 +183,5 @@ for i in range(n):
 
 
 print(l_out, l)
+
+# sys.getsize()
