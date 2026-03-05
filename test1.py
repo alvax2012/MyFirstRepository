@@ -158,18 +158,24 @@ with open("file.txt", "w") as f:
         f.write(line.split()[0] + '\n')
 
 
-s = '4 8 0 3 4 2 0 3'
-s = '1 1 1 1 1 2 2 2 r'
-l = []
-ls = s.split()
-ls.sort()
+# s = '4 8 0 3 4 2 0 3'
+# s = '1 1 1 1 1 2 2 2 r'
+# l = []
+# ls = s.split()
+# ls.sort()
 
-if s:
-    i0 = ls[0]
-    for i in ls[1:]:
-        if i.isdigit() and i == i0:
-            if int(i) not in l:
-                l.append(int(i))
-        i0 = i
-    l.sort()
-print(*l)
+# if s:
+#     i0 = ls[0]
+#     for i in ls[1:]:
+#         if i.isdigit() and i == i0:
+#             if int(i) not in l:
+#                 l.append(int(i))
+#         i0 = i
+#     l.sort()
+# print(*l)
+
+ii = 0
+while sys.getsizeof(ii) == 28:
+    ii += 1
+    print(ii)
+print('==', ii)
