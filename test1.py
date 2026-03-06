@@ -1,3 +1,4 @@
+from decimal import *
 import sys
 from datetime import datetime, date, time, timedelta
 # mx = 475
@@ -174,8 +175,16 @@ with open("file.txt", "w") as f:
 #     l.sort()
 # print(*l)
 
-ii = 0
-while sys.getsizeof(ii) == 28:
-    ii += 1
-    print(ii)
-print('==', ii)
+
+r, a = 0, 0  # [Decimal(i) for i in input().split()]
+# r = Decimal(r)
+# a = Decimal(a)
+p = Decimal(round(a*(3**Decimal(1/3)) / 6, 2))
+
+
+print(r, p)
+print('Yes' if round(r, 2) <= round(p, 2) else 'No')
+
+print(*range(1, 5, -1))
+for i in range(1, 5, -1):
+    print(i)
