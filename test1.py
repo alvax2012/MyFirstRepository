@@ -197,3 +197,15 @@ with open('meetings.csv', encoding='utf-8') as file:
     rows = csv.DictReader(file, delimiter=';', quotechar='"')
     for row in rows:
         print(row)
+# ii = 0
+# while sys.getsizeof(ii) == 28:
+#     ii += 1
+#     print(ii)
+# print('==', ii)
+
+for a in [0, 1]:
+    for b in [0, 1]:
+        for c in [0, 1]:
+            for d in [0, 1]:
+                print(a, b, c, d, '=', a & b | c & d)
+                print(a, b, c, d, '-', a & (b | c) & d)
