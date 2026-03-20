@@ -1,6 +1,9 @@
 from decimal import *
 import sys
 from datetime import datetime, date, time, timedelta
+import csv
+
+
 # mx = 475
 # h1 = 1
 # m1 = 55
@@ -188,3 +191,9 @@ print('Yes' if round(r, 2) <= round(p, 2) else 'No')
 print(*range(1, 5, -1))
 for i in range(1, 5, -1):
     print(i)
+
+
+with open('meetings.csv', encoding='utf-8') as file:
+    rows = csv.DictReader(file, delimiter=';', quotechar='"')
+    for row in rows:
+        print(row)
