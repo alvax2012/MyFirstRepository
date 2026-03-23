@@ -190,3 +190,24 @@ print('Yes' if round(r, 2) <= round(p, 2) else 'No')
 print(*range(1, 5, -1))
 for i in range(1, 5, -1):
     print(i)
+<< << << < HEAD
+== == == =
+
+
+with open('meetings.csv', encoding='utf-8') as file:
+    rows = csv.DictReader(file, delimiter=';', quotechar='"')
+    for row in rows:
+        print(row)
+# ii = 0
+# while sys.getsizeof(ii) == 28:
+#     ii += 1
+#     print(ii)
+# print('==', ii)
+
+for a in [0, 1]:
+    for b in [0, 1]:
+        for c in [0, 1]:
+            for d in [0, 1]:
+                print(a, b, c, d, '=', a & b | c & d)
+                print(a, b, c, d, '-', a & (b | c) & d)
+>>>>>> > 2128ac82d2892aa11bef08be4d491a92e72a34d1
