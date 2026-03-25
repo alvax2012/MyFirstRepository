@@ -1,3 +1,7 @@
+from collections import defaultdict
+import pandas as pd
+
+
 def null_dec(func):
     y = 123
     return func(y)
@@ -20,3 +24,19 @@ l = [1, 5, 2, 7, 1, 9, 3, 8, 5, 9]
 sr = sum(l)/len(l)
 l1 = sum([(i-sr)**2 for i in l])/(len(l)-1)
 print(l1**(0.5))
+
+sample = [1, 2, 3, 4, 4, 4, 5, 6, 7, 8, 9]
+
+sr = pd.Series(sample)
+
+print(sr.median())
+
+
+my_dict = defaultdict(list)
+
+for i in sample:
+    # if i == 4:
+    my_dict[i].append(i)
+
+
+print(my_dict)
