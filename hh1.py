@@ -55,3 +55,18 @@ print()
 for k, v in d1.items():
     print(f'Q: {k}')
     [print(f'Наименование: {k} \nКолич. {v}') for k, v in v.items()]
+
+
+def f(a):
+    def g():
+        nonlocal a
+        print(a, end=' ')
+        a += 1
+    return g
+
+
+g = f(10)
+g()
+g()
+g()
+print('==', g)
