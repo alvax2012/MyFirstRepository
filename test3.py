@@ -40,3 +40,12 @@ for i in sample:
 
 
 print(my_dict)
+
+n = 2
+for i in range(25):
+    print('n=', i,  n**(i+1), n**(i+1)/2)
+
+    # p += 2**i
+    # if p > 140_000:
+    #     break
+    # print('p=', p, i, i**(2+1))
