@@ -49,3 +49,23 @@ for i in range(25):
     # if p > 140_000:
     #     break
     # print('p=', p, i, i**(2+1))
+
+
+string = """Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested..."""
+
+# with open("file.txt", "w") as f:
+#     for line in string.split("\n"):
+#         f.write(line.split()[0] + "\n")
+
+# f = open("file1", "w")
+# for line in string.split("\n"):
+#     f.write(line.split()[0] + "\n")
+# f.close()
+
+with open("file.txt", "r") as f:
+    for line in f:
+        print(line.strip('\n'))
