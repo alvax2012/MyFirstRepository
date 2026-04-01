@@ -70,3 +70,38 @@ g()
 g()
 g()
 print('==', g)
+
+
+def aa(i):
+    if i > 3:
+        return "3"
+    return '444'
+
+
+print(aa(32))
+
+a = 1
+
+
+def g1():
+    print(a)
+    a += 1
+    print(a)
+
+
+def f1(b):
+    global a
+    print('1=', a)
+    a += 1
+    print('2=', a)
+
+    def g1():
+        nonlocal b
+        print(b)
+        b += 1
+        print(b)
+    return g1
+
+
+ll = f1(77)
+ll()

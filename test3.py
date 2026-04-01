@@ -34,9 +34,23 @@ print(sr.median())
 
 my_dict = defaultdict(list)
 
-for i in sample:
-    # if i == 4:
-    my_dict[i].append(i)
+
+result = True | False
+print(result)      # 1
+print(type(result))
 
 
-print(my_dict)
+l = dict(a1=2, b1=4)
+print(l)
+
+for i in l.keys():
+    print(i)
+
+
+letters1 = dict(a=1, b=2, c=3, d=4)
+letters2 = {'b': 2, 'a': 1, 'c': 3, 'd': 4}
+letters3 = dict([('a', 1), ('b', 2), ('c', 3), ('d', 4)])
+
+print(letters1)
+print(letters2)
+print(letters3)
