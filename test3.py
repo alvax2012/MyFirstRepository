@@ -56,14 +56,14 @@ print(letters2)
 print(letters3)
 print(my_dict)
 
-n = 2
-for i in range(25):
-    print('n=', i,  n**(i+1), n**(i+1)/2)
+# n = 2
+# for i in range(25):
+#     print('n=', i,  n**(i+1), n**(i+1)/2)
 
-    # p += 2**i
-    # if p > 140_000:
-    #     break
-    # print('p=', p, i, i**(2+1))
+# p += 2**i
+# if p > 140_000:
+#     break
+# print('p=', p, i, i**(2+1))
 
 
 string = """Beautiful is better than ugly.
@@ -81,6 +81,54 @@ Flat is better than nested..."""
 #     f.write(line.split()[0] + "\n")
 # f.close()
 
-with open("file.txt", "r") as f:
-    for line in f:
-        print(line.strip('\n'))
+# with open("file.txt", "r") as f:
+#     for line in f:
+#         print(line.strip('\n'))
+
+
+def ss1():
+    print('=1')
+
+
+def ss1():
+    print('=2')
+
+
+ss1()
+
+
+try:
+    int('1q')
+except ValueError as e:
+    print('---', e)
+
+
+def f(n):
+    if n > 0:
+        yield f(n-1)
+    else:
+        yield 0
+
+
+result = list(f(2))
+print('g1=', result)
+for i in f(2):
+    print('g=', i)
+
+
+class C:
+    def f():
+        pass
+
+
+class D:
+    def f(self):
+        pass
+
+
+class E(C, D):
+    def f(self):
+        super().f()
+
+
+E().f()
