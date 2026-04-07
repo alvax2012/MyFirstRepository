@@ -86,49 +86,51 @@ Flat is better than nested..."""
 #         print(line.strip('\n'))
 
 
-def ss1():
-    print('=1')
+# def ss1():
+#     print('=1')
 
 
-def ss1():
-    print('=2')
+# def ss1():
+#     print('=2')
 
 
-ss1()
+# ss1()
 
 
-try:
-    int('1q')
-except ValueError as e:
-    print('---', e)
+# try:
+#     int('1q')
+# except ValueError as e:
+#     print('---', e)
 
 
-def f(n):
-    if n > 0:
-        yield f(n-1)
-    else:
-        yield 0
+# def f(n):
+#     if n > 0:
+#         yield f(n-1)
+#     else:
+#         yield 0
 
 
-result = list(f(2))
-print('g1=', result)
-for i in f(2):
-    print('g=', i)
+# result = list(f(2))
+# print('g1=', result)
+# for i in f(2):
+#     print('g=', i)
 
 
-class C:
-    def f():
-        pass
+# class C:
+#     def f():
+#         pass
 
 
-class D:
-    def f(self):
-        pass
+# class D:
+#     def f(self):
+#         pass
 
 
-class E(C, D):
-    def f(self):
-        super().f()
+# class E(C, D):
+#     def f(self):
+#         super().f()
 
 
-E().f()
+# E().f()
+
+print('111', '222',  **{'sep': '--', 'end': '=='})
