@@ -54,15 +54,15 @@ print()
 
 def custom_sort(data, by_values=False):
     if by_values:
-        for i in sorted(data.items(), key=lambda x: (x[1], x[0])):
-            # data.move_to_end(data[i])
-            print(i)
+        for k, v in sorted(data.items(), key=lambda x: (x[1], x[0])):
+            data.move_to_end(k)
+            # print(k)
     else:
         for i in sorted(data):
             data.move_to_end(i)
 
 
 data = OrderedDict(Earth=3, Mercury=1, Mars=4, Venus=2)
-custom_sort(data, by_values=True)
+custom_sort(data)
 
 print(*data.items())
