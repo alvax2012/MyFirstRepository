@@ -85,11 +85,16 @@ Flat is better than nested..."""
 #     for line in f:
 #         print(line.strip('\n'))
 
-
-# def ss1():
-#     print('=1')
+d = {1: 2, 2: 3}
 
 
+def ss1(d):
+    d[1] = 9
+    print('=ddd', d)
+
+
+ss1(d)
+print('=dddd', d)
 # def ss1():
 #     print('=2')
 

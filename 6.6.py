@@ -54,7 +54,7 @@ print()
 
 def custom_sort(data, by_values=False):
     if by_values:
-        for k, v in sorted(data.items(), key=lambda x: (x[1], x[0])):
+        for k, v in sorted(data.items(), key=lambda x: x[1]):
             data.move_to_end(k)
             # print(k)
     else:
@@ -63,6 +63,12 @@ def custom_sort(data, by_values=False):
 
 
 data = OrderedDict(Earth=3, Mercury=1, Mars=4, Venus=2)
-custom_sort(data)
+custom_sort(data, by_values=True)
 
 print(*data.items())
+
+data1 = OrderedDict(e=11, b=22, a=99, g=33, c=33, d=33, h=99, f=77, i=88, k=44)
+custom_sort(data1, by_values=True)
+
+print(*data1.items())
+print("('e', 11) ('b', 22) ('g', 33) ('c', 33) ('d', 33) ('k', 44) ('f', 77) ('i', 88) ('a', 99) ('h', 99)")
