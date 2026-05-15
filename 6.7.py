@@ -68,3 +68,20 @@ for k, v in sorted(Counter(l).items()):
     print(f'{k.ljust(m)}: {s} US x {v} = {s*v}')
 
 print(sum(map(ord, filter(str.isalpha, 'банан1'))))
+
+
+def get_price(product):
+    return sum(map(ord, filter(str.isalpha, product)))
+
+
+print('-'*40)
+cnt = Counter()
+with open('pythonzen.txt', encoding='utf-8') as f:
+    l = f.read()
+
+for i in l:
+    if l.isalpha():
+        cnt.update(l)
+        print(l)
+
+print(cnt)
