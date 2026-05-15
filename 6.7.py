@@ -81,7 +81,7 @@ with open('pythonzen.txt', encoding='utf-8') as f:
 
 for i in l:
     if i.isalpha():
-        cnt.update(l)
+        cnt.update(i.lower())
     # print(l)
 
 print(cnt)
