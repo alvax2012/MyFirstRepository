@@ -80,8 +80,8 @@ with open('pythonzen.txt', encoding='utf-8') as f:
     l = f.read()
 
 for i in l:
-    if l.isalpha():
+    if i.isalpha():
         cnt.update(l)
-        print(l)
+    # print(l)
 
 print(cnt)
