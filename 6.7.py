@@ -86,3 +86,15 @@ for i in l:
 
 for k, v in sorted(cnt.items()):
     print(f'{k}: {v}')
+
+
+data = Counter(
+    'aksjaskfjsklfjdslkfjajfopewtoieqpwdpqworiiqjskanvmcxbmpewrqopkqwlmdzczmxvmvlnjpjqpkqzxvmbowiqeorewi')
+
+data.__dict__['min_values'] = lambda: sorted(filter(
+    lambda x: x[1] == min(data.values()), data.items()))
+data.max_values = lambda: sorted(filter(
+    lambda x: x[1] == max(data.values()), data.items()))
+
+print(data.min_values())
+print(data.max_values())
