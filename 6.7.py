@@ -84,4 +84,5 @@ for i in l:
         cnt.update(i.lower())
     # print(l)
 
-print(cnt)
+for k, v in sorted(cnt.items()):
+    print(f'{k}: {v}')
