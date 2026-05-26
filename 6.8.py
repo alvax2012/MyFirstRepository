@@ -95,10 +95,10 @@ for i in range(1, 2):
         rows = csv.DictReader(file, quotechar='"')
         columns = rows.fieldnames
         for i in rows:
-            # for col in range(1, 4):
-            #     d.update({columns[0]: int(i[columns[col]])})
-            #     print({columns[0]: i[columns[col]]}, end='')
-            print(i)
+            for col in range(1, 4):
+                d.update({i[columns[0]]: int(i[columns[col]])})
+                print({i[columns[0]]: i[columns[col]]}, end='')
+            print()
 
 
 print('--', d)
