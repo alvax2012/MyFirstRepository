@@ -87,13 +87,18 @@ for k in range(1, 4):
             pr.update({nm: sum(map(int, ms))})
 
 print(pr, pr)
-
+print()
 
 d = Counter()
-with open('quarter1.csv', encoding='utf-8') as file:
-    rows = csv.DictReader(file, quotechar='"')
-    columns = rows.fieldnames
-    for i in rows:
-        d.update({columns[1]: int(i[columns[1]])})
-        print({columns[1]: int(i[columns[1]])})
+for i in range(1, 2):
+    with open(f'quarter{i}.csv', encoding='utf-8') as file:
+        rows = csv.DictReader(file, quotechar='"')
+        columns = rows.fieldnames
+        for i in rows:
+            for col in columns:
+                # d.update({col: int(i[col])})
+                print({col: i[col]}, end='')
+            print()
+
+
 print('--', d)
