@@ -1,5 +1,6 @@
 from collections import Counter
 import csv
+import json
 s = 'Любимой песни слог Знакомый ритм слов Панацея от всего'.lower().split()
 
 cnt1 = Counter(s)  # .most_common()
@@ -90,15 +91,20 @@ print(pr, pr)
 print()
 
 d = Counter()
-for i in range(1, 2):
+for i in range(1, 3):
     with open(f'quarter{i}.csv', encoding='utf-8') as file:
         rows = csv.DictReader(file, quotechar='"')
         columns = rows.fieldnames
         for i in rows:
             for col in range(1, 4):
                 d.update({i[columns[0]]: int(i[columns[col]])})
-                print({i[columns[0]]: i[columns[col]]}, end='')
+                # print({i[columns[0]]: i[columns[col]]}, end='')
             print()
+print('==', d)
+with open('prices.json', encoding='utf-8') as file:
+    data = json.load(file)
 
-
-print('--', d)
+for i in d:
+    d.update({i: d[i]*data[i]})
+print('--', data)
+print(d.total())
