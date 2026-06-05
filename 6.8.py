@@ -88,10 +88,10 @@ for k in range(1, 4):
             pr.update({nm: sum(map(int, ms))})
 
 print(pr, pr)
-print()
+print('-'*50)
 
 d = Counter()
-for i in range(1, 3):
+for i in range(1, 5):
     with open(f'quarter{i}.csv', encoding='utf-8') as file:
         rows = csv.DictReader(file, quotechar='"')
         columns = rows.fieldnames
@@ -101,10 +101,51 @@ for i in range(1, 3):
                 # print({i[columns[0]]: i[columns[col]]}, end='')
             print()
 print('==', d)
+
 with open('prices.json', encoding='utf-8') as file:
     data = json.load(file)
 
 for i in d:
-    d.update({i: d[i]*data[i]})
-print('--', data)
-print(d.total())
+    print(i, d[i]*data[i])
+    d[i] = d[i]*data[i]
+    # print(i, d[i], data[i])
+# print('--', data)
+print(d, d.total())
+
+print()
+
+with open('quarter1.csv', encoding='utf-8') as fi:
+    _, *products = csv.reader(fi)
+    # print(_, products)
+    products_count = Counter()
+    for product in products:
+        name, *total_count = product
+        print(name, total_count)
+        products_count.update({name: sum(map(int, total_count))})
+
+print()
+
+cnt = Counter()
+d = Counter()
+le = Counter()
+l = [['1', '300'], ['1', '250'], ['11', '400'], [
+    '1', '300'], ['7', '200'], ['9', '400'], ['7', '250']]
+lp = Counter(['1', '1', '11', '9', '5', '5', '7', '9', '9'])
+
+for i in l:
+    d.setdefault(i[0], []).append(int(i[1]))
+    # cnt.update({i[0]: i[1]})
+
+for k, v in lp.items():
+    if type(d[k]) == list:
+        le.update({k: sum(d[k][:v])})
+    else:
+        le.update({k: d[k]})
+
+print(le.total())
+
+
+books = Counter(s=1, p=10, m=3)
+books -= Counter({'s': 2})
+
+print(books)
