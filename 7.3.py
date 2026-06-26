@@ -52,7 +52,7 @@ numbers = list(filter(int, ['1', '2', '3', '4', '5']))
 print(numbers)
 
 
-s = '111s'
+s = '111'
 
 months_dict = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
                7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
@@ -60,9 +60,11 @@ months_dict = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6:
 
 try:
     s_out = months_dict[int(s)]
-except ValueError:
-    s_out = 'Введено некорректное значение'
 except KeyError:
     s_out = 'Введено число из недопустимого диапазона'
+except ValueError:
+    s_out = 'Введено некорректное значение'
+# except KeyError:
+#     s_out = 'Введено число из недопустимого диапазона'
 
 print(s_out)
