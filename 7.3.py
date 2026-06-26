@@ -68,3 +68,18 @@ except ValueError:
 #     s_out = 'Введено число из недопустимого диапазона'
 
 print(s_out)
+
+
+print()
+data = {'a': [1, 2, 3], 'b': [4, 5, 6]}
+
+
+def add_to_list_in_dict(data, k, el):
+    try:
+        data[k].append(el)
+    except KeyError:
+        data[k] = [el]
+
+
+add_to_list_in_dict(data, 'b', 7)
+print(data)
