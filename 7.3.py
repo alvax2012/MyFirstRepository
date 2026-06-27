@@ -83,3 +83,12 @@ def add_to_list_in_dict(data, k, el):
 
 add_to_list_in_dict(data, 'b', 7)
 print(data)
+
+s = 'diary.txt'
+# out = '999'
+try:
+    with open(s, encoding='utf-8') as f:
+        out = f.read()
+except FileNotFoundError:
+    out = 'Файл не найден'
+print(out)
