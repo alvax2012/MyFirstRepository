@@ -77,19 +77,36 @@ except Exception as err:
 print()
 
 
-def get_id(names, name):
-    if not isinstance(name, str):
-        raise TypeError('Имя не является строкой')
-    if not (name.isalpha() and name.istitle()):
-        raise ValueError('Имя не является корректным')
-        # print('lf')
-    return len(names) + 1
+# def get_id(names, name):
+#     if not isinstance(name, str):
+#         raise TypeError('Имя не является строкой')
+#     if not (name.isalpha() and name.istitle()):
+#         raise ValueError('Имя не является корректным')
+#         # print('lf')
+#     return len(names) + 1
 
 
-names = ['Timur', 'Anri', 'Dima', 'Arthur']
-name = 'Ruslan1337'
+# names = ['Timur', 'Anri', 'Dima', 'Arthur']
+# name = 'Ruslan1337'
+
+# try:
+#     print(get_id(names, name))
+# except ValueError as e:
+#     print(e)
+
+num = 7
+if not (4 < num < 8):
+    print(num)
+
+
+class NumberNotInRangeError(Exception):
+    pass
+
 
 try:
-    print(get_id(names, name))
-except ValueError as e:
+    number = int('3999')
+    if not 4000 < number < 8000:
+        raise NumberNotInRangeError('Число из недопустимого диапазона')
+    print(number)
+except NumberNotInRangeError as e:
     print(e)
