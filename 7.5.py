@@ -124,14 +124,25 @@ def is_good_password2(s):
 
 print()
 
+# try:
+#     print(is_good_password2('qqqqqqqqqqqqqWW'))
+# except Exception as err:
+#     try:
+#         l = [1, 2]
+#         t = l[4]
+#     except:
+#         # pass
+#         raise
+#     print(err)
+#     print(type(err))
+
+# try:
+#     1 / 0
+# except ZeroDivisionError as e:
+#     raise e  # Плохо! Теряется исходный стек
+
 try:
-    print(is_good_password2('qqqqqqqqqqqqqWW'))
-except Exception as err:
-    try:
-        l = [1, 2]
-        t = l[4]
-    except:
-        # pass
-        raise
-    print(err)
-    print(type(err))
+    1 / 0
+except ZeroDivisionError as e:
+    pass
+    # raise RuntimeError("Что-то пошло не так") from e
