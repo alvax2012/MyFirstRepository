@@ -92,3 +92,11 @@ try:
 except FileNotFoundError:
     out = 'Файл не найден'
 print(out)
+
+
+try:
+    x = 1 / (11 - 1)
+except:
+    print('Произошла ошибка')
+else:
+    print('Ошибок не произошло')
