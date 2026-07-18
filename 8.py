@@ -38,11 +38,27 @@ triangle(5)
 print('--')
 
 
-def wtch(n):
+def wtch1(st, en):
+    if st < en:
+        print('*'*st)
+        wtch1(st+1, en)
+        print('*'*st)
+
+
+def wtch2(n):
+
     if n > 0:
-        print('*'*n)
-        wtch(n-1)
-        print('*'*n)
+        print(f'{n}'*n)
+        wtch2(n-1)
+        print(f'{n}'*n)
 
 
-wtch(4)
+def wtch1(en, k):
+    if en > 0:
+        print(f'{en}'*en*k)
+        wtch1(k, en-1)
+        print(f'{en}'*en)
+
+
+wtch1(4, 4)
+# wtch1(1, 4)
