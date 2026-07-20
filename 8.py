@@ -38,27 +38,49 @@ triangle(5)
 print('--')
 
 
-def wtch1(st, en):
-    if st < en:
-        print('*'*st)
-        wtch1(st+1, en)
-        print('*'*st)
+# def wtch1(st, en):
+#     if st < en:
+#         print('*'*st)
+#         wtch1(st+1, en)
+#         print('*'*st)
 
 
-def wtch2(n):
+# def wtch2(n):
 
-    if n > 0:
-        print(f'{n}'*n)
-        wtch2(n-1)
-        print(f'{n}'*n)
-
-
-def wtch1(en, k):
-    if en > 0:
-        print(f'{en}'*en*k)
-        wtch1(k, en-1)
-        print(f'{en}'*en)
+#     if n > 0:
+#         print(f'{n}'*n)
+#         wtch2(n-1)
+#         print(f'{n}'*n)
 
 
-wtch1(4, 4)
+def wtch(n):
+    k = n
+
+    def prn(n):
+        if n > 0:
+            print(' ' * (k-n)*2, f'{k-n+1}'*n*k, sep='')
+        if n > 1:
+            prn(n-1)
+            print(' ' * (k-n)*2, f'{k-n+1}'*n*k, sep='')
+    prn(n)
+
+
+wtch(4)
 # wtch1(1, 4)
+print('--')
+
+
+def print_digits(n):
+    # while n:
+    #     d, e = n // 10, n % 10
+    #     print(e)
+    #     n = d
+    d, e = n // 10, n % 10
+    # print(e)
+    if d:
+        # print(e)
+        print_digits(d)
+    print(e)
+
+
+print_digits(12345)
