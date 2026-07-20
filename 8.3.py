@@ -9,7 +9,7 @@ def fib(n):
 cache = {1: 1, 2: 1}
 
 
-def fib(n):
+def fib1(n):
     result = cache.get(n)
     if result is None:
         result = fib(n - 2) + fib(n - 1)
@@ -18,3 +18,20 @@ def fib(n):
 
 
 print(fib(6))
+
+
+n = 541
+
+
+def ndig(n):
+    if not n:
+        return n % 10
+    else:
+        # d, e = n // 10, n % 10
+        # d = n
+        # e = ndig(n-1)
+
+        return n % 10 + ndig(n // 10)
+
+
+print(ndig(n))
