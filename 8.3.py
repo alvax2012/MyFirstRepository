@@ -20,18 +20,18 @@ def fib1(n):
 print(fib(6))
 
 
-n = 541
+n = 123
 
 
 def ndig(n):
-    if not n:
-        return n % 10
-    else:
+    if n < 10:
+        return n
+    # else:
         # d, e = n // 10, n % 10
         # d = n
         # e = ndig(n-1)
 
-        return n % 10 + ndig(n // 10)
+    return n % 10 + ndig(n // 10)
 
 
 print(ndig(n))
