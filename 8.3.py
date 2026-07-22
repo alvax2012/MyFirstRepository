@@ -68,9 +68,10 @@ def get_fast_pow(a, n):
     if n == 1:
         return a
     elif n % 2:
-        return (a**2)*(n/2)
+        return a*(get_fast_pow(a, n-1))
     else:
-        return a*(a**(n-1))
+        return get_fast_pow(a, n-1)**2
 
 
-print(get_fast_pow(5, 2))
+print()
+print(get_fast_pow(2, 4))
