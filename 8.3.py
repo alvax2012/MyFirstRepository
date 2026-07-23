@@ -75,3 +75,14 @@ def get_fast_pow(a, n):
 
 print()
 print(get_fast_pow(2, 4))
+
+print()
+
+
+def recursive_sum(a, b):
+    if b == 1:
+        return 1
+    return a + recursive_sum(a, b - 1)
+
+
+print(recursive_sum(4, 3))
