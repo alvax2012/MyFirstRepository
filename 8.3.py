@@ -80,9 +80,42 @@ print()
 
 
 def recursive_sum(a, b):
-    if b == 1:
-        return 1
-    return a + recursive_sum(a, b - 1)
+    def sm(a, n):
+        if n == b:
+            return a
+        return 1+sm(a, n+1)
+    return sm(a, 0)
 
 
-print(recursive_sum(4, 3))
+print(recursive_sum(20, 7))
+
+
+print()
+
+
+def is_power(n):
+    if n <= 2:
+        return True
+    elif n % 2:
+        return False
+    # else:
+    return is_power(n // 2)
+
+
+print(is_power(8))
+
+print()
+
+
+def tribonacci(n):
+    d = {1: 1, 2: 1, 3: 1}
+
+    def tribonacci_rec(n):
+        if not d.get(n):
+            d[n] = tribonacci_rec(
+                n-1) + tribonacci_rec(n-2) + tribonacci_rec(n-3)
+        return d[n]
+    return tribonacci_rec(n)
+
+
+print(tribonacci(300))
