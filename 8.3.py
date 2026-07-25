@@ -119,3 +119,20 @@ def tribonacci(n):
 
 
 print(tribonacci(300))
+
+print()
+
+
+def is_palindrome(s):
+    sr = ''
+
+    def sp(n):
+        if n == len(s)-1:
+            print(s[n])
+            return s[n]
+        print(s[n], n)
+        return sp(n+1) + s[n]
+    return sp(1)
+
+
+print(is_palindrome('levgl7'))
