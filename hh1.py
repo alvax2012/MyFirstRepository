@@ -83,25 +83,49 @@ print(aa(32))
 a = 1
 
 
-def g1():
-    print(a)
-    a += 1
-    print(a)
+# def g1():
+#     print(a)
+#     a += 1
+#     print(a)
+
+print('---')
 
 
 def f1(b):
-    global a
-    print('1=', a)
-    a += 1
-    print('2=', a)
+    # global a
+    # print('1=', a)
+    # a += 1
+    # print('2=', a)
 
-    def g1():
+    def g1(t):
         nonlocal b
-        print(b)
+        print(b, end=' ')
         b += 1
-        print(b)
+        print(t)
     return g1
 
 
 ll = f1(77)
-ll()
+ll(1)
+ll(2)
+
+res = True | False + 1
+print(res)
+
+
+# class C:
+#     def f():
+#         pass
+
+
+# class D():
+#     def f(self):
+#         pass
+
+
+# class E(C, D):
+#     def f(self):
+#         super().f()
+
+
+# E().f()

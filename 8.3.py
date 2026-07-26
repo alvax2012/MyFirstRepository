@@ -124,15 +124,25 @@ print()
 
 
 def is_palindrome(s):
-    sr = ''
+    ns = len(s)
+
+    t = True
+    if not ns:
+        return t
 
     def sp(n):
-        if n == len(s)-1:
-            print(s[n])
-            return s[n]
-        print(s[n], n)
-        return sp(n+1) + s[n]
-    return sp(1)
+        nonlocal t
+        if n == 0:
+            return n
+
+        if s[n] != s[ns-n-1]:
+            t = False
+        print(s[n], s[ns-n-1])
+        return sp(n-1)
+    if s[sp(ns-1)] != s[ns-1]:
+        t = False
+    # print(s[sp(ns-1)], s[ns - 1])
+    return t
 
 
-print(is_palindrome('levgl7'))
+print(is_palindrome('abcca'))
