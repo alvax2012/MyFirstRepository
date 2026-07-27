@@ -129,6 +129,7 @@ def is_palindrome(s):
     t = True
     if not ns:
         return t
+    l = []
 
     def sp(n):
         nonlocal t
@@ -138,11 +139,31 @@ def is_palindrome(s):
         if s[n] != s[ns-n-1]:
             t = False
         print(s[n], s[ns-n-1])
+        l.append(s[n])
         return sp(n-1)
+
     if s[sp(ns-1)] != s[ns-1]:
         t = False
     # print(s[sp(ns-1)], s[ns - 1])
+    l.append(s[0])
+    print('l=', ''.join(l))
     return t
 
 
 print(is_palindrome('abcca'))
+
+print()
+
+
+def to_binary(n):
+    if not n // 2:
+        return n
+        # else:
+        # d, e = n // 10, n % 10
+        # d = n
+        # e = ndig(n-1)
+
+    return n % 10 + ndig(n // 2)
+
+
+print(to_binary(123))
