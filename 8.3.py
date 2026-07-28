@@ -163,10 +163,12 @@ def to_binary(n):
             return 1
             # d, e = n // 10, n % 10
 
-        print(ob(n // 2))
-        l.append(n)
+        # print(ob(n // 2))
+        # l.append(ob(n // 2))
+        return ob(n // 2)
 
     ob(n)
+    l.append(n)
     return l
 
 
