@@ -165,11 +165,11 @@ def to_binary(n):
 
         # print(ob(n // 2))
         # l.append(ob(n // 2))
-        return ob(n // 2)
+        return str(n % 2) + '-'+str(ob(n // 2))
 
     ob(n)
     l.append(n)
-    return l
+    return ob(n)
 
 
-print('ll=', to_binary(123))
+print('ll=', to_binary(3427))
