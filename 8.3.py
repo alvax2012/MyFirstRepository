@@ -156,14 +156,18 @@ print()
 
 
 def to_binary(n):
-    if not n // 2:
-        return n
-        # else:
-        # d, e = n // 10, n % 10
-        # d = n
-        # e = ndig(n-1)
+    l = []
 
-    return n % 10 + ndig(n // 2)
+    def ob(n):
+        if n < 2:
+            return 1
+            # d, e = n // 10, n % 10
+
+        print(ob(n // 2))
+        l.append(n)
+
+    ob(n)
+    return l
 
 
-print(to_binary(123))
+print('ll=', to_binary(123))
