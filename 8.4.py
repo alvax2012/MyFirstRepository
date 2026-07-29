@@ -21,10 +21,11 @@ def recursive_sum(l):
 
     def sm(s, n):
         if type(n) == int:
-            return s + n
+            return n
 
-        for i in l:
-            sm(s, i)
+        for i in n:
+            s += sm(s, i)
+        return s
 
     return sm(0, l)
 
