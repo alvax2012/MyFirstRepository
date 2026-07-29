@@ -165,7 +165,7 @@ def to_binary(n):
 
         # print(ob(n // 2))
         # l.append(ob(n // 2))
-        return str(n % 2) + '-'+str(ob(n // 2))
+        return str(ob(n // 2)) + '-' + str(n % 2)
 
     ob(n)
     l.append(n)
