@@ -168,8 +168,23 @@ def to_binary(n):
         return str(ob(n // 2)) + '-' + str(n % 2)
 
     ob(n)
-    l.append(n)
+    print(l)
     return ob(n)
 
 
-print('ll=', to_binary(3427))
+print('ll=', to_binary(11))
+
+print()
+
+
+def dn(n, k):
+    if n > 0:
+        print(n)
+        dn(n-k, k)
+    print(n)
+    # return dn(n-k, k)
+    # print(n)
+    # dnn(n, k)
+
+
+dn(16, 5)
