@@ -18,19 +18,31 @@ print(find_key(info, 'father'))
 
 
 def recursive_sum(l):
+    # s = 0
 
-    def sm(s, n):
+    def sm(n):
+        s = 0
+        # nonlocal s
         if type(n) == int:
             return n
 
         for i in n:
-            s += sm(s, i)
+            s += sm(i)
         return s
 
-    return sm(0, l)
+    return sm(l)
 
 
-my_list = [1,  2]
+def sm(n):
+    s = 0
+    if type(n) == int:
+        return n
+    for i in n:
+        s += sm(i)
+    return s
+
+
+my_list = [1,  6, [1, 2]]
 # my_list = [1, [4, 4], 2]
 
-print(recursive_sum(my_list))
+print('==', recursive_sum(my_list), sm(my_list))
