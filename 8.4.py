@@ -35,9 +35,11 @@ print('==', recursive_sum(my_list))
 
 print()
 
+l_out = []
+
 
 def linear(n):
-    l_out = []
+    # l_out = []
 
     if isinstance(n, int):
         return n
