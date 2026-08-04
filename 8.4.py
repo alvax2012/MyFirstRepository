@@ -17,21 +17,38 @@ print(find_key(info, 'year'))
 print(find_key(info, 'father'))
 
 
-def recursive_sum(l):
+def recursive_sum(n):
     s = 0
 
-    def sm(n):
-        if type(n) == int:
-            return n
+    if type(n) == int:
+        return n
 
-        for i in n:
-            # sm(s, i)
-            return s + sm(i)
-
-    return sm(l)
+    for i in n:
+        s += + recursive_sum(i)
+    return s
 
 
 my_list = [1, 2, 5]
 # my_list = [1, [4, 4], 2]
 
-print('==', recursive_sum(my_list), sm(my_list))
+print('==', recursive_sum(my_list))
+
+print()
+
+
+def linear(n):
+    l_out = []
+
+    if isinstance(n, int):
+        return n
+
+    for i in n:
+        l_out.append(linear(i))
+
+    return l_out
+
+
+my_list = [3, 1, [4, 2]]
+# my_list = [3, [4], [5, [6, [7, 8]]]]
+
+print('=', linear(my_list))
