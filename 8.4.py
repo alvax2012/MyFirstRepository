@@ -90,3 +90,24 @@ print('=', linear(my_list))
 
 # l = [1, 2]
 # print(id(l), id(tt1(l)))
+
+print()
+
+
+def get_value(d, key):
+    res = ''
+    if key in d:
+        res = d[key]
+        return res
+
+    for k in d:
+        if isinstance(k, dict):
+            get_value(k, key)
+
+    return res
+
+
+data = {'firstName': 'Тимур', 'lastName': 'Гуев', 'birthDate': {'day': 10, 'month': 'October', 'year': 1993}, 'address': {
+    'streetAddress': 'Часовая 25, кв. 127', 'city': {'region': 'Московская область', 'type': 'город', 'cityName': 'Москва'}, 'postalCode': '125315'}}
+
+print('res=', get_value(data, 'cityName'))
