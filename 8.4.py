@@ -24,7 +24,7 @@ def recursive_sum(n):
         return n
 
     for i in n:
-        s += + recursive_sum(i)
+        s += recursive_sum(i)
     return s
 
 
@@ -35,22 +35,58 @@ print('==', recursive_sum(my_list))
 
 print()
 
-l_out = []
+# l_out = []
 
 
 def linear(n):
-    # l_out = []
+    l_out = []
 
-    if isinstance(n, int):
-        return n
+    def lsn(n):
+        if isinstance(n, int):
+            return n
 
-    for i in n:
-        l_out.append(linear(i))
-
+        for i in n:
+            k = lsn(i)
+            if k:
+                l_out.append(k)
+    lsn(n)
     return l_out
 
 
+def linear(li):
+    res = []
+    print(id(res))
+    for elem in li:
+        if isinstance(elem, list):
+            res.extend(linear(elem))
+        else:
+            res.append(elem)
+    return res
+
+
+def linear(data):
+    total = []
+
+    def loc(data):
+        if type(data) == int:
+            total.append(data)
+            return
+        if type(data) == list:
+            for i in data:
+                loc(i)              # рекурсивный случай
+    loc(data)
+    return total
+
+
+# my_list = [[3, 2, 5345, 65, 7, 777, 0, 43, 65, 754, 3, 1, 2]]
 my_list = [3, 1, [4, 2]]
 # my_list = [3, [4], [5, [6, [7, 8]]]]
 
 print('=', linear(my_list))
+
+
+# def tt1(l):
+#     return l
+
+# l = [1, 2]
+# print(id(l), id(tt1(l)))
