@@ -36,9 +36,105 @@ print('==', recursive_sum(my_list))
 print()
 
 
-def linear(my_list):
+def linear(n):
+    l_out = []
+
+    def lsn(n):
+        if isinstance(n, int):
+            return n
+
+        for i in n:
+            k = lsn(i)
+            if k:
+                l_out.append(k)
+    lsn(n)
+    return l_out
 
 
-my_list = [3, [4], [5, [6, [7, 8]]]]
+def linear(li):
+    res = []
+    print(id(res))
+    for elem in li:
+        if isinstance(elem, list):
+            res.extend(linear(elem))
+        else:
+            res.append(elem)
+    return res
 
-print(linear(my_list))
+
+def linear(data):
+    total = []
+
+    def loc(data):
+        if type(data) == int:
+            total.append(data)
+            return
+        if type(data) == list:
+            for i in data:
+                loc(i)              # рекурсивный случай
+    loc(data)
+    return total
+
+
+# my_list = [[3, 2, 5345, 65, 7, 777, 0, 43, 65, 754, 3, 1, 2]]
+my_list = [3, 1, [4, 2]]
+# my_list = [3, [4], [5, [6, [7, 8]]]]
+
+print('=', linear(my_list))
+print()
+
+
+def get_value(d, key):
+    if key in d:
+        return d[key]
+
+    for k in d:
+        if isinstance(d[k], dict):
+            res = get_value(d[k], key)
+            if res:
+                return res
+
+    # return res
+
+
+data = {'firstName': 'Тимур', 'lastName': None, 'birthDate': {'day': 10, 'month': 'October', 'year': 1993}, 'address': {
+    'streetAddress': 'Часовая 25, кв. 127', 'city': {'region': 'Московская область', 'type': 'город', 'cityName': 'Москва'}, 'postalCode': '125315'}}
+
+print('res=', get_value(data, 'cityName'))
+
+
+print()
+
+
+def get_all_values(d, key):
+    m = set()
+
+    def dm(d, key):
+        if key in d:
+            m.add(d[key])
+
+        for k in d:
+            if isinstance(d[k], dict):
+                res = dm(d[k], key)
+                if res:
+                    m.add(d[key])
+    dm(d, key)
+    return m
+
+
+my_dict = {
+
+    'Timur': {'hobby': 'math'},
+    'Dima': {
+        'hobby': 'CS',
+        'sister':
+        {
+            'name': 'Anna',
+            'hobby': 'TV',
+            'age': 14
+        }
+    }
+}
+
+result = get_all_values(my_dict, 'hobby')
+print(*sorted(result))
