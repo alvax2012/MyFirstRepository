@@ -138,3 +138,38 @@ my_dict = {
 
 result = get_all_values(my_dict, 'hobby')
 print(*sorted(result))
+
+
+def get_all_values(data, key):
+    values = set()
+    if key in data:
+        values.add(data[key])
+    for item in data.values():
+        if isinstance(item, dict):
+            values |= get_all_values(item, key)
+    return values
+
+
+print()
+
+
+def dict_travel(data):
+    res = {}
+
+    def dm(d):
+        if not isinstance(d, dict):
+            return d
+
+        for k, v in d.items():
+            # if isinstance(d[i], dict):
+            if dm(v):
+                res.setdefault(k, []).append(dm(v))
+
+        # return res
+    dm(data)
+    print('res=', res)
+
+
+data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+
+dict_travel(data)
