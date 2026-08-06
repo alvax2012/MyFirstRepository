@@ -162,8 +162,9 @@ def dict_travel(data):
 
         for k, v in d.items():
             # if isinstance(d[i], dict):
-            if dm(v):
-                res.setdefault(k, []).append(dm(v))
+            kv = dm(v)
+            if kv:
+                res.setdefault(k, []).append(kv)
 
         # return res
     dm(data)
