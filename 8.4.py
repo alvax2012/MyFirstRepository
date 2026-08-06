@@ -153,6 +153,19 @@ def get_all_values(data, key):
 print()
 
 
+def dm(d):
+    res = {}
+    if not isinstance(d, dict):
+        return d
+
+    for k, v in d.items():
+        # if isinstance(d[i], dict):
+        kv = dm(v)
+        if kv:
+            res.setdefault(k, []).append(kv)
+
+    return res
+
 def dict_travel(data):
     res = {}
 
