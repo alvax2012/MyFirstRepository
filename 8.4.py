@@ -157,14 +157,14 @@ def dm(d):
     res = {}
     if not isinstance(d, dict):
         return d
-
-    for k, v in d.items():
-        # if isinstance(d[i], dict):
-        kv = dm(v)
-        if kv:
-            res.setdefault(k, []).append(kv)
+        # res.append(d)
+    else:
+        for k, v in d.items():
+            res.setdefault(dm(v), []).append(k)
+            # res.extend(dm(v))
 
     return res
+
 
 def dict_travel(data):
     res = {}
@@ -187,3 +187,7 @@ def dict_travel(data):
 data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
 
 dict_travel(data)
+print('dm=', dm(data))
+
+# l = [(3, 4), (1, 5), (3, 2), (7, 5)]
+# print(sorted(l, key=lambda x: (-x[1], -x[0])))
