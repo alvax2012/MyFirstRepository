@@ -171,6 +171,7 @@ def dict_travel(data):
 
     def dm(d):
         if not isinstance(d, dict):
+            print(d)
             return d
 
         for k, v in d.items():
@@ -178,7 +179,7 @@ def dict_travel(data):
             kv = dm(v)
             if kv:
                 res.setdefault(k, []).append(kv)
-
+                print('res=', res)
         # return res
     dm(data)
     print('res=', res)
