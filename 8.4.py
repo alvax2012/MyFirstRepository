@@ -154,40 +154,42 @@ print()
 
 
 def dm(d):
-    res = {}
+    res = ''
     if not isinstance(d, dict):
-        return d
+        return f': {d}\n'
         # res.append(d)
     else:
-        for k, v in d.items():
-            res.setdefault(dm(v), []).append(k)
+        for i in d:
+            res += i + dm(d[i])
             # res.extend(dm(v))
 
-    return res
-
-
-def dict_travel(data):
-    res = {}
-
-    def dm(d):
-        if not isinstance(d, dict):
-            print(d)
-            return d
-
-        for k, v in d.items():
-            # if isinstance(d[i], dict):
-            kv = dm(v)
-            if kv:
-                res.setdefault(k, []).append(kv)
-                print('res=', res)
-        # return res
-    dm(data)
-    print('res=', res)
+    return '.' + res
 
 
 data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
 
-dict_travel(data)
+# def dict_travel(data):
+#     res = {}
+
+#     def dm(d):
+#         if not isinstance(d, dict):
+#             print(d)
+#             return d
+
+#         for k, v in d.items():
+#             # if isinstance(d[i], dict):
+#             kv = dm(v)
+#             if kv:
+#                 res.setdefault(k, []).append(kv)
+#                 print('res=', res)
+#         # return res
+#     dm(data)
+#     print('res=', res)
+
+
+data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+
+# dict_travel(data)
 print('dm=', dm(data))
 
 # l = [(3, 4), (1, 5), (3, 2), (7, 5)]
