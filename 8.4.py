@@ -172,20 +172,27 @@ def dm(d):
 
 
 def dict_travel(d):
+    res = ''
+    k = ''
     if isinstance(d, tuple) and not isinstance(d[1], dict):
-        return f'{d[0]}: {d[1]}'
+        # nonlocal k
+        return f'{k}{d[0]}: {d[1]}\n'
     elif isinstance(d, tuple) and isinstance(d[1], dict):
-        for i in sorted(d[1].items()):
-            print(d[0], dict_travel(i), sep='.')
+
+        k += '.' + d[0]
+        for i in d[1].items():
+            res += dict_travel(i)
+        return res
     else:
-        for i in sorted(d.items()):
-            res = dict_travel(i)
-            if res:
-                print(res)
+        k = ''
+        for i in d.items():
+            res += dict_travel(i)
+            # return res
+    print(res)
 
 
 # data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
-data = {'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
+data = {'a': 11, 'c': 12, 'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
 dict_travel(data)
 
 # dm(data)
