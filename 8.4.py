@@ -154,43 +154,42 @@ print()
 
 
 def dm(d):
-    res = ''
-    if not isinstance(d, dict):
-        return f': {d}\n'
-        # res.append(d)
+    # res = ''
+    if isinstance(d, tuple) and not isinstance(d[1], dict):
+        # return f'{d[0]}: {d[1]}\n'
+        return f'{d[0]}: {d[1]}'
+    elif isinstance(d, tuple) and isinstance(d[1], dict):
+        for i in sorted(d[1].items()):
+            # res += d[0] + '.' + dm(i)
+            print(d[0], dm(i), sep='.')
     else:
-        for i in d:
-            res += i + dm(d[i])
-            # res.extend(dm(v))
-
-    return '.' + res
-
-
-data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
-
-# def dict_travel(data):
-#     res = {}
-
-#     def dm(d):
-#         if not isinstance(d, dict):
-#             print(d)
-#             return d
-
-#         for k, v in d.items():
-#             # if isinstance(d[i], dict):
-#             kv = dm(v)
-#             if kv:
-#                 res.setdefault(k, []).append(kv)
-#                 print('res=', res)
-#         # return res
-#     dm(data)
-#     print('res=', res)
+        for i in sorted(d.items()):
+            res = dm(i)
+            if res:
+                print(res)
+    # print('===', res)
+    # return res
 
 
-data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+def dict_travel(d):
+    if isinstance(d, tuple) and not isinstance(d[1], dict):
+        return f'{d[0]}: {d[1]}'
+    elif isinstance(d, tuple) and isinstance(d[1], dict):
+        for i in sorted(d[1].items()):
+            print(d[0], dict_travel(i), sep='.')
+    else:
+        for i in sorted(d.items()):
+            res = dict_travel(i)
+            if res:
+                print(res)
 
-# dict_travel(data)
-print('dm=', dm(data))
+
+# data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+data = {'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
+dict_travel(data)
+
+# dm(data)
+# print(dm(data))
 
 # l = [(3, 4), (1, 5), (3, 2), (7, 5)]
 # print(sorted(l, key=lambda x: (-x[1], -x[0])))
