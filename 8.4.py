@@ -171,7 +171,7 @@ def dm(d):
     # return res
 
 
-def dict_travel(d):
+def dict_travel1(d):
     res = ''
     k = ''
     if isinstance(d, tuple) and not isinstance(d[1], dict):
@@ -191,8 +191,54 @@ def dict_travel(d):
     print(res)
 
 
+def dict_travel2(d):
+
+    k = ''
+
+    def dm(dct):
+        res = ''
+        k = ''
+
+        if isinstance(dct, tuple) and not isinstance(dct[1], dict):
+            # nonlocal k
+            return f'{dct[0]}: {dct[1]}\n'
+        elif isinstance(dct, tuple) and isinstance(dct[1], dict):
+            return dm((dct[0] + '.', dm(dct[1])))
+
+        for i in dct.items():
+            # k = i
+            res += dm(i)
+        return res
+
+    print(dm(d))
+
+
+def dict_travel(d):
+
+    k = ''
+
+    def dm(dct):
+        res = {}
+        k = ''
+
+        # if isinstance(dct, tuple) and not isinstance(dct[1], dict):
+        #     # nonlocal k
+        #     return f'{dct[0]}: {dct[1]}\n'
+        # elif isinstance(dct, tuple) and isinstance(dct[1], dict):
+        #     return dm((dct[0] + '.', dm(dct[1])))
+
+        for v, k in dct.items():
+            # k = i
+            res.setdefault(k, []).append(v)
+        return res
+
+    print(dm(d))
+
+
+data = {'a': 1, 'b': 2, 'c': 1}
 # data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
-data = {'a': 11, 'c': 12, 'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
+# data = {'a': 11, 'c': 12, 'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
+# data = {'a': {'b': {'c': 400}}}
 dict_travel(data)
 
 # dm(data)
