@@ -214,29 +214,47 @@ def dict_travel2(d):
 
 
 def dict_travel(d):
-
+    res = {}
     k = ''
 
     def dm(dct):
-        res = {}
-        k = ''
+        # nonlocal k
+        if not isinstance(dct, dict) and not isinstance(dct[1], dict):
+            res.setdefault(dct[1], []).append(dct[0])
+            return
 
-        # if isinstance(dct, tuple) and not isinstance(dct[1], dict):
-        #     # nonlocal k
-        #     return f'{dct[0]}: {dct[1]}\n'
-        # elif isinstance(dct, tuple) and isinstance(dct[1], dict):
-        #     return dm((dct[0] + '.', dm(dct[1])))
-
-        for v, k in dct.items():
-            # k = i
-            res.setdefault(k, []).append(v)
+        for i in dct.items():
+            if isinstance(i[1], dict):
+                dm(i[1])
+            else:
+                dm(i)
+            # res.setdefault(k, []).append(v)
         return res
 
     print(dm(d))
 
 
-data = {'a': 1, 'b': 2, 'c': 1}
-# data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+# def dict_travel(d):
+#     res = ''
+
+#     def dm(dct):
+#         # nonlocal k
+#         if not isinstance(dct, dict) and not isinstance(dct[1], dict):
+#             return f'{dct[0]}: {dct[1]}\n'
+
+#         for i in dct.items():
+#             if isinstance(i[1], dict):
+#                 dm(i[1])
+#             else:
+#                 return i[0] + '.' + dm(i)
+
+#         return res
+
+#     print(dm(d))
+
+
+data = {'b': 2, 'c': 1,  'a': 1}
+data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
 # data = {'a': 11, 'c': 12, 'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
 # data = {'a': {'b': {'c': 400}}}
 dict_travel(data)
