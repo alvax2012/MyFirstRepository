@@ -214,24 +214,31 @@ def dict_travel2(d):
 
 
 def dict_travel(d):
-    res = {}
+    res = ''
     k = ''
 
-    def dm(dct):
+    def dm(k, dct):
+        res = ''
         # nonlocal k
         if not isinstance(dct, dict) and not isinstance(dct[1], dict):
-            res.setdefault(dct[1], []).append(dct[0])
-            return
+            return f'{dct[0]}: {dct[1]}\n'
+            # res.setdefault(dct[1], []).append(dct[0])
+            # return
 
         for i in dct.items():
             if isinstance(i[1], dict):
-                dm(i[1])
+                res += i[0] + '.' + dm(i[0], i[1])
+                # return res
+                # res.setdefault(i[0], []).append(dm(i[1]))
+
             else:
-                dm(i)
+                res += dm(i)
+                # return res
+                # res.setdefault(i, []).append(dct[0])
             # res.setdefault(k, []).append(v)
         return res
 
-    print(dm(d))
+    print(dm(k, d))
 
 
 # def dict_travel(d):
