@@ -213,50 +213,68 @@ def dict_travel2(d):
     print(dm(d))
 
 
-def dict_travel(d):
+def dict_travel(dct):
     res = {}
-    p = []
 
-    def dm(p, dct):
-        # p = ''
-        if isinstance(dct, str) or isinstance(dct, int):
-            res['.'.join(p)] = dct
+    def dm(dct, p=''):
+        if not isinstance(dct, dict):
+            print(f'{p}: {dct}')
+            res[p] = dct
             return
 
-        for i in dct:
+        for i in sorted(dct):
+            dm(dct[i], f'{p}.{i}' if p else i)
+
+    dm(dct)
+    print(res)
+
+
+def dict_travel(d):
+    res = {}
+    pp = []
+
+    def dm(dct):
+        nonlocal pp
+        # pp = []
+        if isinstance(dct, str) or isinstance(dct, int):
+            res['.'.join(pp)] = dct
+            # p = ''
+            return
+
+        for i in sorted(dct):
+            pp.append(i)
+            dm(dct[i])
+            pp.pop()
+
+    dm(d)
+    [print(f'{k}: {v}') for k, v in res.items()]
+
+
+def dict_travel(d):
+    p = []
+
+    def dm(dct):
+        if isinstance(dct, str) or isinstance(dct, int):
+            print('+'.join(p), dct)
+            return
+
+        for i in sorted(dct):
             p.append(i)
-            dm(p, dct[i])
+            dm(dct[i])
+            p.pop()
 
-        print(res)
-
-    print(dm(p, d))
+    dm(d)
 
 
 data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
 
-# def dict_travel(d):
-#     res = ''
-
-#     def dm(dct):
-#         # nonlocal k
-#         if not isinstance(dct, dict) and not isinstance(dct[1], dict):
-#             return f'{dct[0]}: {dct[1]}\n'
-
-#         for i in dct.items():
-#             if isinstance(i[1], dict):
-#                 dm(i[1])
-#             else:
-#                 return i[0] + '.' + dm(i)
-
-#         return res
-
-#     print(dm(d))
-
 
 # data = {'b': 2, 'c': 1,  'a': 1}
 # data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
-# data = {'a': 11, 'c': 12, 'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
-# data = {'a': {'b': {'c': 400}}}
+
+data = {'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
+
+# data = {'a': 111}
 dict_travel(data)
 
 # dm(data)
