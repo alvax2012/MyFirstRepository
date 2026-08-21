@@ -215,24 +215,43 @@ def dict_travel2(d):
 
 def dict_travel(d):
     res = {}
-    p = []
+    pp = []
 
-    def dm(p, dct):
-        # p = ''
+    def dm(dct):
+        nonlocal pp
+        # pp = []
         if isinstance(dct, str) or isinstance(dct, int):
-            res['.'.join(p)] = dct
+            res['.'.join(pp)] = dct
+            # p = ''
             return
 
-        for i in dct:
-            p.append(i)
-            dm(p, dct[i])
+        for i in sorted(dct):
+            pp.append(i)
+            dm(dct[i])
+            pp = pp[:-1]
 
-        print(res)
+    dm(d)
+    [print(f'{k}: {v}') for k, v in res.items()]
 
-    print(dm(p, d))
+    # print(res)
 
 
-data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+def dict_travel(nested_dicts):
+    def func(nested_dicts):
+        result = {}
+        for key, value in nested_dicts.items():
+            if isinstance(value, dict):
+                for k, v in func(value).items():
+                    result[str(key) + '.' + str(k)] = v
+            else:
+                result[key] = value
+        return result
+    res = func(nested_dicts)
+    for k, v in sorted(res.items()):
+        print(f'{k}: {v}')
+
+
+data = {'a': 1, 'b': {'c': 30, 'd': 20}}
 
 # def dict_travel(d):
 #     res = ''
@@ -254,7 +273,9 @@ data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
 
 
 # data = {'b': 2, 'c': 1,  'a': 1}
-# data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+data = {'a': 1, 'b': {'c': 30, 'a': 10, 'b': 20}}
+data = {'d': 1, 'b': {'c': 30, 'a': 10, 'b': 20}, 'a': 100}
+data = {'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
 # data = {'a': 11, 'c': 12, 'b': {'c': 30, 'a': 10, 'b': {'d': 40, 'e': 50}}}
 # data = {'a': {'b': {'c': 400}}}
 dict_travel(data)
