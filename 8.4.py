@@ -285,3 +285,11 @@ dict_travel(data)
 
 # l = [(3, 4), (1, 5), (3, 2), (7, 5)]
 # print(sorted(l, key=lambda x: (-x[1], -x[0])))
+
+for i in range(10):
+    if i % 2 == 0:
+        print(i)
+    elif i % 2 == 1:
+        continue
+    elif i > 5:
+        break
