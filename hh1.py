@@ -147,12 +147,45 @@ def rec_dig(n):
 
 print(rec_dig(213))
 
-s = 'c+4=10+2c'
+s = '-x+4=+10+2x'
 
 
 def solve(s):
-    l = s.split('=')
-    return l
+    # l = s.split('=')
+    res = ''
+    l = []
+
+    res = s[0]
+    for i in s[1:]:
+        if i == '=':
+            i = ''
+        if i in '+-=':
+            if res:
+                l.append(res)
+            res = ''
+            # continue
+        res += i
+    l.append(res)
+    s1 = 0
+    s2 = 0
+    sig = 1
+    k = 1
+    for i in l:
+        if k > 2:
+            sig = -1
+        if i[-1].isalpha():
+            if i[:-1] == '-':
+                s1 += -1
+            elif i[:-1] == '+':
+                s1 += 1
+            else:
+
+                s1 += int(i[:-1])*sig
+        else:
+            s2 += int(i)*sig
+        k += 1
+
+    return l, s1, s2, s2 / s1
 
 
 print(solve(s))
