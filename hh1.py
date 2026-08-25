@@ -99,9 +99,10 @@ def f1(b):
 
     def g1(t):
         nonlocal b
-        print(b, end=' ')
+        print(b, t, end=' ')
         b += 1
-        print(t)
+        t += 1
+        print(b, t)
     return g1
 
 
@@ -129,3 +130,29 @@ print(res)
 
 
 # E().f()
+
+s = 0
+
+
+def rec_dig(n):
+
+    if n < 10:
+        return n
+
+    k = n // 10
+    l = n % 10
+    return rec_dig(k) + l
+    # return s
+
+
+print(rec_dig(213))
+
+s = 'c+4=10+2c'
+
+
+def solve(s):
+    l = s.split('=')
+    return l
+
+
+print(solve(s))

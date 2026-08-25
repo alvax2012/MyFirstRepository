@@ -14,11 +14,9 @@ def convert(n):
 print(convert(-24))
 
 
-films = {'Spider-Man': {'imdb': 8.8, 'kinopoisk': 8.3},
-         'Don"t Look Up': {'imdb': 7.3, 'kinopoisk': 7.6},
-
+films = {1: {'imdb': 8.8, 'kinopoisk': 8.3},
+         2: {'imdb': 7.3, 'kinopoisk': 7.6},
          }
-
 # m = min(sum(v.values()) for v in films.values())
 m = min(films, key=lambda i: sum(films[i].values()))
 print(m)
@@ -27,18 +25,51 @@ print(m)
 # print(t)
 
 
-def dfilm(d, p=20):
-    s = 0
-    for i in d:
-        # s += dfilm(v, s)
+def dfilm(d):
+    p = 20
 
-        if isinstance(d[i], dict):
-            s += dfilm(d[i])
-            # return s
-            # dfilm(v, s)
-        else:
-            return d[i]
-    return s
+    def dm(d):
+        s = 0
+        nonlocal p
+        for i in d:
+            # s += dfilm(v, s)
+
+            if isinstance(d[i], dict):
+                dm(d[i])
+                # return s
+                # dfilm(v, s)
+            else:
+                s += d[i]
+        if s and s < p:
+            p = s
+        return s
+
+    dm(d)
+    return p
 
 
 print(dfilm(films))
+
+
+print(type(repr([1, 2, 3, 4])))
+
+
+def hash_as_key(data):
+    d = {}
+    for i in data:
+        h = hash(i)
+
+        if h in d:
+            if not isinstance(d[h], list):
+                d[h] = [d[h]]
+            d[h].append(i)
+        else:
+            d[h] = i
+    return d
+
+
+data = [-1, -2, 3]
+# data = [1, 2, 3, 4, 5, 5]
+data = [5, 5, 5]
+
+print(hash_as_key(data))
