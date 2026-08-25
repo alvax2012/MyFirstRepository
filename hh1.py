@@ -188,4 +188,23 @@ def solve(s):
     return l, s1, s2, s2 / s1
 
 
+s = '+x-4=+10+2x'
+
+
+def solve(s):
+    l = s.split('=')
+    d = {}
+
+    sig = l[0][0]
+    l0 = l[0][1:]
+    l1 = l0.split('+')
+    if len(l1) == 1:
+        l1 = l0.split('-')
+    l1[0] = sig + l1[0]
+    # if l1[0] in '+-':
+    #     l1 = l[1:]
+
+    return l1
+
+
 print(solve(s))
