@@ -133,6 +133,8 @@ print(res)
 
 s = 0
 
+# Уровень Средний задача 1
+
 
 def rec_dig(n):
 
@@ -146,6 +148,9 @@ def rec_dig(n):
 
 
 print(rec_dig(213))
+
+
+# Уровень Средний задача 2
 
 s = '-x+4=+10+2x'
 
@@ -188,32 +193,78 @@ def solve(s):
     return l, s1, s2, s2 / s1
 
 
-s = '-2x-4=+10+2x'
+s = '3x+5=10x-5'
 
 
 def solve(s):
     l = s.split('=')
-    d = {}
-    s1 = 0
-    s2 = 0
-    sig = l[0][0]
-    l0 = l[0][1:]
-    l1 = l0.split('+')
-    if len(l1) == 1:
-        l1 = l0.split('-')
-    l1[0] = sig + l1[0]
-    # if l1[0] in '+-':
-    #     l1 = l[1:]
 
-    k = 0
-    for i in l1:
-        if i[-1].isalpha():
-            if len(i[:-1]) == 1:
-                s1 += int(i[0] + '1')
+    def dm(l, sg=1):
+        s1 = 0
+        s2 = 0
+        sig = l[0]
+        sig1 = ''
+        l0 = l[1:]
+        l1 = l0.split('+')
+        if len(l1) == 1:
+            l1 = l0.split('-')
+            sig1 = '-'
+        l1[0] = sig + l1[0]
+        l1[1] = sig1 + l1[1]
+
+        for i in l1:
+            if i[-1].isalpha():
+                if len(i[:-1]) == 1:
+                    s1 += sg * int(i[0] + '1')
+                else:
+                    s1 += sg * int(i[:-1])
             else:
-                s1 += int(i[:-1])
+                s2 += sg * int(i)
 
-    return s1
+        return s1, s2
+
+    res1 = dm(l[0], sg=1)
+    res2 = dm(l[1], sg=-1)
+    return (res1[1] + res2[1]) / -(res1[0] + res2[0]), res1, res2
 
 
 print(solve(s))
+
+
+# Уровень Легкий задача 2
+
+
+def is_right_triangle(s):
+    l = [int(i) for i in s if i.strip() != '']
+    l.sort()
+    return l[0]**2 + l[1]**2 == l[2]**2
+
+
+print(is_right_triangle('5 3 4'))
+
+
+# Уровень Легкий задача 1
+
+def filter_unique_words(s):
+    l = s.split()
+    return ' '.join(filter(lambda x: l.count(x) == 1, l))
+
+
+s = ' чай кофе чай чай молоко'
+
+print(filter_unique_words(s))
+
+# Уровень Легкий задача 3
+
+
+def mask(s: str) -> str:
+    if len(s) < 4:
+        return s
+
+    l = list(s)
+    # s = s[:-4]
+    return ''.join(list(map(lambda x: '#', s[:-4])) + list(s[-4:]))
+
+
+s = '123456'
+print(mask(s))
