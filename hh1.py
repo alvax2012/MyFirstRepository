@@ -188,13 +188,14 @@ def solve(s):
     return l, s1, s2, s2 / s1
 
 
-s = '+x-4=+10+2x'
+s = '-2x-4=+10+2x'
 
 
 def solve(s):
     l = s.split('=')
     d = {}
-
+    s1 = 0
+    s2 = 0
     sig = l[0][0]
     l0 = l[0][1:]
     l1 = l0.split('+')
@@ -204,7 +205,15 @@ def solve(s):
     # if l1[0] in '+-':
     #     l1 = l[1:]
 
-    return l1
+    k = 0
+    for i in l1:
+        if i[-1].isalpha():
+            if len(i[:-1]) == 1:
+                s1 += int(i[0] + '1')
+            else:
+                s1 += int(i[:-1])
+
+    return s1
 
 
 print(solve(s))
