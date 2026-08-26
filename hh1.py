@@ -268,3 +268,11 @@ def mask(s: str) -> str:
 
 s = '123456'
 print(mask(s))
+
+
+l = [1, 2, 3, 4]
+l1 = []
+for i in range(len(l)):
+    p = l.pop()
+    l1.append(p)
+    print(l1,  l,  p)

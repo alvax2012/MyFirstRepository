@@ -73,3 +73,37 @@ data = [-1, -2, 3]
 data = [5, 5, 5]
 
 print(hash_as_key(data))
+
+
+s1 = '[[1, 2], [3, 4], [5, 6]]'
+# s1 = "{'Arthur', 'Timur', 'Anri', 'Ruslan', 'Dima'}"
+# s1 = "('black', 'blue', 'red', 'orange', 'green', 'gray')"
+
+# res = ''
+s = eval(s1)
+if isinstance(s, list):
+    res = s[-1]
+elif isinstance(s, set):
+    res = len(s)
+else:
+    res = s[0]
+print(res)
+
+
+f1 = '2*x**2 + 5*x + 7'
+n1 = list(map(int, '-1 5'.split()))
+l = []
+for x in range(n1[0], n1[1]+1):
+    l.append(eval(f1))
+    # print(x, eval(f1))
+
+s_out = f'''
+Минимальное значение функции 2*x**2 + 5*x + 7 на отрезке [-1; 5] равно {min(l)}
+Максимальное значение функции 2*x**2 + 5*x + 7 на отрезке [-1; 5] равно {max(l)}
+'''
+
+print(s_out)
+
+a, b = map(int, '12')
+
+print(a, b)
