@@ -62,3 +62,20 @@ verification('timyrik20', 'Beegeek314', success, failure)
 verification('Arthur_Davletov', 'мойпароль123', success, failure)
 
 # анонимные функции являются выражениями, то есть их можно сразу вызывать в момент определения
+
+
+def bee():
+    return 'bee'
+
+
+def geek():
+    return 'geek'
+
+
+# bee, geek = geek, bee
+
+bee = geek
+geek = bee
+
+print(bee())
+print(geek())
