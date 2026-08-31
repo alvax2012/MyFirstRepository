@@ -38,11 +38,13 @@ def verification(login, password, success, failure):
         3: 'в пароле нет ни одной строчной буквы',
         4: 'в пароле нет ни одной цифры'}
 
-    if not any(filter(str.isalpha, password)):
+    print(*filter(lambda x: not (x in string.ascii_letters), password))
+
+    if not any(filter(lambda x:  x in string.ascii_letters, password)):
         return failure(login, d[1])
-    elif not any(filter(str.isupper, password)):
+    elif not any(filter(lambda x:  x in string.ascii_uppercase, password)):
         return failure(login, d[2])
-    elif not any(filter(str.islower, password)):
+    elif not any(filter(lambda x:  x in string.ascii_lowercase, password)):
         return failure(login, d[3])
     elif not any(filter(str.isdigit, password)):
         return failure(login, d[4])
@@ -61,4 +63,9 @@ def failure(login, text):
 verification('timyrik20', 'Beegeek314', success, failure)
 verification('Arthur_Davletov', 'мойпароль123', success, failure)
 
+verification('Arthur_Davletov', 'мойпарольBEE123', success, failure)
+
 # анонимные функции являются выражениями, то есть их можно сразу вызывать в момент определения
+
+
+print(all(filter(None, [0, 1, '', 2, []])))
