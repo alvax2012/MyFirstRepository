@@ -1,4 +1,5 @@
 import string
+import sys
 
 
 def print_operation_table(op, row, col):
@@ -79,3 +80,34 @@ geek = bee
 
 print(bee())
 print(geek())
+
+
+def numbers_sum(elems):
+    '''Принимает список и возвращает сумму его чисел (int, float),
+    игнорируя нечисловые объекты. 0 - если в списке чисел нет.'''
+    return sum(filter(lambda x: isinstance(x, (int, float)), elems))
+
+
+print(numbers_sum([1, '2', 3, 4, 'five']))
+print(numbers_sum(['beegeek', 11, 'stepik', 28.5,
+      '100', 11.2]), numbers_sum.__doc__)
+
+
+def prn(*args, **kwargs):
+    s = f'{kwargs.get('sep', ', ')}'.upper().join(map(lambda x: x.upper() if type(
+        x) == str else str(x), args)) + f'{kwargs.get('end', '\n')}'.upper()
+    sys.stdout.write(s)
+    sys.stdout.write(
+        '-'.join(map(lambda x: x.upper() if isinstance(x, str) else str(x), args)))
+
+
+pr = print
+print = prn
+
+words = (1, 'black', 'white', 'grey', 'black-1', 'white-1', 'python')
+# print(*words)
+print(*words, sep=' to ', end=' LOVE')
+print('beegeek', [1, 2, 3], 4)
+print = pr
+
+print('qw')

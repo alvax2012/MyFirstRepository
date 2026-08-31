@@ -298,3 +298,20 @@ while (line := l[i] != 3):
 
 if (value := pow(2, 4)) > 10:
     print(value)
+
+i = 777
+
+
+def generate_permutations(arr, start=0):
+    if start == len(arr) - 1:
+        print(arr)
+    else:
+        for i in range(start, len(arr)):
+            arr[start], arr[i] = arr[i], arr[start]
+            print('=', start, i, arr)  # обмен
+            generate_permutations(arr, start + 1)
+            arr[start], arr[i] = arr[i], arr[start]
+            print('==', start, i, arr)   # backtracking
+
+
+generate_permutations([1, 2, 3])
