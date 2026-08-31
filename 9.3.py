@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import string
 import sys
 
@@ -115,3 +116,22 @@ print('beegeek', [1, 2, 3], 4)
 print = pr
 
 print('qw')
+
+
+letters = OrderedDict(b=2, d=4, a=1, c=3)
+print(letters)
+letters.__dict__['advanced'] = '144'
+letters.dd = '1234'
+print(letters.dd)
+print(letters.__dict__)
+
+
+def fib(num):
+    if num < 2:
+        return num
+    if num not in fib.__dict__:
+        fib.__dict__[num] = fib(num - 1) + fib(num - 2)
+    return fib.__dict__[num]
+
+
+print(fib(3), fib.__dict__)
