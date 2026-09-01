@@ -135,3 +135,44 @@ def fib(num):
 
 
 print(fib(3), fib.__dict__)
+
+
+def polynom(x):
+    res = x**2 + 1
+    if not hasattr(polynom, 'values'):
+        polynom.values = set()
+
+    polynom.values |= {res}
+    return res
+
+
+print(polynom(5))
+print(polynom(6))
+print(polynom.values)
+print(polynom.__dict__)
+
+
+def countries(country, capital):
+    countries.__dict__[country] = capital
+
+
+countries.__dict__['Germany'] = 'Berlin'
+countries.Norway = 'Oslo'
+countries('Finland', 'Helsinki')
+
+print(countries.__dict__, countries.Finland)
+
+
+def remove_marks(res, marks):
+    for i in marks:
+        res = res.replace(i, '')
+    remove_marks.__dict__['count'] = remove_marks.__dict__.get('count', 0) + 1
+    return res
+
+
+text = 'Hi! Will we go together?'
+
+
+print(remove_marks(text, '!?'))
+print(remove_marks(text, '!?'))
+print(remove_marks.count)
