@@ -76,3 +76,13 @@ load = sourcetemplate(url)
 print(load(1, 2, smartphone='iPhone', notebook='huawei', sale=True))
 
 # https://all_for_comfort_life.com?notebook=huawei&sale=True&smartphone=iPhone
+
+
+def outer(x):
+    def inner():
+        return x
+    x = None
+    return inner
+
+
+print(outer(10)())
