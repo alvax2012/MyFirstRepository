@@ -168,3 +168,6 @@ sort_priority(numbers, group)
 print(numbers)
 
 # [2, 3, 5, 7, 1, 4, 6, 8]
+
+s12: int = 6
+print(s12)
