@@ -27,3 +27,7 @@ except IndexError:
 def is_good_password1(s):
     length_ok = len(s) >= 9
     return all((any(i.isdigit() for i in s), any(i.isupper() for i in s), any(i.islower() for i in s), length_ok))
+
+
+def sort_priority(numbers, group) -> list[int]:
+    numbers.sort(key=lambda x: (x not in group, x))
