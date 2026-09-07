@@ -157,7 +157,7 @@ def sort_priority(num, gr):
     return num
 
 
-def sort_priority(numbers, group):
+def sort_priority(numbers, group) -> list[int]:
     numbers.sort(key=lambda x: (x not in group, x))
 
 
@@ -171,3 +171,5 @@ print(numbers)
 
 s12: int = 6
 print(s12)
+
+print(sort_priority.__annotations__)
