@@ -1,3 +1,4 @@
+import math
 print(__name__)
 
 
@@ -15,3 +16,5 @@ l = [1, 2]
 l1 = [l]*2
 
 print(id([0]*2), id([1]*2))
+x = math.sqrt(16)
+print(x)
