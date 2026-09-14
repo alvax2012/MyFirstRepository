@@ -33,13 +33,13 @@ print()
 
 
 def make_greeter(prase):
-    prefix = prase + f', - '
+    prefix = ''  # prase + f', - '
     n = 1
 
     def greeter(name):
         nonlocal n
         n += 1
-        return prefix + name + '--' + str(n)
+        return prase + name + '--' + str(n)
 
     return greeter
 
@@ -51,8 +51,8 @@ b = make_greeter('bb')
 print(a('1'), a.__closure__)
 print(a('2'), a.__closure__)
 
-print(make_greeter('aa')('1'), make_greeter('aa').__closure__)
-print(make_greeter('aa')('2'), make_greeter('aa').__closure__)
+# print(make_greeter('aa')('1'), make_greeter('aa').__closure__)
+# print(make_greeter('aa')('2'), make_greeter('aa').__closure__)
 
 print(id(a))
 print(id(b))
