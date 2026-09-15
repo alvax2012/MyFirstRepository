@@ -1,4 +1,6 @@
 from collections import Counter
+import sys
+import time
 
 
 def get_price(product):
@@ -31,3 +33,16 @@ def is_good_password1(s):
 
 def sort_priority(numbers, group) -> list[int]:
     numbers.sort(key=lambda x: (x not in group, x))
+
+
+def print(*args, sep=' ', end='\n', file=sys.stdout, flush=False):
+    text = sep.join(str(arg) for arg in args)
+    file.write(text + end)
+    if flush:
+        file.flush()
+
+
+for i in range(5):
+    print(i, end=" ")
+    sys.stdout.flush()  # Явно сбрасываем буфер после каждой печати
+    time.sleep(1)

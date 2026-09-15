@@ -1,6 +1,8 @@
 
-
+import sys
 import itertools
+import time
+
 x = 10
 
 
@@ -138,12 +140,131 @@ print(beegeek())
 
 def prn_upper(f):
     def wrapper(*args, **kwargs):
-        print(*map(lambda i: str(i).upper(), args),
-              sep=f'{kwargs['sep'].upper() if kwargs.get('sep') else ''}', end=f'{kwargs['end'].upper() if kwargs.get('end') else ''}')
+        # print('1=', args, kwargs)
+        # print('2=', *args, **kwargs)
+        # f(*args, sep=f'{kwargs['sep'].upper() if kwargs.get('sep') else ''}',
+        #   end=f'{kwargs['end'].upper() if kwargs.get('end') else ''}')
+        f(*map(lambda i: str(i).upper(), args),
+          sep=f'{kwargs['sep'].upper() if kwargs.get('sep') else ''}', end=f'{kwargs['end'].upper() if kwargs.get('end') else ''}')
     return wrapper
+
+# f(*map(lambda i: str(i).upper(), args),
+#           sep=f'{kwargs['sep'].upper() if kwargs.get('sep') else ''}', end=f'{kwargs['end'].upper() if kwargs.get('end') else ''}')
 
 
 prn = prn_upper(print)
 
 
 prn('aaa', 222, 333, sep='xxx', end='t')
+print()
+
+
+# for i in range(5):
+#     print(i, end=" ")
+#     sys.stdout.flush()  # Явно сбрасываем буфер после каждой печати
+#     time.sleep(1)
+
+
+def decorator(func):
+    def wrapper(*args, **kwargs):
+        new_args = map(lambda x: x.upper() if isinstance(x, str) else x, args)
+        kwargs = {k: v.upper() for k, v in kwargs.items()}
+        func(*new_args, **kwargs)
+    return wrapper
+
+
+old_print = print
+
+
+@decorator
+def print(*args, **kwargs):
+    old_print(*args, **kwargs)
+
+
+print()
+print('bbb', 222, 333, sep='xxx', end='t')
+print = old_print
+print()
+print()
+print('==')
+
+
+def decorator(func):
+    def wrapper(*args, **kwargs):
+        args = [str(arg).upper() for arg in args]
+        kwargs = {k: v.upper()
+                  for k, v in kwargs.items() if k in ['end', 'sep']}
+        func(*args, **kwargs)
+    return wrapper
+
+
+print = decorator(print)
+print()
+print('ccc', 222, 333, sep='xxx', end='t', end1='t')
+
+print = old_print
+print()
+
+
+def introduce(f):
+    def wrapper(*args, **kwargs):
+        print(f.__name__)
+        return f(*args, **kwargs)
+    return wrapper
+
+
+@introduce
+def f1(a):
+    return a
+
+
+print(f1(10), f1.__name__)
+print()
+
+
+def do_twice(f):
+    def wrapper(*args, **kwargs):
+        f(*args, **kwargs)
+        return f(*args, **kwargs)
+    return wrapper
+
+
+@do_twice
+def beegeek():
+    print('beegeek')
+    return 'beegeek'
+
+
+print(beegeek())
+
+
+print()
+
+
+def reverse_args(f):
+    def wrapper(*args, **kwargs):
+
+        return f(*args[::-1], **{i: kwargs[i] for i in sorted(kwargs, reverse=True)})
+    return wrapper
+
+
+# @reverse_args
+# def power(a, n):
+#     return a ** n
+
+# print(power(2, 3))
+
+@reverse_args
+def concat(a, b, c):
+    return a + b + c
+
+
+print(concat('apple', 'cherry', 'melon'))
+
+
+@reverse_args
+def operation(a, b, name):
+    return a // b + name
+
+
+print(operation(10, 90, name=1))
