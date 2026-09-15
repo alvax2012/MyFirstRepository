@@ -89,3 +89,61 @@ print(list(itertools.starmap(lambda x, y, z: x+y+z, [(1, 2, 3), (2, 3, 4)])))
 
 # i = (str, str)
 # print(list(itertools.starmap(composition(*i), [(1, 2), (2, 3)])))
+
+
+# def sandwich(f):
+#     def wrapper(*args, **kwargs):
+#         print('---- Верхний ломтик хлеба ----')
+#         p = f(*args, **kwargs)
+#         print('---- Нижний ломтик хлеба ----')
+
+#         return p
+#     return wrapper
+
+
+def sandwich(func):
+    def wrapper(*args, **kwargs):
+        try:
+            print('---- Верхний ломтик хлеба ----')
+            return func(*args, **kwargs)
+        finally:
+            print('---- Нижний ломтик хлеба ----')
+
+    return wrapper
+
+
+@sandwich
+def add_ingredients(ingredients):
+    print(' | '.join(ingredients))
+
+
+add_ingredients(['томат', 'салат', 'сыр', 'бекон'])
+print()
+
+
+@sandwich
+def beegeek():
+    return 'beegeek'
+
+
+print(beegeek())
+
+# def add_ingredients(*args):
+#     print('--', args)
+#     print(*args)
+
+
+# add_ingredients('томат', 'салат', 'сыр', 'бекон')
+# add_ingredients(*['томат', 'салат', 'сыр', 'бекон'])
+
+def prn_upper(f):
+    def wrapper(*args, **kwargs):
+        print(*map(lambda i: str(i).upper(), args),
+              sep=f'{kwargs['sep'].upper() if kwargs.get('sep') else ''}', end=f'{kwargs['end'].upper() if kwargs.get('end') else ''}')
+    return wrapper
+
+
+prn = prn_upper(print)
+
+
+prn('aaa', 222, 333, sep='xxx', end='t')
