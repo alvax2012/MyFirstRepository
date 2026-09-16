@@ -350,3 +350,20 @@ class ElectricCar:
 car = ElectricCar()
 
 print(getattr(car, 'owner', 11))
+
+
+def optional_introduce(f):
+    def wrapper(*args, **kwargs):
+        if kwargs.get('introduce'):
+            print(f.__name__)
+        return f(*args)
+    return wrapper
+
+
+@optional_introduce
+def identity(x):
+    return x
+
+
+print(identity(20))
+print(identity(42, introduce=True))
