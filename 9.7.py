@@ -268,3 +268,85 @@ def operation(a, b, name):
 
 
 print(operation(10, 90, name=1))
+
+print()
+
+s = [100, 25, 505, 481, 1, 2401]
+for i in s:
+    print(i % 100, i % 100 % 10, f"{i} -> {max(str(i), key=int)}",
+          max(str('123'), key=int))
+    # print(i % 100)
+
+
+def exception_decorator(f):
+    def wrapper(*args, **kwargs):
+
+        try:
+            return f(*args, **kwargs), 'Функция выполнилась без ошибок'
+        except:
+            return None, 'При вызове функции произошла ошибка'
+    return wrapper
+
+
+@exception_decorator
+def f(x):
+    return x**2 + 2*x + 1
+
+
+print(f(7))
+
+
+def takes_positive(f):
+    def wrapper(*args, **kwargs):
+        if not all([isinstance(i, int) for i in args]) or not all([isinstance(i, int) for i in kwargs.values()]):
+            raise TypeError  # (' аргумент не является целым числом')
+        if not all([i > 0 for i in args]) or not all([i > 0 for i in kwargs.values()]):
+            # ('аргумент является целым числом, но отрицательным или равным нулю')
+            raise ValueError
+        return f(*args, **kwargs)
+    return wrapper
+
+
+# @takes_positive
+# def positive_sum(*args):
+#     return sum(args)
+
+
+# print(positive_sum(1, 2, 3, 4, 5, 6, 7, 8, 9, -10))
+
+
+@takes_positive
+def positive_sum(*args, **kwargs):
+    return sum(args) + sum(kwargs.values())
+
+
+try:
+    print(positive_sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, par1=1, sep=-40))
+except Exception as err:
+    print(type(err))
+
+try:
+    x, y = 10, 0
+    if y == 0:
+        raise ZeroDivisionError('Произошло деление на ноль.')
+except ZeroDivisionError as err:
+    print(err)
+    print(err.args)
+    print(type(err.args))
+
+
+try:
+    x = 1 / 0
+except Exception as err:
+    # каким-то образом обработали перехваченное исключение
+    print(err)
+    # raise
+
+
+class ElectricCar:
+    pass
+
+
+car = ElectricCar()
+
+print(getattr(car, 'owner', 11))

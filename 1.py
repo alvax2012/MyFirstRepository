@@ -46,3 +46,8 @@ for i in range(5):
     print(i, end=" ")
     sys.stdout.flush()  # Явно сбрасываем буфер после каждой печати
     time.sleep(1)
+
+
+s = [100, 25, 505, 481, 1, 2401]
+for i in s:
+    print(f"{i} -> {max(str(i), key=int)}")
