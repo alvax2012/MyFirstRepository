@@ -367,3 +367,42 @@ def identity(x):
 
 print(identity(20))
 print(identity(42, introduce=True))
+
+
+class PiggyBank:
+    content = 'coins'
+    alternate_name = 'penny bank'
+
+
+money_box = PiggyBank()
+money_box.tt = 1
+
+
+print(money_box.__dict__)
+print()
+print(PiggyBank.__dict__)
+
+money_box.content = 22
+
+print()
+print(money_box.__dict__)
+print(PiggyBank.__dict__)
+print(PiggyBank.content, money_box.content)
+
+
+def f1(b):
+    k = 0
+
+    def g1(t):
+        nonlocal b, k
+        print(b, t, k, end=' ')
+        b += 1
+        t += 1
+        k += 1
+        print(b, t, k)
+    return g1
+
+
+ll = f1(77)
+ll(1)
+ll(3)
