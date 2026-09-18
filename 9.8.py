@@ -31,5 +31,5 @@ print(greet('Gvido'))
 
 s = [100, 25, 505, 481, 1, 2401]
 for i in s:
-    print(i % 1000 % 10, f"{i} -> {max(str(i), key=int)}")
+    print(i % 1000, f"{i} -> {max(str(i), key=int)}")
     # print(i % 100)
