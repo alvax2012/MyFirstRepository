@@ -2,7 +2,7 @@ import functools
 
 
 def counter(func, i=2):
-
+    # k = 7
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         nonlocal k, i
