@@ -186,3 +186,67 @@ new_obj = eval(code)
 
 
 print(l, repr(l), eval(code), eval('1+2'), repr(4))  # Вывод: [1, 2, 3]
+
+
+def repeater(repeat=1):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for i in range(1, repeat + 1):
+                print(f'{i}-й запуск функции.')
+                value = func(*args, **kwargs)
+            return value
+        return wrapper
+    return decorator
+
+
+@repeater(repeat=5)
+def beegeek():
+    print('beegeek')
+
+
+print(beegeek())
+
+
+print()
+
+
+def decor1(func):
+    print('Применяется декоратор 1')
+
+    def wrapper():
+        print('Запущена обертка декоратора 1')
+        return func().upper()
+    print('Возвращаем обертку декоратора 1')
+    return wrapper
+
+
+def decor2(func):
+    print('Применяется декоратор 2')
+
+    def wrapper():
+        print('Запущена обертка декоратора 2')
+        return func()[1:]
+    print('Возвращаем обертку декоратора 2')
+    return wrapper
+
+
+def decor3(func):
+    print('Применяется декоратор 3')
+
+    def wrapper():
+        print('Запущена обертка декоратора 3')
+        return func()[::-1]
+    print('Возвращаем обертку декоратора 3')
+    return wrapper
+
+
+@decor3
+@decor2
+@decor1
+def beegeek():
+    print('Запущена декорируемая функция')
+    return 'beegeek'
+
+
+print('Выводим', beegeek())
