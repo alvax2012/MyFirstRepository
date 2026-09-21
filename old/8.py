@@ -1,83 +1,86 @@
-import turtle
-
-turtle.forward(30)
-turtle.left(45)
-
-turtle.forward(14)
-turtle.left(45)
-
-turtle.forward(30)
-turtle.left(45)
-
-turtle.forward(14)
-turtle.left(45)
-
-turtle.forward(10)
-turtle.right(90)
-
-turtle.forward(60)
-turtle.right(90)
-
-turtle.forward(10)
-turtle.left(90)
-
-turtle.forward(20)
-turtle.left(45)
-
-turtle.forward(28)
-turtle.left(45)
-
-turtle.forward(10)
-turtle.left(90)
-
-turtle.forward(20)
-turtle.left(180)
-
-turtle.forward(20)
-turtle.left(90)
-
-turtle.forward(10)
-turtle.left(45)
-
-turtle.forward(28)
-turtle.left(45)
-
-turtle.forward(20)
-turtle.left(90)
-
-turtle.forward(10)
-turtle.right(90)
-
-turtle.forward(60)
-turtle.right(90)
-
-turtle.forward(10)
-turtle.left(45)
-
-turtle.forward(14)
-turtle.left(45)
-
-turtle.forward(30)
-turtle.left(45)
-
-turtle.forward(14)
-turtle.left(45)
-
-turtle.forward(30)
-
-turtle.done()
-print('1')
+def bee(n):
+    if n > 0:
+        print(n)
+        bee(n - 1)
+    print(n)
 
 
-a = 2
-b = 3
-for _ in '+-*':
-    print(f'{a} {_} {b} =', eval(f'{a} {_} {b}'))
+bee(2)
 
 
-numbers = [3 + 4j, 3 + 1j, -7 + 3j, 4 + 8j, -8 + 10j, -3 + 2j, 3 - 2j, -9 +
-           9j, -1 - 1j, -1 - 10j, -20 + 15j, -21 + 1j, 1j, -3 + 8j, 4 - 6j, 8 + 2j, 2 + 3j]
-number = {abs(_): _ for _ in numbers}
-m = max(number)
-print(m)
-print(number[m])
+def triangle(n):
+    i = 1
+
+    def prn(i):
+        if i <= n:
+            print('*'*i)
+            prn(i+1)
+    prn(i)
+
+
+# triangle(3)
+
+def triangle(n):
+    if n > 0:
+        triangle(n-1)
+    print('*'*n)
+
+
+def triangle(h):
+    if h > 1:
+        triangle(h - 1)
+    print('*' * h)
+
+
+print()
+triangle(5)
+
+print('--')
+
+
+# def wtch1(st, en):
+#     if st < en:
+#         print('*'*st)
+#         wtch1(st+1, en)
+#         print('*'*st)
+
+
+# def wtch2(n):
+
+#     if n > 0:
+#         print(f'{n}'*n)
+#         wtch2(n-1)
+#         print(f'{n}'*n)
+
+
+def wtch(n):
+    k = n
+
+    def prn(n):
+        if n > 0:
+            print(' ' * (k-n)*2, f'{k-n+1}'*n*k, sep='')
+        if n > 1:
+            prn(n-1)
+            print(' ' * (k-n)*2, f'{k-n+1}'*n*k, sep='')
+    prn(n)
+
+
+wtch(4)
+# wtch1(1, 4)
+print('--')
+
+
+def print_digits(n):
+    # while n:
+    #     d, e = n // 10, n % 10
+    #     print(e)
+    #     n = d
+    d, e = n // 10, n % 10
+    # print(e)
+    if d:
+        # print(e)
+        print_digits(d)
+    print(e)
+
+
+print_digits(12345)

@@ -250,3 +250,103 @@ def beegeek():
 
 
 print('Выводим', beegeek())
+print()
+
+
+def prefix(string, to_the_end=False):
+
+    def set_prefix(func):
+        @functools.wraps(func)
+        def wripper(*args, **kwargs):
+            if to_the_end:
+                return func(*args, **kwargs) + string
+            else:
+                return string + func(*args, **kwargs)
+        return wripper
+    return set_prefix
+
+
+@prefix('$$$', to_the_end=True)
+def get_bonus():
+    return '2000'
+
+
+print(get_bonus())
+
+
+print()
+
+
+def make_html(tag=None):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            return (func(*args, **kwargs), f'<{tag}>{func(*args, **kwargs)}</{tag}>')[bool(tag)]
+        return wripper
+    return decorator
+
+
+@make_html('i')
+@make_html('del')
+def get_text(text):
+    return text
+
+
+print(get_text(text='decorators are so cool!'))
+
+print()
+
+
+def repeat(times):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            for i in range(times-1):
+                func(*args, **kwargs)
+            return func(*args, **kwargs)
+        return wripper
+    return decorator
+
+
+@repeat(3)
+def say_beegeek():
+    '''documentation'''
+    print('beegeek')
+
+
+say_beegeek()
+
+print()
+
+
+def strip_range(start=0, end=0, char='.'):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            res = func(*args, **kwargs)
+            if (end - start) < len(res) - 1:
+                l = end
+                char1 = char*(end - start)
+            else:
+                l = len(res)
+                char1 = char*(l - start)
+
+            return res.replace(res[start: l], char1)
+        return wripper
+    return decorator
+
+
+@strip_range(3, 5)
+def beegeek():
+    return 'beegeek'
+
+
+print(beegeek())
+
+
+@strip_range(3, 20, '_')
+def beegeek():
+    return 'beegeek'
+
+
+print(beegeek())
