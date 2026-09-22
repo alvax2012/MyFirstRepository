@@ -350,3 +350,56 @@ def beegeek():
 
 
 print(beegeek())
+
+
+s = "print(calculate('xyz', [1, 2, 3], 'x-y+z'))             # 1 - 2 + 3 = 2"
+
+
+def calculate(var, val, exp):
+    locals_dict = {k: v for k, v in zip(var, val)}
+    res = 0
+    coef = 1
+    for char in exp:
+        if char == '-':
+            coef = -1
+        if char == '+':
+            coef = 1
+
+        res += coef * locals_dict.get(char, 0)
+    return res  # eval(exp, locals_dict)
+
+
+print(calculate('xyz', [1, 2, 3], 'x-y+z'))
+
+# locals_dict = {"y": 10, "x": 5}
+# print(eval('x+y', locals_dict))
+
+print()
+
+
+def takes(*arg_type):
+
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            if all(type(j) == i for i in arg_type for j in args) and all(type(j) == i for i in arg_type for j in kwargs.values()):
+                return func(*args, **kwargs)
+            else:
+                raise TypeError
+        return wripper
+    return decorator
+
+
+@takes(list, bool, str, int)
+def repeat_string(string, times):
+    pass
+    # return string * times
+
+
+try:
+    print(repeat_string('bee', 4))
+except TypeError as e:
+    print(type(e))
+
+
+print(str(type(2)), repr(type(2)))
