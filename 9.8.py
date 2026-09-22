@@ -331,7 +331,8 @@ def strip_range(start=0, end=0, char='.'):
                 l = len(res)
                 char1 = char*(l - start)
 
-            return res.replace(res[start: l], char1)
+            res = res[0:start] + char1 + res[l: len(res)]
+            return res
         return wripper
     return decorator
 
@@ -386,6 +387,29 @@ def takes(*arg_type):
                 return func(*args, **kwargs)
             else:
                 raise TypeError
+
+
+print()
+
+
+@strip_range(1, 2, '-')
+def beegeek():
+    return 'beegeek'
+
+
+print(beegeek())
+
+print()
+
+
+def returns(datatype):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            res = func(*args, **kwargs)
+            if not isinstance(res, datatype):
+                raise TypeError
+            return res
         return wripper
     return decorator
 
@@ -400,3 +424,11 @@ try:
     print(repeat_string('bee', 4))
 except TypeError as e:
     print(type(e))
+
+
+@returns(int)
+def add(a, b):
+    return a + b
+
+
+print(add(10, 5))
