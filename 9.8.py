@@ -400,6 +400,3 @@ try:
     print(repeat_string('bee', 4))
 except TypeError as e:
     print(type(e))
-
-
-print(str(type(2)), repr(type(2)))
