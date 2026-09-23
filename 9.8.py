@@ -413,3 +413,125 @@ try:
     print(repeat_string('bee', 4))
 except TypeError as e:
     print(type(e))
+
+print('---')
+
+
+def add_attrs(**newargs):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            return func(*args, **kwargs)
+        # for i in newargs:
+        #     wripper.__dict__[i] = newargs[i]
+        # wripper.__dict__.update(newargs)
+        wripper.__dict__ |= newargs
+        return wripper
+    return decorator
+
+
+@add_attrs(attr1='bee', attr2='geek')
+def beegeek():
+    return 'beegeek'
+
+
+d = dict(i1=777, i2=888)
+# beegeek.i = 888
+# beegeek.__dict__.update(d)
+print(beegeek.__dict__)
+print(beegeek.attr1)
+# print(beegeek.attr2)
+
+d | {'i3': 999}
+print(d)
+
+print()
+
+
+def ignore_exception(*excp):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception as err:
+                if type(err) in excp:
+                    print(
+                        f'Исключение {type(err).__name__} обработано')
+                else:
+                    raise
+
+        return wripper
+    return decorator
+
+
+@ignore_exception(ZeroDivisionError, TypeError, ValueError)
+def f(x):
+    return 1 / x
+
+
+try:
+    # 1/0
+    f(0)
+except Exception as err:
+    print('---', err, type(err))
+
+print()
+
+
+@ignore_exception(ValueError, TypeError, ZeroDivisionError, NameError)
+def beegeek():
+    return 'beegeek'
+
+
+print(beegeek())
+
+
+print()
+
+
+class MaxRetriesException(Exception):
+    pass
+
+
+def retry(n):
+    def decorator(func):
+        @wraps(func)
+        def wripper(*args, **kwargs):
+            for _ in range(n):
+                try:
+                    return func(*args, **kwargs)
+                except:
+                    pass
+            raise MaxRetriesException
+        return wripper
+    return decorator
+
+
+@retry(3)
+def no_way():
+    raise ValueError
+
+
+try:
+    no_way()
+except Exception as e:
+    print(type(e))
+
+
+print(MaxRetriesException)
+
+
+print()
+
+
+def beegeek():
+    try:
+        print('111')
+        return 'bee'
+    finally:
+        print('222')
+        # return 'geek'
+
+
+print(beegeek())
