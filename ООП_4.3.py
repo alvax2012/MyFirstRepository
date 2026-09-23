@@ -87,3 +87,22 @@ print(circle.radius)
 print(circle.diameter)
 circle.diam2 = 3
 print(circle.area, circle.diam, circle.diam2, circle.__dict__)
+
+
+class Bee:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def move_up(self, n):
+        self.y += n
+
+    def move_down(self, n):
+        self.y -= n
+
+    def move_right(self, n):
+        self.x += n
+
+    def move_left(self, n):
+        self.x -= n

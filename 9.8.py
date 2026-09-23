@@ -383,35 +383,24 @@ def takes(*arg_type):
     def decorator(func):
         @wraps(func)
         def wripper(*args, **kwargs):
-            if all(type(j) == i for i in arg_type for j in args) and all(type(j) == i for i in arg_type for j in kwargs.values()):
+            # print('++', all(type(j) in arg_type for j in args), all(type(j) in arg_type for j in kwargs.values()))
+            if all(type(j) in arg_type for j in (*args, *kwargs.values())):
                 return func(*args, **kwargs)
             else:
                 raise TypeError
-
-
-print()
-
-
-@strip_range(1, 2, '-')
-def beegeek():
-    return 'beegeek'
-
-
-print(beegeek())
-
-print()
-
-
-def returns(datatype):
-    def decorator(func):
-        @wraps(func)
-        def wripper(*args, **kwargs):
-            res = func(*args, **kwargs)
-            if not isinstance(res, datatype):
-                raise TypeError
-            return res
         return wripper
     return decorator
+
+
+print()
+
+
+@takes(int, str)
+def repeat_string(string, times):
+    return string * times
+
+
+print(repeat_string('bee', 3))
 
 
 @takes(list, bool, str, int)
@@ -424,11 +413,3 @@ try:
     print(repeat_string('bee', 4))
 except TypeError as e:
     print(type(e))
-
-
-@returns(int)
-def add(a, b):
-    return a + b
-
-
-print(add(10, 5))

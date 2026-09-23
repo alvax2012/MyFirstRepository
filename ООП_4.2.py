@@ -21,7 +21,7 @@ print()
 
 class C:
     def f():
-        pass
+        print('888')
 
 
 class D():
@@ -35,4 +35,4 @@ class E(D, C):
 
 
 E().f()
-C().f()
+C.f()
