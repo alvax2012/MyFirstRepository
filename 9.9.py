@@ -1,3 +1,4 @@
+from functools import lru_cache
 from functools import partial
 from functools import wraps
 
@@ -36,3 +37,13 @@ def f1(a, b):
 
 f1(1, 2)
 f1(b=2, a=1)
+
+s = 'tutorial'
+
+
+@lru_cache()
+def eng_per(s):
+    return ''.join(sorted(s))
+
+
+print(eng_per(s))
