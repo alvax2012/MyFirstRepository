@@ -235,3 +235,22 @@ vector = Vector(3, 4)
 
 print(vector.x, vector.y)
 print(vector.abs())
+
+
+class Numbers:
+    def __init__(self):
+        self.l = []
+
+    def add_number(n):
+        self.l.append(n)
+
+
+numbers = Numbers()
+
+numbers.add_number(3)
+numbers.add_number(2)
+numbers.add_number(1)
+numbers.add_number(4)
+
+print(numbers.get_even())
+print(numbers.get_odd())

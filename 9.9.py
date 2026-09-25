@@ -47,3 +47,27 @@ def eng_per(s):
 
 
 print(eng_per(s))
+
+print()
+
+
+# @lru_cache()
+def ways(n):
+    t = (1, 3, 4)
+    l = []
+
+    def ways_rec(p=1):
+        for i in t:
+            if p < n:
+                p += i
+                # ways_rec()
+            elif i > n:
+                continue
+            else:
+                l.append(n)
+                return l
+            ways_rec(p)
+    return ways_rec()
+
+
+print(ways(5))
