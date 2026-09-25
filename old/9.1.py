@@ -1,7 +1,7 @@
+import string
+
 # for i in range(97, 123):
 #    print(chr(i))
-
-import string
 
 
 def convert(n):
@@ -17,9 +17,18 @@ def convert(n):
 print(convert(-24))
 
 
-films = {1: {'imdb': 8.8, 'kinopoisk': 8.3},
-         2: {'imdb': 7.3, 'kinopoisk': 7.6},
-         }
+films = {'Spider-Man: No Way Home': {'imdb': 8.8, 'kinopoisk': 8.3},
+         'Don"t Look Up': {'imdb': 7.3, 'kinopoisk': 7.6},
+         'Encanto': {'imdb': 7.3, 'kinopoisk': 7.4},
+         'The Witcher': {'imdb': 8.2, 'kinopoisk': 7.3},
+         'Ghostbusters: Afterlife': {'imdb': 7.3, 'kinopoisk': 8},
+         'Harry Potter 20th Anniversary: Return to Hogwarts': {'imdb': 8.1, 'kinopoisk': 8.2},
+         'Shingeki no Kyojin': {'imdb': 9.0, 'kinopoisk': 8.3},
+         'The Matrix': {'imdb': 8.7, 'kinopoisk': 8.5},
+         'The Dark Knight': {'imdb': 9.0, 'kinopoisk': 8.5},
+         'The Shawshank Redemption': {'imdb': 9.3, 'kinopoisk': 9.1},
+         'Avengers: Endgame': {'imdb': 8.4, 'kinopoisk': 7.7}}
+
 # m = min(sum(v.values()) for v in films.values())
 m = min(films, key=lambda i: sum(films[i].values()))
 print(m)
@@ -28,170 +37,111 @@ print(m)
 # print(t)
 
 
-def dfilm(d):
-    p = 20
+def dm(dct, sm=0):
+    s = 0
+    for i in dct:
+        s += dm(dct[i], 0)
 
-    def dm(d):
-        s = 0
-        nonlocal p
-        for i in d:
-            # s += dfilm(v, s)
+    if isinstance(dct, float):
+        # res['.'.join(pp)] = dct
+        # p = ''
+        return dct
 
-            if isinstance(d[i], dict):
-                dm(d[i])
-                # return s
-                # dfilm(v, s)
-            else:
-                s += d[i]
-        if s and s < p:
-            p = s
-        return s
-
-    dm(d)
-    return p
+    print('s=', s)
 
 
-print(dfilm(films))
+# dm(films)
+
+def non_negative_even(num):
+    return all(i >= 0 and i % 2 == 0 for i in num)
 
 
-print(type(repr([1, 2, 3, 4])))
+def non_negative_even(numbers):
+    return numbers[0] >= 0 and numbers[0] % 2 == 0 if len(numbers) == 1 else numbers[0] >= 0 and numbers[0] % 2 == 0 and non_negative_even(numbers[1:])
 
 
-def hash_as_key(data):
-    d = {}
-    for i in data:
-        h = hash(i)
-
-        if h in d:
-            if not isinstance(d[h], list):
-                d[h] = [d[h]]
-            d[h].append(i)
-        else:
-            d[h] = i
-    return d
+print(non_negative_even([0, 2, 4, 8, 16]))
 
 
-data = [-1, -2, 3]
-# data = [1, 2, 3, 4, 5, 5]
-data = [5, 5, 5]
-
-print(hash_as_key(data))
+def is_greater(data, n):
+    return any(sum(l) > n for l in data)
 
 
-s1 = '[[1, 2], [3, 4], [5, 6]]'
-# s1 = "{'Arthur', 'Timur', 'Anri', 'Ruslan', 'Dima'}"
-# s1 = "('black', 'blue', 'red', 'orange', 'green', 'gray')"
+data = [[-3, 4, 0, 1], [1, 1, -4], [0, 0], [9, 3]]
 
-# res = ''
-s = eval(s1)
-if isinstance(s, list):
-    res = s[-1]
-elif isinstance(s, set):
-    res = len(s)
-else:
-    res = s[0]
+print(is_greater(data, 10))
+
+
+def custom_isinstance(objects, typeinfo):
+    n = 0
+    for i in objects:
+        if isinstance(i, typeinfo):
+            n += 1
+    return n
+
+
+numbers = [1, 'two', 3.0, 'четыре', 5, 6.0]
+print(custom_isinstance(numbers, int))
+
+
+numbers = [-7724, 5023, 3197, -102, -4129, -880, 5857, -2866, -8913, 1195, 9809, 5347, -8071, 903, 3030, -4347, -3354, 1024, 8670, 4210, -5228, 8900, 4823, -2002, 4900, 9520, -3658, 1104, -9554, 3064, 9632, -8701, 3384, 4370, 2034, 7822, -9694, 3347, 7440, -8459, 3238, -5193, -3381, 5281, 9022, 5559, 7593, -6540, -6204, -
+           2483, 8729, 5810, -8254, -9846, -1801, 4882, 3838, -3140, 7609, -3325, 6026, 2994, -1677, 1266, -1893, -4408, -5722, -2841, 9812, 5837, -7474, 4624, -664, 6998, 7888, -971, 8810, 3812, -5396, 2593, 512, -4634, 9735, -3062, 9031, -9300, 3657, 6332, 7552, 8125, -725, 4392, 1727, 8194, -2828, -4314, -8967, -7912, -1363, -5957]
+
+
+print(max(enumerate(numbers), key=lambda x: x[1])[0])
+print(numbers.index(5023))
+
+
+def my_pow(n):
+    return sum([pow(int(i[1]), i[0]) for i in enumerate(str(n), 1)])
+
+
+print(my_pow(139))
+
+names = ['Moana', 'Cars', 'Zootopia', 'Ratatouille',
+         'Coco', 'Inside Out', 'Finding Nemo', 'Frozen']
+budgets = [150000000, 120000000, 150000000, 150000000,
+           180000000, 175000000, 94000000, 150000000]
+box_offices = [643331111, 462216280, 1023784195,
+               620702951, 807082196, 857611174, 940335536, 1280802282]
+
+print(*sorted(f'{i[0]}: {i[2]-i[1]}$' for i in zip(names,
+      budgets, box_offices)), sep='\n')
+
+
+def zip_longest(*args, fill=None):
+    # if not fill:
+    m = max(len(i) for i in args)
+    for i in args:
+        for j in range(m-len(i)):
+            i.append(fill)
+
+    return list(zip(*args))
+
+
+print(zip_longest([1, 2, 3, 4, 5], ['a', 'b', 'c'], fill='_'))
+
+data = [[1, 2, 3, 4, 5], ['one', 'two', 'three'], ['I', 'II']]
+print(zip_longest(*data))
+
+
+s = 'AnHTqir9brdQrgu5g71uhm1FaJ4fAZjbisIDnJVYekRPdGDc29'
+s_lowercase = []
+s_uppercase = []
+s_digits = []
+for i in s:
+    if i in string.ascii_lowercase:
+        s_lowercase.append(i)
+    elif i in string.ascii_uppercase:
+        s_uppercase.append(i)
+    else:
+        s_digits.append(i)
+
+s_lowercase.sort()
+s_uppercase.sort()
+s_digits.sort()
+
+res = ''.join(s_lowercase) + ''.join(s_uppercase) + \
+    ''.join(filter(lambda x: int(x) % 2 != 0, s_digits)) +\
+    ''.join(filter(lambda x: int(x) % 2 == 0, s_digits))
 print(res)
-
-
-f1 = '2*x**2 + 5*x + 7'
-n1 = list(map(int, '-1 5'.split()))
-l = []
-for x in range(n1[0], n1[1]+1):
-    l.append(eval(f1))
-    # print(x, eval(f1))
-
-s_out = f'''
-Минимальное значение функции 2*x**2 + 5*x + 7 на отрезке [-1; 5] равно {min(l)}
-Максимальное значение функции 2*x**2 + 5*x + 7 на отрезке [-1; 5] равно {max(l)}
-'''
-
-print(s_out)
-
-a, b = map(int, '12')
-
-print(a, b)
-
-
-# анонимные функции являются выражениями, то есть их можно сразу вызывать в момент определения
-
-
-numbers = filter(lambda x: x > 0, [-3, -2, -1, 0, 1, 2, 3, 1])
-
-if 1 in numbers:
-    print('bee')
-if 1 in numbers:
-    print('geek')
-
-
-data = ['Timur', -16.648911695768902, 'six', -202, 883.0093275936454, -765, (3, 4), -105.10718000213546, 976, -308.96857946288094, 458, ['one', 'two'], 479.92207220345927, -87, -71, 'twelve', 112, -621, -715.0179551194733, 'seven', 229, 729, -358, [
-    1, 2, 3], -974, 882, -894.4709033242768, '', 323.7720806756133, 'beegeek', -224, 431, 170.6353248658936, -343.0016746052049, 'number', 104.17133679352878, [], -353.5964777099863, 'zero', -113, 288, None, -708.3036176571618]
-# data = [1, 2, '14']
-print(*map(int, filter(lambda x: isinstance(x, (int, float)), data)))
-
-numbers = [4754, -4895, -364, -4764, 4683, 1639, -43, 228, -2701, -1503, 1223, 4340, -1296, 3939, -345, 623, -3275, 1003, 4367, -1739, 550, -1217, -1334, 1526, -4359, -3028, -4663, 3356, 3887, 4297, -1982, 1013, 3299, 3556, -3324, 417, 3531, -3134, 1782, 4439, 9, 1652, -985, 4327, 1517, 1225, -915, 2808, -3851, -1005, 3396,
-           2842, -3879, -3824, -9, -3805, 1609, -4741, -3072, 3573, 4680, 588, -1430, 2378, -1095, -343, 4357, -2164, -3304, 4354, 4926, -352, -1187, -3313, 2741, 4786, -2689, 741, 4558, 1442, 62, -1099, -2201, -16, -3115, 1862, 2384, 4072, -90, 204, 1158, -3134, -2512, 756, 4148, 4370, 1756, 3609, -1148, -3909, 4123, -2906, 69, 96, 1111]
-
-print((map(lambda x: x**2, filter(lambda x: x % 9 == 0 and x // 100 == 0, numbers))))
-
-dd = [-90, 1, 90]
-print(*filter(lambda x: x % 9 == 0 and -100 < x < 100 == 0, dd))
-print('==', *filter(lambda x: abs(x) // 100 ==
-      0 and abs(x) // 10 > 0 and x % 9 == 0, dd))
-
-
-l = []
-
-for i in range(3):
-    l.append([7]*3)
-    print(id(l[i]))
-
-print(l)
-
-l1 = [9]*4
-
-for i in range(3):
-    l1[i] = [5]*5
-    print(id(l1[i]))
-
-print(l1)
-
-t = [0]*2
-print(id([0]*2), id([0]*2), id(t))
-print(id([]), id([]))
-
-l2 = [1]
-print(id(l2))
-l2.append(2)
-print(id(l2))
-
-x = 0
-print(id(x))
-# x = 3
-print(id(x))
-
-l3 = [1]
-print(id(l3))
-l3 = l3 + [2]
-print(id(l3))
-
-
-names = ['ульяна', 'арина', 'Дмитрий', 'Сергей', 'Яна', 'мила', 'Ольга', 'софья', 'семён', 'Никита', 'маргарита', 'Василиса', 'Кирилл', 'александр', 'александра', 'Иван', 'андрей', 'Родион', 'максим', 'алиса', 'Артём', 'софия', 'владимир', 'дамир', 'Валерий', 'степан', 'Алексей', 'Марк', 'олег', 'ирина', 'Милана', 'мия', 'денис', 'Фёдор', 'Елизавета', 'айлин', 'Варвара', 'валерия', 'Алёна', 'Николь', 'юлия', 'Ксения', 'пётр', 'георгий', 'Мария', 'глеб', 'илья', 'Захар', 'Дарья', 'Евгения',
-         'матвей', 'Серафим', 'екатерина', 'Тимофей', 'виктор', 'Егор', 'Ника', 'анна', 'даниил', 'тихон', 'вера', 'кира', 'Эмилия', 'Виктория', 'Игорь', 'полина', 'алина', 'Давид', 'анастасия', 'Вероника', 'ярослав', 'Руслан', 'татьяна', 'Демид', 'амелия', 'Элина', 'Арсен', 'евгений', 'мадина', 'дарина', 'Савелий', 'Платон', 'Аделина', 'диана', 'Айша', 'павел', 'Стефания', 'Тимур', 'Ева', 'Елисей', 'Артемий', 'григорий', 'Мирон', 'Мирослава', 'Мира', 'Марат', 'Лилия', 'роман', 'владислав', 'Леонид']
-
-
-print(
-    *sorted(filter(lambda x: x[0] in 'АМ' and len(x) > 4, map(str.capitalize, names))))
-
-
-l = [1, 2]
-print(id(l))
-
-# l = [1, 2]
-l += [9]
-print(id(l), id(l[:]))
-
-
-def fib(n): return 1 if n == 1 else n*fib(n-1)
-
-
-print(fib(3))
