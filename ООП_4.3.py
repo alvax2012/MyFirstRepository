@@ -241,8 +241,14 @@ class Numbers:
     def __init__(self):
         self.l = []
 
-    def add_number(n):
+    def add_number(self, n):
         self.l.append(n)
+
+    def get_even(self):
+        return [i for i in self.l if i not in self.get_odd()]
+
+    def get_odd(self):
+        return [i for i in self.l if i % 2]
 
 
 numbers = Numbers()
@@ -254,3 +260,40 @@ numbers.add_number(4)
 
 print(numbers.get_even())
 print(numbers.get_odd())
+
+print()
+
+
+class TextHandler:
+    def __init__(self):
+        self.list_text = []
+
+    def add_words(self, text):
+        self.list_text.extend(text.split())
+
+    def get_shortest_words(self):
+        min_text = min(map(len, self.list_text), default='')
+        return [i for i in self.list_text if len(i) == min_text]
+        # if self.list_text:
+        #     min_text = min(map(len, self.list_text))
+        #     return [i for i in self.list_text if len(i) == min_text]
+        # else:
+        #     return []
+
+    def get_longest_words(self):
+        max_text = max(map(len, self.list_text), default='')
+        return [i for i in self.list_text if len(i) == max_text]
+        # if self.list_text:
+        #     max_text = max(map(len, self.list_text))
+        #     return [i for i in self.list_text if len(i) == max_text]
+        # else:
+        #     return []
+
+
+texthandler = TextHandler()
+
+# texthandler.add_words('The world will hold my trial for your sins')
+# texthandler.add_words('Never meant to see the sky never meant to live')
+
+print(texthandler.get_shortest_words())
+print(texthandler.get_longest_words())
