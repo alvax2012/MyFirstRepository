@@ -297,3 +297,39 @@ texthandler = TextHandler()
 
 print(texthandler.get_shortest_words())
 print(texthandler.get_longest_words())
+
+print()
+
+
+class Todo:
+    def __init__(self):
+        self.things = []
+
+    def add(self, *thing):
+        self.things.append(thing)
+        self.min = min(self.things, key=lambda x: x[1], default=None)[1]
+        self.max = max(self.things, key=lambda x: x[1], default=None)[1]
+
+    def get_by_priority(self, n):
+        return [i[0] for i in self.things if i[1] == n]
+
+    def get_low_priority(self):
+        self.get_by_priority(self.min)
+
+    def get_high_priority(self):
+        self.get_by_priority(self.max)
+
+
+todo = Todo()
+
+todo.add('Проснуться', 3)
+todo.add('Помыться', 2)
+todo.add('Поесть', 2)
+
+print(todo.get_by_priority(2))
+
+
+print(todo.things)
+print(todo.get_by_priority(1))
+print(todo.get_low_priority())
+print(todo.get_high_priority())
