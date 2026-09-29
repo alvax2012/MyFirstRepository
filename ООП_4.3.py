@@ -1,3 +1,6 @@
+import sys
+
+
 class Gun:
     def shoot(self):
         print('pif')
@@ -314,22 +317,96 @@ class Todo:
         return [i[0] for i in self.things if i[1] == n]
 
     def get_low_priority(self):
-        self.get_by_priority(self.min)
+        return self.get_by_priority(self.min)
 
     def get_high_priority(self):
-        self.get_by_priority(self.max)
+        return self.get_by_priority(self.max)
 
 
 todo = Todo()
 
-todo.add('Проснуться', 3)
-todo.add('Помыться', 2)
-todo.add('Поесть', 2)
+todo.add('Ответить на вопросы', 5)
+todo.add('Сделать картинки', 1)
+todo.add('Доделать задачи', 4)
+todo.add('Дописать конспект', 5)
 
-print(todo.get_by_priority(2))
-
-
-print(todo.things)
-print(todo.get_by_priority(1))
 print(todo.get_low_priority())
 print(todo.get_high_priority())
+print(todo.get_by_priority(3))
+
+# todo.add('Проснуться', 3)
+# todo.add('Помыться', 2)
+# todo.add('Поесть', 2)
+
+# print(todo.get_by_priority(2))
+
+
+# print(todo.things)
+# print(todo.get_by_priority(1))
+# print(todo.get_low_priority())
+# print(todo.get_high_priority())
+
+print()
+
+
+class Postman:
+    def __init__(self):
+        self.delivery_data = []
+
+    def add_delivery(self, *s):
+        if s not in self.delivery_data:
+            self.delivery_data.append(s)
+
+    def get_houses_for_street(self, st):
+        res = []
+        for i in self.delivery_data:
+            if i[0] == st and i[1] not in res:
+                res.append(i[1])
+        return res
+
+    def get_flats_for_house(self, st, ho):
+        res = []
+        for s, h, k in self.delivery_data:
+            if s == st and h == ho and k not in res:
+                res.append(k)
+        return res
+        # return [k for s, h, k in self.delivery_data if s == st and h == ho] if self.delivery_data else []
+
+
+postman = Postman()
+
+postman.add_delivery('Советская', 151, 74)
+postman.add_delivery('Советская', 151, 75)
+postman.add_delivery('Советская', 90, 2)
+postman.add_delivery('Советская', 151, 74)
+
+print(postman.get_houses_for_street('Советская'))
+print(postman.get_flats_for_house('Советская', 151))
+
+print()
+
+
+class Wordplay:
+    def __init__(self, words=[]):
+        self.res = {i: None for i in words}
+        self.words = list(self.res)
+
+    def add_word(self, word):
+        self.res.update({word: None})
+
+    def words_with_length(self, n):
+        return [i for i in self.res if len(i) == n]
+
+    def only(self, *args):
+        return [i for i in self.res if set(i) == set(args)]
+
+    def avoid(self, *args):
+        return [i for i in self.res if set(i) == set(args)]
+
+
+wordplay = Wordplay(['bee', 'geek', 'cool', 'stepik'])
+wordplay.add_word('python')
+print(wordplay.words)
+print(wordplay.words_with_length(1))
+print(wordplay.only('a', 'b', 'c'))
+print(wordplay.avoid('a', 'b', 'c'))
