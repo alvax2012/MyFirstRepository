@@ -388,25 +388,37 @@ print()
 
 class Wordplay:
     def __init__(self, words=[]):
-        self.res = {i: None for i in words}
-        self.words = list(self.res)
+        # self.res = {i: None for i in words}
+        # self.words = list(self.res)
+        self.words = words[:]
 
     def add_word(self, word):
-        self.res.update({word: None})
+        # self.res.update({word: None})
+        # self.words = list(self.res)
+        if word not in self.words:
+            self.words.append(word)
 
     def words_with_length(self, n):
-        return [i for i in self.res if len(i) == n]
+        return [i for i in self.words if len(i) == n]
 
     def only(self, *args):
-        return [i for i in self.res if set(i) == set(args)]
+        return [i for i in self.words if all(k in args for k in i)]
+        # return [i for i in self.res if set(i) == set(args)]
 
     def avoid(self, *args):
-        return [i for i in self.res if set(i) == set(args)]
+        return [i for i in self.words if all(k not in args for k in i)]
 
 
-wordplay = Wordplay(['bee', 'geek', 'cool', 'stepik'])
-wordplay.add_word('python')
+# wordplay = Wordplay(['bee', 'geek', 'cool', 'stepik'])
+# wordplay.add_word('python')
+# print(wordplay.words)
+# print(wordplay.words_with_length(1))
+# print(wordplay.only('a', 'b', 'c'))
+# print(wordplay.avoid('a', 'b', 'c'))
+
+words = ['Лейбниц', 'Бэббидж', 'Нейман', 'Джобс', 'да_Винчи', 'Касперский']
+wordplay = Wordplay(words)
+
+words.extend(['Гуев', 'Харисов', 'Светкин'])
+print(words)
 print(wordplay.words)
-print(wordplay.words_with_length(1))
-print(wordplay.only('a', 'b', 'c'))
-print(wordplay.avoid('a', 'b', 'c'))
