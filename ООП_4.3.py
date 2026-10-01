@@ -422,3 +422,37 @@ wordplay = Wordplay(words)
 words.extend(['Гуев', 'Харисов', 'Светкин'])
 print(words)
 print(wordplay.words)
+
+print()
+
+
+class Knight:
+    def __init__(self, horizontal, vertical, color):
+        self.horizontal = horizontal
+        self.vertical = vertical
+        self.color = color
+
+    def get_char(self, chr='N'):
+        return chr
+
+    def can_move(self, horizontal, vertical):
+        if abs(self.horizontal - horizontal) == 1 and abs(self.vertical - vertical) == 3:
+            pass
+        elif abs(self.horizontal - horizontal) == 3 and abs(self.vertical - vertical) == 1:
+            pass
+
+    def move_to(self):
+        pass
+
+    def draw_board(self):
+        pass
+
+
+knight = Knight('c', 3, 'white')
+
+print(knight.horizontal, knight.vertical)
+print(knight.can_move('e', 5))
+print(knight.can_move('e', 4))
+
+knight.move_to('e', 4)
+print(knight.horizontal, knight.vertical)
