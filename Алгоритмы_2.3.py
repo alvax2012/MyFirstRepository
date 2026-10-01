@@ -32,3 +32,15 @@ def is_point_in_rectangle(p: tuple[int, int], rect: list[tuple[int, int], tuple[
 
 
 print(is_point_in_rectangle((-2, -2), [(-1, -1), (3, 4)]))
+
+
+def linear_coefficients(a, b):
+    x1, y1 = a
+    x2, y2 = b
+    b = (y2-y1)/(x2-x1)
+
+    k = (y2 - b)/x2
+    return k, b
+
+
+print(linear_coefficients((1, 2), (2, 3)))
