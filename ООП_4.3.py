@@ -427,6 +427,8 @@ print()
 
 
 class Knight:
+    d = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8}
+
     def __init__(self, horizontal, vertical, color):
         self.horizontal = horizontal
         self.vertical = vertical
@@ -436,9 +438,9 @@ class Knight:
         return chr
 
     def can_move(self, horizontal, vertical):
-        if abs(self.horizontal - horizontal) == 1 and abs(self.vertical - vertical) == 3:
-            pass
-        elif abs(self.horizontal - horizontal) == 3 and abs(self.vertical - vertical) == 1:
+        if abs(d[self.horizontal] - d[horizontal]) == 1 and abs(self.vertical - vertical) == 3:
+            return True
+        elif abs(d[self.horizontal] - d[horizontal]) == 3 and abs(self.vertical - vertical) == 1:
             pass
 
     def move_to(self):
