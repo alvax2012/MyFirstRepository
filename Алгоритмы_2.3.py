@@ -39,10 +39,19 @@ print()
 def linear_coefficients(p1, p2):
     x1, y1 = p1
     x2, y2 = p2
+
+
+def linear_coefficients(a, b):
+    x1, y1 = a
+    x2, y2 = b
     b = (y2-y1)/(x2-x1)
 
     k = (y2 - b)/x2
     return k, b
 
 
+<< << << < HEAD
 print(linear_coefficients((0, 0), (1, 5)))
+== == == =
+print(linear_coefficients((1, 2), (2, 3)))
+>>>>>> > 80e9e2da84c9167dd72fcf5099a1c5a36fdfcc6a
