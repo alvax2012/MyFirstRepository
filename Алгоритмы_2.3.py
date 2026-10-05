@@ -44,14 +44,36 @@ def linear_coefficients(p1, p2):
 def linear_coefficients(a, b):
     x1, y1 = a
     x2, y2 = b
-    b = (y2-y1)/(x2-x1)
+    k = (y2-y1)/(x2-x1)
 
-    k = (y2 - b)/x2
+    b = y2 - k*x2
     return k, b
 
 
-<< << << < HEAD
-print(linear_coefficients((0, 0), (1, 5)))
-== == == =
-print(linear_coefficients((1, 2), (2, 3)))
->>>>>> > 80e9e2da84c9167dd72fcf5099a1c5a36fdfcc6a
+def equation_of_line(values):
+    b = values[0]
+    k = values[1] - b
+    if all(values[i] == k*i + b for i in range(2, len(values))):
+        s1 = str(k) + 'x' if abs(k) != 1 else '-x' if k < 0 else 'x'
+        s2 = ''
+        if k and b:
+            s2 = f' + {abs(b)}' if b > 0 else f' - {abs(b)}'
+        elif b == 0 and k:
+            pass  # s2 = ''
+        elif k == 0 and b:
+            s1 = ''
+            s2 = f'{b}' if b > 0 else f'{str(b)}'
+        else:
+            s1 = '0'
+
+        return f'y = {s1}{s2}'
+
+
+print(equation_of_line([1, 3, 5, 7, 9]))
+print(equation_of_line([0, 1, 2, 3, 4]))
+print(equation_of_line([0, -1, -2, -3, -4]))
+print(equation_of_line([0, -2, -4, -6, -8]))
+print(equation_of_line([6, 6, 6, 6, 6]))
+print(equation_of_line([1, 2, 3, 5, 7]))
+
+'qq'.lower()
