@@ -118,7 +118,7 @@ def ways(n):
 
         # ways_rec.res = []
 
-        for i in t:
+        while k:
             l[-1].append(i)
             ways_rec(i)
             # p.pop()
