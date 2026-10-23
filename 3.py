@@ -196,6 +196,9 @@ print()
 
 def paren(s):
     l = [i.strip() for i in s if i.strip()]
+    for i in l:
+        if i == '(':
+            paren()
     return l, len(l)
 
 
