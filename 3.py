@@ -172,7 +172,7 @@ def beegeek():
 
 beegeek = reverse(del_first_char(make_upper(beegeek)))
 
-print(beegeek())
+# print(beegeek())
 
 
 class Postman:
@@ -187,3 +187,16 @@ class Postman:
 
     def get_flats_for_house(self, street, house):
         return list({a: None for s, h, a in self.delivery_data if s == street and h == house})
+
+
+print()
+
+# скобки
+
+
+def paren(s):
+    l = [i.strip() for i in s if i.strip()]
+    return l, len(l)
+
+
+print(paren('( ( ()() ) ( ()() ) )'))
