@@ -61,8 +61,14 @@ def is_fraction(x):
 print('--', is_fraction('1/-2'))
 
 
-def intersperse(iterable, delimiter):
-    return delimiter.join(iterable)
+# def intersperse(iterable, delimiter):
+#     return delimiter.join(iterable)
 
 
-print(*intersperse([1, 2, 3], '-'))
+# print(*intersperse([1, 2, 3], '-'))
+
+def staples(s):
+    pass
+
+
+print(staples('(())'))
