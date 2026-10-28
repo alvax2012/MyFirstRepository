@@ -19,3 +19,15 @@ negative = map(lambda x: -x, positive)
 
 for a, b in zip(positive, negative):
     print(a + b)
+
+
+def filterfalse(predicate, iterable):
+    if not predicate:
+        return filter(lambda x: not x, iterable)
+
+    return filter(lambda x: not predicate(x), iterable)
+
+
+objects = [0, 1, True, False, 17, []]
+
+print(*filterfalse(None, objects))
