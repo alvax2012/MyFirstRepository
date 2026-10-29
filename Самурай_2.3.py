@@ -18,3 +18,13 @@ def f(x):
 draw_graph(f)
 
 # draw_graph(lambda x: x)
+
+
+def rhombus(h, fill_value='!'):
+
+    for i in range(1, h+1):
+        s = '*'*i
+        print(s.center(i, '!'))
+
+
+rhombus(5)
