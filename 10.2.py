@@ -31,3 +31,42 @@ def filterfalse(predicate, iterable):
 objects = [0, 1, True, False, 17, []]
 
 print(*filterfalse(None, objects))
+
+
+def transpose(matrix):
+    return [list(i) for i in zip(*matrix)]
+
+
+matrix = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
+
+for row in transpose(matrix):
+    print(row)
+
+print(*zip('12', '34'))
+
+matrix = [['1', '2'],
+          ['4', '5'],
+          ['7', '8'],
+          ['3', 4],
+          [True, None],
+          [9, 80],
+          [1, -1]]
+
+print(transpose(matrix))
+
+data = [2, 3, 8, 1, 7]
+
+print()
+
+
+def get_min_max(data):
+    l = list(enumerate(data))
+    if data:
+        return min(l, key=lambda x: x[1])[0], max(l, key=lambda x: x[1])[0]
+
+
+data = [2, 3, 8, 1, 7]
+data = [9, 9, 9, 9, 9]
+print(get_min_max(data))
