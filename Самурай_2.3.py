@@ -19,12 +19,14 @@ draw_graph(f)
 
 # draw_graph(lambda x: x)
 
+print('--')
+
 
 def rhombus(h, fill_value='!'):
 
     for i in range(1, h+1):
-        s = '*'*i
-        print(s.center(i, '!'))
+        s = '*'*(2*i - 1)
+        print(s.center(h, fill_value))
 
 
-rhombus(5)
+rhombus(6)
