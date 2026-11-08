@@ -15,7 +15,7 @@ def f(x):
     return x
 
 
-draw_graph(f)
+#  draw_graph(f)
 
 # draw_graph(lambda x: x)
 
@@ -25,8 +25,14 @@ print('--')
 def rhombus(h, fill_value='!'):
 
     for i in range(1, h+1):
-        s = '*'*(2*i - 1)
+        if i < h//2:
+            s = '*'*(2*i - 1)
+
         print(s.center(h, fill_value))
 
+    # for i in range(h, 0):
+    #     s = '*'*(2*i - 1)
+    #     print(s.center(h, fill_value))
 
-rhombus(6)
+
+rhombus(5)

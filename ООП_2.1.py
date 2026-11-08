@@ -67,8 +67,13 @@ print('--', is_fraction('1/-2'))
 
 # print(*intersperse([1, 2, 3], '-'))
 
-def staples(s):
-    pass
+def staples(s, res=[]):
+    if s == ')':
+        return ')'
+
+    for i in s:
+
+    res.append(i)
 
 
 print(staples('(())'))
