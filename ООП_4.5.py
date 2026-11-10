@@ -78,3 +78,30 @@ print(rectangle.length)
 print(rectangle.width)
 print(rectangle.perimeter)
 print(rectangle.area)
+
+print()
+
+
+class Cat:
+    def __init__(self, name):
+        self._name = name                               # имя кошки
+
+    @property
+    def name(self):                                     # геттер свойства name
+        return self._name
+
+    @name.setter
+    def get_name(self, name):                               # сеттер свойства name
+        if isinstance(name, str) and name.isalpha():
+            self._name = name
+        else:
+            raise ValueError('Некорректное имя')
+
+    @name.deleter
+    def del_name(self):                                     # делитер свойства name
+        del self._name
+
+
+print(Cat.name.fget)
+print(Cat.name.fset)
+print(Cat.name.fdel)
