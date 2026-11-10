@@ -79,7 +79,6 @@ print(rectangle.width)
 print(rectangle.perimeter)
 print(rectangle.area)
 
-<<<<<<< Updated upstream
 print()
 
 
@@ -106,7 +105,7 @@ class Cat:
 print(Cat.name.fget)
 print(Cat.name.fset)
 print(Cat.name.fdel)
-=======
+
 
 class HourClock:
     def __init__(self, hours):
@@ -180,4 +179,3 @@ person = Person('Меган', 'Фокс')
 
 person.name = 'Стефани'
 print(person.fullname)
->>>>>>> Stashed changes

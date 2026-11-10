@@ -38,3 +38,12 @@ def rhombus(h, fill_value='!'):
 
 
 rhombus(5)
+
+
+def normalize_bits(binary):
+    m = len(max(binary, key=lambda x: len(x)))
+    return [i.zfill(m) for i in binary]
+
+
+binary = ['101', '1111101000', '1000']
+print(normalize_bits(binary))

@@ -73,8 +73,48 @@ print(get_min_max(data))
 
 
 def starmap(func, iterable):
+    return map(func,  *[list(i) for i in zip(*iterable)])
 
 
 pairs = [(1, 3), (2, 5), (6, 4)]
 
 print(*starmap(lambda a, b: a + b, pairs))
+
+print(*map(lambda a, b: a + b, (1, 3), (2, 5)))
+
+print([list(i) for i in zip(*pairs)])
+
+print()
+
+
+def get_min_max(iterable):
+    mi, ma = 0, 0
+    res = iter(iterable)
+    try:
+        mi = next(res)
+        ma = mi
+    except StopIteration:
+        return
+
+    for i in res:
+        if i < mi:
+            mi = i
+        if i > ma:
+            ma = i
+
+    return mi, ma
+
+
+iterable = iter(range(10))
+
+print(get_min_max(iterable))
+
+iterable = iter([])
+
+print(get_min_max(iterable))
+
+# data = iter(range(100_000_000))
+# print(get_min_max(data))
+
+i = iter([1, 2, 3])
+print(*map(lambda x: x, i))
