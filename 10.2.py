@@ -70,3 +70,11 @@ def get_min_max(data):
 data = [2, 3, 8, 1, 7]
 data = [9, 9, 9, 9, 9]
 print(get_min_max(data))
+
+
+def starmap(func, iterable):
+
+
+pairs = [(1, 3), (2, 5), (6, 4)]
+
+print(*starmap(lambda a, b: a + b, pairs))

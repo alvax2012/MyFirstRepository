@@ -79,6 +79,7 @@ print(rectangle.width)
 print(rectangle.perimeter)
 print(rectangle.area)
 
+<<<<<<< Updated upstream
 print()
 
 
@@ -105,3 +106,78 @@ class Cat:
 print(Cat.name.fget)
 print(Cat.name.fset)
 print(Cat.name.fdel)
+=======
+
+class HourClock:
+    def __init__(self, hours):
+        self.hours = hours
+
+    def get_hours(self):
+        return self._hours
+
+    def set_hours(self, hours):
+        if hours in range(1, 13):
+            self._hours = hours
+        else:
+            raise ValueError('Некорректное время')
+
+    hours = property(get_hours, set_hours)
+
+
+time = HourClock(7)
+
+print(time.hours)
+time.hours = 9
+print(time.hours)
+
+
+print()
+
+
+class C:
+    def f():
+        print('888')
+
+
+class D():
+    def f(self):
+        pass
+
+
+class E(D, C):
+    def f(self):
+        super().f()
+
+
+E().f()
+C.f()
+print(E.__mro__)
+# cc = C()
+# cc.f()
+
+
+class Person:
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+
+    def get_fullname(self):
+        return f'{self.name} {self.surname}'
+
+    def set_fullname(self, fullname):
+        self.name, self.surname = fullname.split()
+
+    fullname = property(get_fullname, set_fullname)
+
+
+person = Person('Меган', 'Фокс')
+
+print(person.name)
+print(person.surname)
+print(person.fullname)
+
+person = Person('Меган', 'Фокс')
+
+person.name = 'Стефани'
+print(person.fullname)
+>>>>>>> Stashed changes
