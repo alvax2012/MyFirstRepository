@@ -118,3 +118,38 @@ print(get_min_max(iterable))
 
 i = iter([1, 2, 3])
 print(*map(lambda x: x, i))
+
+
+def hash_function(password):
+    hash_value = 0
+    for char, index in zip(password, range(len(password))):
+        hash_value += ord(char) * index
+    return hash_value % 10**9
+
+
+class Account:
+    def __init__(self, login, password):
+        self.login = login
+        self.password = password
+
+    @property
+    def login(self):
+        return self._login
+
+    @login.setter
+    def login(self, login):
+        self._login = login
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def login(self, password):
+        self._password = hash_function(password)
+
+
+account = Account('hannymad', 'cakeisalie')
+
+print(account.login)
+print(account.password)
