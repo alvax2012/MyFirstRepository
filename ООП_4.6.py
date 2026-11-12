@@ -55,96 +55,67 @@ print(account.password)
 
 
 class QuadraticPolynomial:
+    def s1(a, b):
+        return round(-b / (2 * a), 3)
+
+    def s2(a, b, c):
+        return round(b**2 - 4 * a * c, 3)
+
     def __init__(self, a, b, c):
         self.a = a
         self.b = b
         self.c = c
 
-        self._s1 = round(-self.b / (2 * self.a), 3)
-        self._s2 = round(self.b**2 - 4 * self.a * self.c, 3)
+    @property
+    def a(self):
+        return self._a
+
+    @a.setter
+    def a(self, a):
+        self._a = a
+
+    @property
+    def b(self):
+        return self._b
+
+    @b.setter
+    def b(self, b):
+        self._b = b
+
+    @property
+    def c(self):
+        return self._c
+
+    @c.setter
+    def c(self, c):
+        self._c = c
 
     @property
     def x1(self):
-        if self._s2 >= 0:
-            return round(self._s1 - self._s2 ** (1/2) / (2 * self.a), 3)
+        s2 = QuadraticPolynomial.s2(self._a, self._b, self._c)
+        if s2 >= 0:
+            return round(QuadraticPolynomial.s1(self._a, self._b) - s2 ** (1/2) / (2 * self._a), 3)
 
     @property
     def x2(self):
-        if self._s2 >= 0:
-            return round(self._s1 + self._s2 ** (1/2) / (2 * self.a), 3)
+        s2 = QuadraticPolynomial.s2(self._a, self._b, self._c)
+        if s2 >= 0:
+            return round(QuadraticPolynomial.s1(self._a, self._b) + s2 ** (1/2) / (2 * self._a), 3)
 
     @property
     def view(self):
-        return f'{'' if self.a > 0 else '-'}{abs(self.a)}x^2 {'+' if self.b >= 0 else '-'} {abs(self.b)}x {'+' if self.c >= 0 else '-'} {abs(self.c)}'
+        return f'{'' if self._a > 0 else '-'}{abs(self._a)}x^2 {'+' if self._b >= 0 else '-'} {abs(self._b)}x {'+' if self._c >= 0 else '-'} {abs(self._c)}'
 
     @property
     def coefficients(self):
-        return self.a, self.b, self.c
+        return self._a, self._b, self._c
 
     @coefficients.setter
     def coefficients(self, t):
-        self.a, self.b, self.c = t
-        self._s1 = - self.b / (2 * self.a)
-        self._s2 = self.b**2 - 4 * self.a * self.c
+        self._a, self._b, self._c = t
 
 
-polynom = QuadraticPolynomial(1, 2, -3)
-
-print(polynom.a)
-print(polynom.b)
-print(polynom.c)
-
-polynom = QuadraticPolynomial(1, 2, -3)
-
-print(polynom.view)
-print(polynom.coefficients)
-
-print()
-polynom = QuadraticPolynomial(1, 2, -3)
-
-polynom.coefficients = (1, -5, 6)
-print(polynom.x1)
-print(polynom.x2)
-print(polynom.view)
-print(polynom.coefficients)
-
-print()
-polynom = QuadraticPolynomial(1, 2, -3)
-
-polynom.coefficients = (1, -5, 0)
-print(polynom.x1)
-print(polynom.x2)
-print(polynom.view)
-
-print()
-polynom = QuadraticPolynomial(1, 2, -3)
-
-polynom.coefficients = (1, 0, -9)
-print(polynom.x1)
-print(polynom.x2)
-print(polynom.view)
-
-print()
-polynom = QuadraticPolynomial(500, -601, 101)
-
-print(polynom.a, polynom.b, polynom.c)
-print(polynom.x1)
-print(polynom.x2)
-print(polynom.coefficients)
-print(polynom.view)
-
-print()
-
-polynom.coefficients = (-1000, 1202, -202)
-print(polynom.a, polynom.b, polynom.c)
-print(polynom.x1)
-print(polynom.x2)
-print(polynom.coefficients)
-print(polynom.view)
-
-print()
-print()
-print()
+# print()
 polynom = QuadraticPolynomial(500, -601, 101)
 
 print(polynom.a, polynom.b, polynom.c)
@@ -161,3 +132,47 @@ print(polynom.x1)
 print(polynom.x2)
 print(polynom.coefficients)
 print(polynom.view)
+
+print()
+
+
+class Color:
+    def __init__(self, hexcode):
+        self.hexcode = hexcode
+
+    @property
+    def hexcode(self):
+        # return f'{int(self.r, 16):X}',  f'{int(self.g, 16):X}',  f'{int(self.b, 16):X}'
+        return self._hexcode
+
+    @hexcode.setter
+    def hexcode(self, s):
+        self._hexcode = s
+        self.r, self.g, self.b = int(s[:2], 16), int(
+            s[2:4], 16), int(s[4:], 16)
+
+
+color = Color('0000FF')
+print(color.hexcode)
+print(color.r)
+print(color.g)
+print(color.b)
+print()
+
+color = Color('0000FF')
+
+color.hexcode = 'A782E3'
+print(color.hexcode)
+print(color.r)
+print(color.g)
+print(color.b)
+
+print()
+print(dir(color))
+print()
+print(color.__dict__)
+print('-'*100)
+
+# print(dir(Color))
+# print()
+# print(Color.__dict__)
