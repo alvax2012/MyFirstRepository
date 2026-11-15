@@ -176,3 +176,21 @@ print('-'*100)
 # print(dir(Color))
 # print()
 # print(Color.__dict__)
+
+
+class ElectricCar:
+    status = '111'
+
+    def disable(self):
+        # self.__class__.status = False
+        ElectricCar.status = '222'
+
+
+car1 = ElectricCar()
+car2 = ElectricCar()
+
+print(car1.status, car2.status)
+
+car1.disable()
+
+print(car1.status, car2.status)
