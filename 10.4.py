@@ -77,3 +77,86 @@ geek = Repeater('geek')
 print(next(geek))
 print(next(geek))
 print(next(geek))
+
+
+class BoundedRepeater:
+    def __init__(self, obj, times):
+        self.obj = obj
+        self.times = times+1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.times -= 1
+        if self.times == 0:
+            raise StopIteration
+        return self.obj
+
+
+bee = BoundedRepeater('bee', 2)
+
+print(next(bee))
+print(next(bee))
+
+
+# class Square:
+#     def __init__(self, n):
+#         self.n = n
+#         self.i = 0
+
+#     def __iter__(self):
+#         return self
+
+#     def __next__(self):
+#         self.i += 1
+#         if self.i > self.n:
+#             raise StopIteration
+#         return self.i**2
+
+
+class Square:
+    def __init__(self, n):
+        self.n = n
+        self.current = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        print('i=', self.current)
+        if self.n == self.current:
+            raise StopIteration
+        self.current += 1
+        print('i1=', self.current)
+        return self.current ** 2
+
+
+squares = Square(2)
+
+print(next(squares))
+print(next(squares), squares.current)
+
+print()
+
+
+class Fibonacci:
+    def __init__(self):
+        self._i = 1
+        self._sum = 0
+
+    def __iter__(self):
+        return self5
+
+    def __next__(self):
+        self._ = 1
+        self._sum += i
+        return self._sum
+
+
+fibonacci = Fibonacci()
+
+print(next(fibonacci))
+print(next(fibonacci))
+print(next(fibonacci))
+print(next(fibonacci))
