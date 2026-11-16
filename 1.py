@@ -51,3 +51,16 @@ for i in range(5):
 s = [100, 25, 505, 481, 1, 2401]
 for i in s:
     print(f"{i} -> {max(str(i), key=int)}")
+
+
+# создаем объект [1, 2, 3, 4, 5] и назначаем ему имя  numbers
+numbers = [1, 2, 3, 4, 5]
+iterator = iter(numbers)    # на основании numbers создаем итератор iterator,
+numbers.clear()             # чистим объект [1, 2, 3, 4, 5] ->[]
+numbers[:] = [6, 7, 8]      # наполняем старый объект новыми значениями
+# создаем новый объект [1, 2, 3, 4, 5] ссылкой numbers
+numbers = [1, 2, 3, 4, 5]
+print(next(iterator))  # 6
+print(next(iterator))  # 7
+print(next(iterator))  # 8
+print(next(iterator))  # StopIteration
