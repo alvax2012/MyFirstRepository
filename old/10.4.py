@@ -1,3 +1,5 @@
+
+
 class Counter:
     # конструктор принимает два аргумента low и high (помимо self)
     def __init__(self, low, high):

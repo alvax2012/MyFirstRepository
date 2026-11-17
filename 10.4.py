@@ -137,27 +137,40 @@ squares = Square(2)
 print(next(squares))
 print(next(squares), squares.current)
 
-print()
+print('--')
 
 
 class Fibonacci:
     def __init__(self):
-        self._i = 1
-        self._sum = 0
+        self._pre = 0
+        self._cur = 1
 
     def __iter__(self):
-        return self5
+        return self
 
     def __next__(self):
-        self._ = 1
-        self._sum += i
-        return self._sum
+        # if self._pre == 0:
+        #     t = self._cur
+        #     self._cur = self._pre + self._cur
+        #     self._pre = t
+        #     return 1
+        #     self._cur = 1
+        # self._pre = self._cur
+        # t = self._cur
+        self._pre, self._cur = self._cur, self._pre + self._cur
+        # self._pre = t
+
+        return self._cur
 
 # 1,1,2,3,5,8,13,21,34
 
 
 fibonacci = Fibonacci()
 
+print(next(fibonacci))
+print(next(fibonacci))
+print(next(fibonacci))
+print(next(fibonacci))
 print(next(fibonacci))
 print(next(fibonacci))
 print(next(fibonacci))
