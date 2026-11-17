@@ -144,21 +144,17 @@ class Fibonacci:
     def __init__(self):
         self._pre = 0
         self._cur = 1
+        self._flag = True
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        # if self._pre == 0:
-        #     t = self._cur
-        #     self._cur = self._pre + self._cur
-        #     self._pre = t
-        #     return 1
-        #     self._cur = 1
-        # self._pre = self._cur
-        # t = self._cur
+        if self._flag:
+            self._flag = False
+            return 1
+
         self._pre, self._cur = self._cur, self._pre + self._cur
-        # self._pre = t
 
         return self._cur
 
@@ -175,3 +171,71 @@ print(next(fibonacci))
 print(next(fibonacci))
 print(next(fibonacci))
 print(next(fibonacci))
+
+print('--')
+
+
+class PowerOf:
+    def __init__(self, number):
+        self._number = number
+        self._i = -1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self._i += 1
+        return self._number**self._i
+
+
+power_of_two = PowerOf(2)
+
+print(next(power_of_two))
+print(next(power_of_two))
+print(next(power_of_two))
+print(next(power_of_two))
+
+print('---')
+
+
+class DictItemsIterator:
+    def __init__(self, data):
+        self._d = data
+        self._data = iter(data)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        k = next(self._data)
+        return k, self._d[k]
+
+
+pairs = DictItemsIterator({1: 'A', 2: 'B', 3: 'C'})
+
+print(*pairs)
+
+print('----')
+
+
+class CardDeck:
+    def __init__(self):
+        self._m = ['пик', 'треф', 'бубен', 'червей']
+        self._r = ['1', '2', '3', '7', 'валет', 'дама',
+                   'бубен', 'король', 'червей', 'туз']
+        self._i = 1
+        self._j = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        i.0
+
+        return f'{} {}'
+
+
+cards = CardDeck()
+
+print(next(cards))
+print(next(cards))
