@@ -1,3 +1,5 @@
+from random import choice, randint
+import string
 numbers = [1, 2, 3, 4, 5]
 
 iterator = iter(numbers)
@@ -215,27 +217,98 @@ pairs = DictItemsIterator({1: 'A', 2: 'B', 3: 'C'})
 
 print(*pairs)
 
-print('----')
+print('---------')
 
 
 class CardDeck:
     def __init__(self):
-        self._m = ['пик', 'треф', 'бубен', 'червей']
-        self._r = ['1', '2', '3', '7', 'валет', 'дама',
-                   'бубен', 'король', 'червей', 'туз']
-        self._i = 1
-        self._j = 1
+        self._m = ("пик", "треф", "бубен", "червей")
+        self._r = ("2", "3", "4", "5", "6", "7", "8", "9",
+                   "10", "валет", "дама", "король", "туз")
+        self._i = -1
+        self._j = 0
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        i.0
+        self._i += 1
 
-        return f'{} {}'
+        if (self._i)*(self._j) == 39:
+            raise StopIteration
+
+        if self._i == len(self._r):
+            self._i = 0
+            self._j += 1
+
+        # print(self._i, self._j)
+        return f'{self._r[self._i]} {self._m[self._j]}'
 
 
 cards = CardDeck()
 
-print(next(cards))
-print(next(cards))
+cards = list(CardDeck())
+
+# print([(i, cards[i]) for i in range(len(cards))])
+
+print(cards[9])
+print(cards[23])
+print(cards[37])
+print(cards[51])
+
+
+print()
+
+
+print()
+
+
+class RandomNumbers:
+    def __init__(self, left, right, n):
+        self._left = left
+        self._right = right
+        self._n = n
+        self._i = -1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self._i += 1
+        if self._i == self._n:
+            raise StopIteration
+        return randint(self._left, self._right)
+
+
+iterator = RandomNumbers(1, 1, 3)
+
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))
+
+
+print()
+
+
+class Alphabet:
+    cyrillic_lower = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+
+    def __init__(self, language):
+        self._language = language
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        # self._i += 1
+        # if self._i == self._n:
+        #     raise StopIteration
+        # return randint(self._left, self._right)
+        return string.ascii_lowercase, self.__class__.cyrillic_lower, Alphabet.cyrillic_lower
+
+
+ru_alpha = Alphabet('ru')
+
+print(next(ru_alpha))
+print(next(ru_alpha))
+print(next(ru_alpha))
