@@ -291,20 +291,23 @@ print()
 
 
 class Alphabet:
-    cyrillic_lower = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    cyrillic_lower = 'абвгдежзийклмнопрстуфхцчшщъыьэюя'
 
     def __init__(self, language):
-        self._language = language
+
+        if language == 'ru':
+            self.__ascii_lowercase = self.cyrillic_lower
+        else:
+            self.__ascii_lowercase = string.ascii_lowercase
+
+        self._i = -1
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        # self._i += 1
-        # if self._i == self._n:
-        #     raise StopIteration
-        # return randint(self._left, self._right)
-        return string.ascii_lowercase, self.__class__.cyrillic_lower, Alphabet.cyrillic_lower
+        self._i += 1
+        return self.__ascii_lowercase[self._i % len(self.__ascii_lowercase)]
 
 
 ru_alpha = Alphabet('ru')
@@ -312,3 +315,46 @@ ru_alpha = Alphabet('ru')
 print(next(ru_alpha))
 print(next(ru_alpha))
 print(next(ru_alpha))
+
+en_alpha = Alphabet('en')
+
+letters = [next(en_alpha) for _ in range(28)]
+
+print(*letters)
+
+print(len(string.ascii_lowercase))
+
+ru_alpha = Alphabet('ru')
+
+for _ in range(1000):
+    next(ru_alpha)
+
+print(next(ru_alpha))
+
+print()
+
+
+class Xrange:
+    def __init__(self, start, end, step=1):
+        self._start = start - step
+        self._end = end
+        self._step = step
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self._start += self._step
+        if self._start > self._end-self._step:
+            raise StopIteration
+        return self._start
+
+
+evens = Xrange(0, 10, 2)
+
+print(*evens)
+
+
+xrange = Xrange(10, 1, -1)
+
+print(*xrange)

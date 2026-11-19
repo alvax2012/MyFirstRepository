@@ -194,3 +194,116 @@ print(car1.status, car2.status)
 car1.disable()
 
 print(car1.status, car2.status)
+
+print()
+
+language = 'Я глобальный'
+
+
+class DepartmentIT:
+    language = 'Я в Классе'
+
+    def __init__(self, name):
+        self.language = name
+
+    def get_info1(self111):
+        print('get_info1', self111.language)
+
+    def get_info2(self):
+        print('get_info2', self.language)
+
+    @classmethod
+    def get_info3(cls):
+        print('get_info3', cls.language)
+
+    @classmethod
+    def get_info4(cls):
+        print('get_info4', DepartmentIT.language)
+
+    @classmethod
+    def get_info5(cls):
+        print('get_info5', language)
+
+    def get_info6(self):
+        print('get_info6', language)
+
+    @staticmethod
+    def get_info7():
+        print('get_info7', language)
+
+    @staticmethod
+    def get_info8():
+        print('get_info7', DepartmentIT.language)
+
+
+x = DepartmentIT('Я в экземпляре')
+x.get_info1()  # get_info1 Я в экземпляре
+x.get_info2()  # get_info2 Я в экземпляре
+x.get_info3()  # get_info3 Я в Классе
+x.get_info4()  # get_info4 Я в Классе
+x.get_info5()  # get_info5 Я глобальный
+x.get_info6()  # get_info6 Я глобальный
+x.get_info7()  # get_info7 Я глобальный
+x.get_info8()  # get_info8 Я в Классе
+
+
+print()
+
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    @classmethod
+    def from_diameter(cls, d):
+        return cls(d/2)
+
+
+circle = Circle(5)
+
+print(circle.radius)
+
+circle = Circle.from_diameter(10)
+
+print(circle.radius)
+
+print()
+
+
+class A:
+    a1 = 7
+
+    def __init__(self, a2):
+        self.a2 = a2
+
+    def pr(self):
+        self.__class__.a1 = 9
+        return self.a2, self.a1
+
+
+a = A(8)
+
+print(a.a1, a.pr())
+
+print(A.a1)
+print()
+print(a.a1)
+
+
+print()
+
+
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    @classmethod
+    def square(cls, side):
+        return cls(side, side)
+
+
+rectangle = Rectangle.square(5)
+
+print(rectangle.length)
+print(rectangle.width)
