@@ -345,7 +345,7 @@ class Xrange:
 
     def __next__(self):
         self._start += self._step
-        if self._start > self._end-self._step:
+        if abs(self._start - self._end) <= abs(self._step):
             raise StopIteration
         return self._start
 
@@ -357,4 +357,9 @@ print(*evens)
 
 xrange = Xrange(10, 1, -1)
 
+# print(next(xrange))
 print(*xrange)
+
+xrange = Xrange(10, -21, -6)
+
+print(list(xrange))
