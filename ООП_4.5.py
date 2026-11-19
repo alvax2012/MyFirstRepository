@@ -173,7 +173,7 @@ person = Person('Меган', 'Фокс')
 
 print(person.name)
 print(person.surname)
-print(person.fullname)
+print('--', Person.fullname.__get__)
 
 person = Person('Меган', 'Фокс')
 
