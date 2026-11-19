@@ -345,7 +345,7 @@ class Xrange:
 
     def __next__(self):
         self._start += self._step
-        if abs(self._start - self._end) <= abs(self._step):
+        if abs(self._start - self._end) < abs(self._step):
             raise StopIteration
         return self._start
 
