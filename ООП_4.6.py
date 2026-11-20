@@ -305,5 +305,7 @@ class Rectangle:
 
 rectangle = Rectangle.square(5)
 
+print(rectangle.__dict__)
+
 print(rectangle.length)
 print(rectangle.width)
