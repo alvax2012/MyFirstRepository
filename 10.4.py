@@ -344,10 +344,12 @@ class Xrange:
         return self
 
     def __next__(self):
+        print(abs(self._start), abs(self._end-self._start), abs(self._step))
         self._start += self._step
-        print((self._start - self._end),
-              (self._start + self._step),  abs(self._step))
-        if abs(self._start - self._end) < abs(self._end-self._step):
+
+        if abs(self._end - self._start) < abs(self._step):
+            print('--', abs(self._start),
+                  abs(self._end-self._start), abs(self._step))
             raise StopIteration
         return self._start
 
