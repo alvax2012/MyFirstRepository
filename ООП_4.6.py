@@ -309,3 +309,38 @@ print(rectangle.__dict__)
 
 print(rectangle.length)
 print(rectangle.width)
+
+
+class QuadraticPolynomial:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    @classmethod
+    def from_iterable(cls, i):
+        return cls(*i)
+
+    @classmethod
+    def from_str(cls, s):
+        return cls(*map(float, s.split()))
+
+
+polynom = QuadraticPolynomial(1, -5, 6)
+
+print(polynom.a)
+print(polynom.b)
+print(polynom.c)
+
+polynom = QuadraticPolynomial.from_iterable([2, 13, -1])
+
+print(polynom.a)
+print(polynom.b)
+print(polynom.c)
+
+polynom = QuadraticPolynomial.from_str('-1.5 4 14.8')
+
+print(polynom.a)
+print(polynom.b)
+print(polynom.c)
+print(polynom.a + polynom.b + polynom.c)
