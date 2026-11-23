@@ -179,3 +179,19 @@ person = Person('Меган', 'Фокс')
 
 person.name = 'Стефани'
 print(person.fullname)
+
+
+class Pet:
+    def __init__(self):
+        pass
+
+    def
+
+
+pet1 = Pet('Ratchet')
+pet2 = Pet('Clank')
+pet3 = Pet('Rivet')
+
+print(Pet.first_pet().name)
+print(Pet.last_pet().name)
+print(Pet.num_of_pets())
