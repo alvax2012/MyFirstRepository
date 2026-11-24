@@ -74,3 +74,9 @@ def ff(*args, **kwarg):
 
 
 print(ff(1, 2, 3, sep='--'))
+
+
+a = [1, 2]
+for i in a:
+    i = 3
+print(a)
