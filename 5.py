@@ -76,15 +76,7 @@ def ff(*args, **kwarg):
 print(ff(1, 2, 3, sep='--'))
 
 
-a = [1, 2]
-print(id(a))
-for i in a:
-    # i = 7
-    print(id(i))
-print(id(i), id(7))
-
-i = [1, 2]
-print(id(i))
-
-i1 = [1, 2]
-print(id(i1))
+a = [1, 2, 3]
+for iii in range(10):
+    iii += 1
+print(iii)
