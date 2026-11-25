@@ -77,6 +77,14 @@ print(ff(1, 2, 3, sep='--'))
 
 
 a = [1, 2]
+print(id(a))
 for i in a:
-    i = 3
-print(a)
+    # i = 7
+    print(id(i))
+print(id(i), id(7))
+
+i = [1, 2]
+print(id(i))
+
+i1 = [1, 2]
+print(id(i1))
